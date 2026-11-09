@@ -3,7 +3,7 @@
   "task_directory": "gel-casting-complete",
   "status": "development",
   "metadata_schema_source": "https://github.com/robocurve/benchmark-tasks/blob/main/README.md",
-  "metadata_note": "Refined seating geometry is validated separately from the preserved earlier package. Only the explicitly selected runs/refined-final evidence may accompany this revision, and its source and asset fingerprints must match the packaged bytes. Media is omitted until a real upload exists; this development package is not a board submission.",
+  "metadata_note": "Refined seating geometry is validated separately from the preserved earlier package. Only the explicitly selected runs/refined-final evidence may accompany this revision, and its source and asset fingerprints must match the packaged bytes. The model-run video, full-score scripted demonstration and setup screenshot are uploaded under media ID M-EVJ8Z6, referenced in task.json.",
   "required_files": [
     "task.json",
     "README.md",

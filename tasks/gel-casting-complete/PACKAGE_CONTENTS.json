@@ -3,7 +3,7 @@
   "status": "development",
   "created_utc": "2026-11-09T15:03:03.7872903Z",
   "title": "Secure and dock a gel-casting cassette",
-  "metadata_has_media": false,
+  "metadata_has_media": true,
   "robot_demo_included": true,
   "diagnostic_sources": {
     "task_docking_fixture.py": "Preclamped reset for isolated grasp and docking contact diagnostics. It does not satisfy the full task's seen-open history and must never be presented as a complete task demonstration. Its debug runs are excluded."
@@ -322,8 +322,8 @@
     },
     {
       "path": "package_manifest.json",
-      "bytes": 5252,
-      "sha256": "42af65e76c49f2bffe71e7c757f9f9e9d1a9f748af458a6df82bb7998eae97f4"
+      "bytes": 5294,
+      "sha256": "d0d621e70f711a60dd8b271050e1e863dedbe1f6db8637a3a826220fe0c77a44"
     },
     {
       "path": "package_task.py",
@@ -332,8 +332,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27717,
-      "sha256": "917ac004452b63fceb2aa5b5131f8bf22ecdde853dd3840f0b5ffbaf85189a29"
+      "bytes": 27860,
+      "sha256": "88f2e7d75c10b15e2af606613c7125bc4666ae45c3b0c8c2a26ba5a71f354e94"
     },
     {
       "path": "retention_check.json",
@@ -422,8 +422,8 @@
     },
     {
       "path": "task.json",
-      "bytes": 12640,
-      "sha256": "ccff0c0dae24efca401a9859f1ceef15fa636c19a00b74eee6bd42f7bfcd7353"
+      "bytes": 12590,
+      "sha256": "86fea5150fae6b7a6490e817b2d82cb850ee6a4a3c51370910c50eeec8136ac8"
     },
     {
       "path": "task.py",
@@ -451,7 +451,7 @@
       "sha256": "c90445802a3961ac647235fb6862705f6bf36ee3f7057cbb4e0f7876c81dca0b"
     }
   ],
-  "note": "Combined refined task and Dream-1 evidence. Prepared for media upload and a one-task pull request; not uploaded or submitted. Existing code-provenance limitations remain documented in README.",
+  "note": "Combined refined task and Dream-1 evidence. Uploaded media M-EVJ8Z6 is referenced in task.json. Hashes identify packaged bytes, not validation freshness. Existing code-provenance limitations remain documented in README.",
   "model_run_result": {
     "schema_version": 1,
     "execution_success": true,
