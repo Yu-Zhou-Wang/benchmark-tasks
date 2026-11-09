@@ -1,0 +1,159 @@
+{
+  "scope": "Secure pre-aligned plates, transfer cassette, hold spring lever open and dock, release lever.",
+  "assets": [
+    "rear_plate.usda",
+    "front_plate.usda",
+    "casting_frame.usda",
+    "casting_stand.usda",
+    "staging_cradle.usda"
+  ],
+  "frame_joint_names": [
+    "left_hinge",
+    "right_hinge"
+  ],
+  "frame_initial_joint_rad": [
+    -1.7453292519943295,
+    1.7453292519943295
+  ],
+  "frame_nominal_closed_targets_rad": [
+    0.03490658503988659,
+    -0.03490658503988659
+  ],
+  "cam_drive_stiffness_si": 0.0,
+  "cam_drive_damping_si": 0.0,
+  "cam_joint_friction_coefficient": 0.0005,
+  "frame_grasp_contact": {
+    "collision_prims": [
+      "/CastingFrame/body/side_post_0",
+      "/CastingFrame/body/side_post_1"
+    ],
+    "torsional_patch_radius_m": 0.004,
+    "minimum_torsional_patch_radius_m": 0.0032,
+    "scope": "Nominal finite-area jaw contact on 10 mm-wide posts only; cam and glass contacts unchanged."
+  },
+  "stand_joint_name": "clip_hinge",
+  "stand_initial_joint_rad": 0.0,
+  "stand_return_spring": {
+    "stiffness_Nm_per_rad": 0.045,
+    "damping_Nm_s_per_rad": 0.002,
+    "max_torque_Nm": 0.05,
+    "target_rad": 0.13962634015954636
+  },
+  "stand_registration": {
+    "nominal_clearance_m": 0.0003,
+    "rear_pad_front_x_m": -0.0123,
+    "rear_pad_centres_m": [
+      [
+        -0.0199,
+        -0.038,
+        0.019
+      ],
+      [
+        -0.0199,
+        -0.038,
+        0.081
+      ],
+      [
+        -0.0199,
+        0.038,
+        0.019
+      ],
+      [
+        -0.0199,
+        0.038,
+        0.081
+      ]
+    ],
+    "rear_pad_size_m": [
+      0.0152,
+      0.006,
+      0.008
+    ],
+    "frame_rear_rib_span_m": 0.088,
+    "frame_rear_rib_collision": "Native boxes match central 88 mm visible ribs; fill 0.5 mm bevel. Side-post grasp corridors stay clear.",
+    "lateral_guide_centres_m": [
+      [
+        0.003,
+        -0.0648,
+        0.0105
+      ],
+      [
+        0.003,
+        0.0648,
+        0.0105
+      ]
+    ],
+    "lateral_guide_size_m": [
+      0.031,
+      0.003,
+      0.003
+    ],
+    "front_guide_centres_m": [
+      [
+        0.0203,
+        -0.058,
+        0.0105
+      ],
+      [
+        0.0203,
+        0.058,
+        0.0105
+      ]
+    ],
+    "front_guide_size_m": [
+      0.003,
+      0.0106,
+      0.003
+    ],
+    "extraction": "Open-top guides, no hook or cassette attachment; spring lever must be held open.",
+    "provenance": "Functional design approximation, not manufacturer CAD or measured tolerances."
+  },
+  "geometry": {
+    "frame_floor_z": 0.009,
+    "glass_bottom_z": 0.012,
+    "rear_plate_position": [
+      0.0,
+      0.0,
+      0.053
+    ],
+    "front_plate_position": [
+      0.004,
+      0.0,
+      0.0485
+    ],
+    "staging_cradle_same_origin_as_initial_frame": true,
+    "initial_frame_z_relative_to_table": -0.009,
+    "staging_front_guide_top_z": 0.05,
+    "staging_front_face_clearance_m": 5e-05,
+    "staging_foot_nest_height_m": 0.0025,
+    "staging_foot_nest_clearance_m": 5e-05,
+    "minimum_lift_before_transfer_m": 0.045,
+    "stand_origin_at_table": true
+  },
+  "centres_of_mass": {
+    "frame_body": [
+      -0.003,
+      0.0,
+      0.0495
+    ],
+    "stand_body": [
+      -0.012,
+      0.0,
+      0.04
+    ],
+    "stand_clip": [
+      0.005,
+      0.0,
+      -0.002
+    ]
+  },
+  "external_mechanics_required": "An angle-dependent implicit bistable cam spring; no milestone-triggered pose writes or fixed joints.",
+  "validation": "Asset authoring only; retention and robot manipulation must be demonstrated separately.",
+  "limitations": [
+    "Rigid rubber proxy; no sealing compliance or fluid.",
+    "Nominal friction, detents, masses and inertias.",
+    "Two rounded gasket guide meshes use native box proxies filling their 0.3 mm bevels.",
+    "Two rear rib collision proxies fill their visible 0.5 mm bevels.",
+    "Stand registration and spring preload are nominal design choices, not manufacturer-calibrated geometry or a seal model."
+  ]
+}

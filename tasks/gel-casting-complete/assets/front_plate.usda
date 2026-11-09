@@ -1,0 +1,260 @@
+#usda 1.0
+(
+    defaultPrim = "FrontPlate"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "FrontPlate" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI"]
+    doc = "Original reference-informed single-bay mini PAGE casting kit. Rear 101x82mm and front 101x73mm plates, nominal3mm glass thickness, bonded1mm spacers. Separate green frame with two vertical-axis pressure cams and transparent stand with horizontal-axis top spring clip. Nominal dimensions, masses and springs outside the manufacturer-specified plate and cavity sizes are visually inferred research approximations, not CAD. Glass and gasket are rigid. No liquid, leakage, polymerization, fracture or compliant contact is simulated. The assembled layout is casting-ready and excludes the comb; final_with_comb is a later illustrative state. Assembly steps and exploded stages are static explanatory layouts, not robot demonstrations. No hidden plate attachments. Cam closure and stand retention require dynamic validation before robotics claims."
+)
+{
+    point3f physics:centerOfMass = (0, 0, 0)
+    float3 physics:diagonalInertia = (0.000071179165, 0.000024465833, 0.000046795834)
+    float physics:mass = 0.055
+    quatf physics:principalAxes = (1, 0, 0, 0)
+    bool physics:rigidBodyEnabled = 1
+    bool physxRigidBody:enableCCD = 1
+    int physxRigidBody:solverPositionIterationCount = 32
+    int physxRigidBody:solverVelocityIterationCount = 8
+
+    def "Looks"
+    {
+        def Material "Glass" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:mdl:surface.connect = </FrontPlate/Looks/Glass/GlassMDL.outputs:out>
+            token outputs:surface.connect = </FrontPlate/Looks/Glass/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.95, 0.985, 0.965)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 0.12
+                float inputs:roughness = 0.025
+                token outputs:surface
+            }
+
+            def Shader "GlassMDL"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                float inputs:depth = 0.15
+                float inputs:frosting_roughness = 0.025
+                color3f inputs:glass_color = (0.95, 0.985, 0.965)
+                float inputs:glass_ior = 1.52
+                bool inputs:thin_walled = 0
+                token outputs:out
+            }
+        }
+
+        def Material "ClearPolycarbonate" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:mdl:surface.connect = </FrontPlate/Looks/ClearPolycarbonate/GlassMDL.outputs:out>
+            token outputs:surface.connect = </FrontPlate/Looks/ClearPolycarbonate/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.92, 0.97, 0.96)
+                float inputs:ior = 1.586
+                float inputs:metallic = 0
+                float inputs:opacity = 0.22
+                float inputs:roughness = 0.055
+                token outputs:surface
+            }
+
+            def Shader "GlassMDL"
+            {
+                uniform token info:implementationSource = "sourceAsset"
+                uniform asset info:mdl:sourceAsset = @OmniGlass.mdl@
+                uniform token info:mdl:sourceAsset:subIdentifier = "OmniGlass"
+                float inputs:depth = 0.15
+                float inputs:frosting_roughness = 0.055
+                color3f inputs:glass_color = (0.92, 0.97, 0.96)
+                float inputs:glass_ior = 1.586
+                bool inputs:thin_walled = 0
+                token outputs:out
+            }
+        }
+
+        def Material "GreenPolysulfone" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/GreenPolysulfone/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.012, 0.32, 0.115)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 1
+                float inputs:roughness = 0.23
+                token outputs:surface
+            }
+        }
+
+        def Material "GreenRecess" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/GreenRecess/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.008, 0.17, 0.065)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 1
+                float inputs:roughness = 0.32
+                token outputs:surface
+            }
+        }
+
+        def Material "Rubber" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/Rubber/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.65
+            float physics:restitution = 0
+            float physics:staticFriction = 0.8
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.3, 0.32, 0.34)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 1
+                float inputs:roughness = 0.82
+                token outputs:surface
+            }
+        }
+
+        def Material "StainlessSteel" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/StainlessSteel/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.59, 0.63, 0.65)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0.92
+                float inputs:opacity = 1
+                float inputs:roughness = 0.2
+                token outputs:surface
+            }
+        }
+
+        def Material "Marking" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/Marking/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.76, 0.88, 0.83)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 1
+                float inputs:roughness = 0.4
+                token outputs:surface
+            }
+        }
+
+        def Material "CombPolymer" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/CombPolymer/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.68, 0.82, 0.85)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 0.87
+                float inputs:roughness = 0.25
+                token outputs:surface
+            }
+        }
+
+        def Material "Tray" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </FrontPlate/Looks/Tray/Preview.outputs:surface>
+            float physics:dynamicFriction = 0.4
+            float physics:restitution = 0
+            float physics:staticFriction = 0.5
+
+            def Shader "Preview"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.28, 0.34, 0.36)
+                float inputs:ior = 1.52
+                float inputs:metallic = 0
+                float inputs:opacity = 1
+                float inputs:roughness = 0.65
+                token outputs:surface
+            }
+        }
+    }
+
+    def Mesh "glass" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysicsMeshCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        uniform bool doubleSided = 0
+        int[] faceVertexCounts = [24, 24, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4, 4]
+        int[] faceVertexIndices = [23, 22, 21, 20, 19, 18, 17, 16, 15, 14, 13, 12, 11, 10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0, 72, 73, 74, 75, 76, 77, 78, 79, 80, 81, 82, 83, 84, 85, 86, 87, 88, 89, 90, 91, 92, 93, 94, 95, 0, 1, 25, 24, 1, 2, 26, 25, 2, 3, 27, 26, 3, 4, 28, 27, 4, 5, 29, 28, 5, 6, 30, 29, 6, 7, 31, 30, 7, 8, 32, 31, 8, 9, 33, 32, 9, 10, 34, 33, 10, 11, 35, 34, 11, 12, 36, 35, 12, 13, 37, 36, 13, 14, 38, 37, 14, 15, 39, 38, 15, 16, 40, 39, 16, 17, 41, 40, 17, 18, 42, 41, 18, 19, 43, 42, 19, 20, 44, 43, 20, 21, 45, 44, 21, 22, 46, 45, 22, 23, 47, 46, 23, 0, 24, 47, 24, 25, 49, 48, 25, 26, 50, 49, 26, 27, 51, 50, 27, 28, 52, 51, 28, 29, 53, 52, 29, 30, 54, 53, 30, 31, 55, 54, 31, 32, 56, 55, 32, 33, 57, 56, 33, 34, 58, 57, 34, 35, 59, 58, 35, 36, 60, 59, 36, 37, 61, 60, 37, 38, 62, 61, 38, 39, 63, 62, 39, 40, 64, 63, 40, 41, 65, 64, 41, 42, 66, 65, 42, 43, 67, 66, 43, 44, 68, 67, 44, 45, 69, 68, 45, 46, 70, 69, 46, 47, 71, 70, 47, 24, 48, 71, 48, 49, 73, 72, 49, 50, 74, 73, 50, 51, 75, 74, 51, 52, 76, 75, 52, 53, 77, 76, 53, 54, 78, 77, 54, 55, 79, 78, 55, 56, 80, 79, 56, 57, 81, 80, 57, 58, 82, 81, 58, 59, 83, 82, 59, 60, 84, 83, 60, 61, 85, 84, 61, 62, 86, 85, 62, 63, 87, 86, 63, 64, 88, 87, 64, 65, 89, 88, 65, 66, 90, 89, 66, 67, 91, 90, 67, 68, 92, 91, 68, 69, 93, 92, 69, 70, 94, 93, 70, 71, 95, 94, 71, 48, 72, 95]
+        rel material:binding = </FrontPlate/Looks/Glass>
+        rel material:binding:physics = </FrontPlate/Looks/Glass>
+        uniform token physics:approximation = "convexHull"
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        point3f[] points = [(-0.0015, 0.05038, 0.03605), (-0.0015, 0.05036385, 0.036151975), (-0.0015, 0.050316975, 0.036243968), (-0.0015, 0.05024397, 0.036316976), (-0.0015, 0.050151974, 0.036363848), (-0.0015, 0.05005, 0.03638), (-0.0015, -0.05005, 0.03638), (-0.0015, -0.050151974, 0.036363848), (-0.0015, -0.05024397, 0.036316976), (-0.0015, -0.050316975, 0.036243968), (-0.0015, -0.05036385, 0.036151975), (-0.0015, -0.05038, 0.03605), (-0.0015, -0.05038, -0.03605), (-0.0015, -0.05036385, -0.036151975), (-0.0015, -0.050316975, -0.036243968), (-0.0015, -0.05024397, -0.036316976), (-0.0015, -0.050151974, -0.036363848), (-0.0015, -0.05005, -0.03638), (-0.0015, 0.05005, -0.03638), (-0.0015, 0.050151974, -0.036363848), (-0.0015, 0.05024397, -0.036316976), (-0.0015, 0.050316975, -0.036243968), (-0.0015, 0.05036385, -0.036151975), (-0.0015, 0.05038, -0.03605), (-0.00138, 0.0505, 0.03605), (-0.00138, 0.050477974, 0.036189057), (-0.00138, 0.05041406, 0.036314502), (-0.00138, 0.050314505, 0.036414057), (-0.00138, 0.05018906, 0.036477976), (-0.00138, 0.05005, 0.0365), (-0.00138, -0.05005, 0.0365), (-0.00138, -0.05018906, 0.036477976), (-0.00138, -0.050314505, 0.036414057), (-0.00138, -0.05041406, 0.036314502), (-0.00138, -0.050477974, 0.036189057), (-0.00138, -0.0505, 0.03605), (-0.00138, -0.0505, -0.03605), (-0.00138, -0.050477974, -0.036189057), (-0.00138, -0.05041406, -0.036314502), (-0.00138, -0.050314505, -0.036414057), (-0.00138, -0.05018906, -0.036477976), (-0.00138, -0.05005, -0.0365), (-0.00138, 0.05005, -0.0365), (-0.00138, 0.05018906, -0.036477976), (-0.00138, 0.050314505, -0.036414057), (-0.00138, 0.05041406, -0.036314502), (-0.00138, 0.050477974, -0.036189057), (-0.00138, 0.0505, -0.03605), (0.00138, 0.0505, 0.03605), (0.00138, 0.050477974, 0.036189057), (0.00138, 0.05041406, 0.036314502), (0.00138, 0.050314505, 0.036414057), (0.00138, 0.05018906, 0.036477976), (0.00138, 0.05005, 0.0365), (0.00138, -0.05005, 0.0365), (0.00138, -0.05018906, 0.036477976), (0.00138, -0.050314505, 0.036414057), (0.00138, -0.05041406, 0.036314502), (0.00138, -0.050477974, 0.036189057), (0.00138, -0.0505, 0.03605), (0.00138, -0.0505, -0.03605), (0.00138, -0.050477974, -0.036189057), (0.00138, -0.05041406, -0.036314502), (0.00138, -0.050314505, -0.036414057), (0.00138, -0.05018906, -0.036477976), (0.00138, -0.05005, -0.0365), (0.00138, 0.05005, -0.0365), (0.00138, 0.05018906, -0.036477976), (0.00138, 0.050314505, -0.036414057), (0.00138, 0.05041406, -0.036314502), (0.00138, 0.050477974, -0.036189057), (0.00138, 0.0505, -0.03605), (0.0015, 0.05038, 0.03605), (0.0015, 0.05036385, 0.036151975), (0.0015, 0.050316975, 0.036243968), (0.0015, 0.05024397, 0.036316976), (0.0015, 0.050151974, 0.036363848), (0.0015, 0.05005, 0.03638), (0.0015, -0.05005, 0.03638), (0.0015, -0.050151974, 0.036363848), (0.0015, -0.05024397, 0.036316976), (0.0015, -0.050316975, 0.036243968), (0.0015, -0.05036385, 0.036151975), (0.0015, -0.05038, 0.03605), (0.0015, -0.05038, -0.03605), (0.0015, -0.05036385, -0.036151975), (0.0015, -0.050316975, -0.036243968), (0.0015, -0.05024397, -0.036316976), (0.0015, -0.050151974, -0.036363848), (0.0015, -0.05005, -0.03638), (0.0015, 0.05005, -0.03638), (0.0015, 0.050151974, -0.036363848), (0.0015, 0.05024397, -0.036316976), (0.0015, 0.050316975, -0.036243968), (0.0015, 0.05036385, -0.036151975), (0.0015, 0.05038, -0.03605)]
+        uniform token subdivisionScheme = "none"
+    }
+}
+

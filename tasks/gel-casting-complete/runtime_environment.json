@@ -1,0 +1,42 @@
+{
+  "recorded_utc": "2026-11-09T10:58:35.815093+00:00",
+  "python": "3.12.16",
+  "distribution_versions": {
+    "torch": "2.11.0+cu128",
+    "numpy": "2.5.4",
+    "isaaclab": "17.0.2",
+    "isaaclab_arena": "0.3.0",
+    "yam-arena": "0.1.0"
+  },
+  "git_revisions": {
+    "yam-isaac-lab-arena": {
+      "head": "0059d02a1a91bc6834c1d0846022891df0c78730",
+      "tracked_worktree_changes": false
+    },
+    "IsaacLab-Arena": {
+      "head": "c7edf3a9d5d8276565208f72422f8f8a0806d6cf",
+      "tracked_worktree_changes": true
+    },
+    "IsaacLab-submodule": {
+      "head": "91a0906f93802eb859192dcb0bca879f891e92d6",
+      "tracked_worktree_changes": false
+    }
+  },
+  "timing_configuration": {
+    "physics_dt_s": 0.004166666666666667,
+    "physics_hz": 240.0,
+    "task_control_hz": 20,
+    "physics_steps_per_control": 12,
+    "arena_default_control_hz": 10.0,
+    "evidence": [
+      "Installed yam_arena.constants.PHYSICS_DT",
+      "Task demo.py HZ, passed explicitly as yam_arena_embodiment(control_hz=HZ)"
+    ],
+    "verification": "Installed configuration and task controller source; not a claim of completed task validation."
+  },
+  "notes": [
+    "Distribution versions are preserved verbatim and may differ from Kit application labels.",
+    "Tracked working-tree changes are reported because a Git HEAD alone may not describe local modifications.",
+    "Only the requested package metadata and revisions were collected; no full package list or environment variables."
+  ]
+}

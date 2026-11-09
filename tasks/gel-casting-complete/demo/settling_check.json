@@ -1,0 +1,146 @@
+{
+  "test": "physics_rate_settling",
+  "passed": true,
+  "source": {
+    "name": "physics_trace.json",
+    "sha256": "bba23b3449cdc4b37e5209854f3b575514b5e20265c556f85b32a8be9904d8a0"
+  },
+  "pose_format": [
+    "x",
+    "y",
+    "z",
+    "qx",
+    "qy",
+    "qz",
+    "qw"
+  ],
+  "criteria": {
+    "last_contiguous_seconds": 4.0,
+    "physics_hz": 240.0,
+    "position_diameter_m": 0.0002,
+    "orientation_diameter_deg": 0.2,
+    "joint_range_deg": 0.5
+  },
+  "sampling_passed": true,
+  "pose_passed": true,
+  "bodies": {
+    "frame": {
+      "passed": true,
+      "position_diameter_m": 3.5568357792660065e-07,
+      "orientation_diameter_deg": 0.00044873420190207736,
+      "position_extreme_physics_steps": [
+        16880,
+        16919
+      ],
+      "orientation_extreme_physics_steps": [
+        16527,
+        16596
+      ],
+      "quaternion_norm_range": [
+        0.9999998887434347,
+        1.0000000174183314
+      ],
+      "max_raw_speed_m_s": 0.013528740107649744,
+      "max_raw_spin_rad_s": 0.2987623470206567
+    },
+    "rear": {
+      "passed": true,
+      "position_diameter_m": 3.7709733927230266e-07,
+      "orientation_diameter_deg": 0.000427930566087567,
+      "position_extreme_physics_steps": [
+        16580,
+        16786
+      ],
+      "orientation_extreme_physics_steps": [
+        16268,
+        16982
+      ],
+      "quaternion_norm_range": [
+        0.9999999007554327,
+        0.9999999692891901
+      ],
+      "max_raw_speed_m_s": 0.011093468445138246,
+      "max_raw_spin_rad_s": 0.41325119048888037
+    },
+    "front": {
+      "passed": true,
+      "position_diameter_m": 3.6261010679384484e-07,
+      "orientation_diameter_deg": 0.0004597806917143619,
+      "position_extreme_physics_steps": [
+        16307,
+        16580
+      ],
+      "orientation_extreme_physics_steps": [
+        16807,
+        16867
+      ],
+      "quaternion_norm_range": [
+        0.9999999082509217,
+        0.9999999777173721
+      ],
+      "max_raw_speed_m_s": 0.005727775098945955,
+      "max_raw_spin_rad_s": 0.048990771962588796
+    },
+    "stand": {
+      "passed": true,
+      "position_diameter_m": 2.1744050231385209e-07,
+      "orientation_diameter_deg": 0.00018473894103725717,
+      "position_extreme_physics_steps": [
+        16484,
+        16612
+      ],
+      "orientation_extreme_physics_steps": [
+        16484,
+        17002
+      ],
+      "quaternion_norm_range": [
+        0.999999918458202,
+        0.9999999225093789
+      ],
+      "max_raw_speed_m_s": 0.0010695402715524846,
+      "max_raw_spin_rad_s": 0.017744323863372453
+    }
+  },
+  "joints": {
+    "frame/left_hinge": {
+      "passed": true,
+      "min_rad": 0.0064538526348769665,
+      "max_rad": 0.006474426481872797,
+      "range_deg": 0.0011787946012089975
+    },
+    "frame/right_hinge": {
+      "passed": true,
+      "min_rad": -0.006814524531364441,
+      "max_rad": -0.006801343988627195,
+      "range_deg": 0.0007551894705359802
+    },
+    "stand/clip_hinge": {
+      "passed": true,
+      "min_rad": 0.002318396233022213,
+      "max_rad": 0.002338985214009881,
+      "range_deg": 0.0011796617150684717
+    }
+  },
+  "errors": [],
+  "limitations": [
+    "Sampled at the reported physics rate; motion between samples is not measured.",
+    "No phase filtering, sample thinning, smoothing, or endpoint-only displacement test.",
+    "Raw linear/angular velocity maxima are diagnostic and do not determine the pose pass.",
+    "Settling alone does not establish a successful full manipulation task."
+  ],
+  "coverage": {
+    "input_samples": 1596,
+    "selected_samples": 961,
+    "start_index": 635,
+    "first_physics_step": 16116,
+    "last_physics_step": 17076,
+    "start_time_s": 67.15,
+    "end_time_s": 71.15,
+    "span_s": 4.0,
+    "physics_dt_s": 0.004166666666666667,
+    "reported_hz": 240.0,
+    "unique_consecutive_steps": true,
+    "constant_time_increment": true,
+    "time_matches_physics_steps": true
+  }
+}

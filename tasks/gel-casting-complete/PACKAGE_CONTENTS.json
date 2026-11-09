@@ -1,0 +1,670 @@
+{
+  "format_version": 1,
+  "status": "development",
+  "created_utc": "2026-11-09T15:03:03.7872903Z",
+  "title": "Secure and dock a gel-casting cassette",
+  "metadata_has_media": false,
+  "robot_demo_included": true,
+  "diagnostic_sources": {
+    "task_docking_fixture.py": "Preclamped reset for isolated grasp and docking contact diagnostics. It does not satisfy the full task's seen-open history and must never be presented as a complete task demonstration. Its debug runs are excluded."
+  },
+  "external_runtime_dependencies": [
+    {
+      "name": "OmniGlass.mdl",
+      "type": "MDL",
+      "provider": "NVIDIA Isaac Sim / Kit renderer",
+      "runtime_relative_path": "kit/mdl/core/Base/OmniGlass.mdl",
+      "exported_material": "OmniGlass",
+      "verified_installed_sha256": "cc3d21e95997fb16d9435982c4f0a14f3438b1705d2e2b3d3e75454e5b329d61",
+      "verification": "Read the installed module and its exported OmniGlass material. Installed kit/kernel/config/kit-core.json declares ${kit}/mdl/core/Base/ in renderer.mdl.searchPaths.templates. Installed Isaac Lab visual_materials_cfg.py uses OmniGlass.mdl for its glass material.",
+      "packaged": false,
+      "requirement": "The renderer must supply this built-in module and its own transitive MDL imports; it is not a missing local task asset.",
+      "referenced_by": [
+        "assets/casting_frame.usda",
+        "assets/casting_stand.usda",
+        "assets/front_plate.usda",
+        "assets/rear_plate.usda",
+        "task_assets/casting_frame.usda",
+        "task_assets/casting_stand.usda",
+        "task_assets/front_plate.usda",
+        "task_assets/rear_plate.usda"
+      ]
+    }
+  ],
+  "seating_evidence_assessment": {
+    "original_report_passed": false,
+    "required_physical_checks_passed": true,
+    "physical_check_names": [
+      "closed_upward_restraint",
+      "open_upward_negative_control",
+      "open_lever_actually_held",
+      "closed_rear_registration",
+      "open_rear_registration",
+      "closed_glass_alignment_after_load",
+      "closed_gasket_and_shoe_seated_after_load"
+    ],
+    "straight_extraction_geometry_passed": false,
+    "interpretation": "The original whole-stand straight-extraction check may remain false: the existing angled lever obstructs that nominal path. Do not rewrite its report. Assembly evidence requires all physical seating checks, a source-matched exact check of the corrected insertion path, and the new successful full robot recording; straight-up removal is not claimed.",
+    "corrected_path": {
+      "report": "cassette_path_check.json",
+      "passed": true,
+      "clip_degrees": [
+        -85.0,
+        -82.0
+      ],
+      "samples_per_angle": 141,
+      "scope": "Cassette versus all enabled stand colliders, including invisible proxies.",
+      "limits": "Nominal frame orientation and grasp; discrete poses, not a continuous or dynamic guarantee."
+    }
+  },
+  "evidence_source_binding": "Bench and rollout fingerprints were checked against the exact packaged sources and generated assets; docs are finalized separately.",
+  "robot_demo_result": {
+    "variant": "full",
+    "success": true,
+    "task_score": 1.0,
+    "steps": 1413
+  },
+  "files": [
+    {
+      "path": "analyze_settling.py",
+      "bytes": 10165,
+      "sha256": "023bf4a5dbc75291e9a552ea2dc4103d1379d2ad2402db020e39d0698554ac35"
+    },
+    {
+      "path": "ASSET_CODE_LICENSE.txt",
+      "bytes": 1087,
+      "sha256": "442ec522ce1e614276e1ae2d4c1ba8879172f044deda46eaaff16e07d43e4e98"
+    },
+    {
+      "path": "assets/casting_frame.usda",
+      "bytes": 138673,
+      "sha256": "46d383a181a591a3259eb8a7b7650dffd0900c0d4d90e45532d9b1ab519c3c87"
+    },
+    {
+      "path": "assets/casting_stand.usda",
+      "bytes": 199047,
+      "sha256": "cd7322ca559c25400f5f0d1213dc9e7c3d7f76622ee0671faf743314910f8f1a"
+    },
+    {
+      "path": "assets/front_plate.usda",
+      "bytes": 15204,
+      "sha256": "2e6944b51b41b2760eeafe02a0ad6e8eca7fd25e3af2f85d2143eebe19074aeb"
+    },
+    {
+      "path": "assets/LICENSE.txt",
+      "bytes": 141,
+      "sha256": "6c0ed2769ba0e74684562be4e9a4940df8f7c6ecf1217fb4c8a5bd8c4748ec8b"
+    },
+    {
+      "path": "assets/rear_plate.usda",
+      "bytes": 18317,
+      "sha256": "de577872bc63924c2e97130336cb23ec4a976afaf7a36844ca33d4d1259931fc"
+    },
+    {
+      "path": "build_task_assets.py",
+      "bytes": 18232,
+      "sha256": "1138a156916f57719e3be7555b7b5af5c5cdeb56a5e2567675390a2fd5c7f472"
+    },
+    {
+      "path": "cassette_path_check.json",
+      "bytes": 37058,
+      "sha256": "badf65cfd198e4b72818573bb352d62a24c7accd244f2d771d158c505ac56e9a"
+    },
+    {
+      "path": "cassette_path_check.log",
+      "bytes": 3564,
+      "sha256": "ff504f3dc253c4a36cb0a6f61b5903f07f2d6bc168681736bd9c0c5683490d83"
+    },
+    {
+      "path": "check_cassette_path.py",
+      "bytes": 3968,
+      "sha256": "4030ecd2f31c57b72846f76f75f057d7775329a06a312a54523f4210307912f7"
+    },
+    {
+      "path": "contact_geometry_audit.py",
+      "bytes": 5263,
+      "sha256": "73e15877ad4cfb58a70d6a838c7660e56847ca8285e45fcfdd42de3c2b8b381f"
+    },
+    {
+      "path": "demo.py",
+      "bytes": 27939,
+      "sha256": "96e11eefc08e4da0d447d25ace1e0df4d5125de03134fd68d9884ab5fee6b383"
+    },
+    {
+      "path": "demo/gripper_trace.json",
+      "bytes": 1319516,
+      "sha256": "b9674caae0d11d233788e33c106cbef9e2271f70cb1c2ae512dad9a9b9d5e885"
+    },
+    {
+      "path": "demo/left_cam_final.png",
+      "bytes": 157995,
+      "sha256": "c20564d63ad9d8345542649f165d0761c0966e198aaf546bc5ccdc3ddbf9bdb4"
+    },
+    {
+      "path": "demo/left_cam.mp4",
+      "bytes": 3002217,
+      "sha256": "5a92b53a1d3e43ec34721daf29211b06232c2627f87769e306e3bfcf4aa8ba30"
+    },
+    {
+      "path": "demo/physics_trace.json",
+      "bytes": 4087510,
+      "sha256": "bba23b3449cdc4b37e5209854f3b575514b5e20265c556f85b32a8be9904d8a0"
+    },
+    {
+      "path": "demo/result.json",
+      "bytes": 7005,
+      "sha256": "b1a2db225322977b62a2928460d21d3032198172f9ac41d5498fa38c7f45aa6f"
+    },
+    {
+      "path": "demo/right_cam_final.png",
+      "bytes": 145444,
+      "sha256": "f2f9c9d03fc1aec523a532772e2a4cf4212c84ef807053aad80dc77f4f0db821"
+    },
+    {
+      "path": "demo/right_cam.mp4",
+      "bytes": 2790373,
+      "sha256": "51a1d387d3b35e890427f3047c018aac28f6d215340f1d0f821dcd2db8e8c2ec"
+    },
+    {
+      "path": "demo/run_manifest.json",
+      "bytes": 3500,
+      "sha256": "56774378b0f7e95b221c9d32d18c8e571fe5b4c13fae14376bde4e5a83e97b91"
+    },
+    {
+      "path": "demo/seating_closeup.png",
+      "bytes": 174513,
+      "sha256": "243378536567b168ec003419e35362d689589187304826809540e076649c9d61"
+    },
+    {
+      "path": "demo/settling_check.json",
+      "bytes": 3923,
+      "sha256": "181f35baafd3fef78a6f07902dbc3fbc3c2c1e3e5678ccb53451b3b69bdbd956"
+    },
+    {
+      "path": "demo/setup.png",
+      "bytes": 267366,
+      "sha256": "60fffbd163ab33e24768aa999c64072d59dfde35ead46462120e1b5518fc201b"
+    },
+    {
+      "path": "demo/top_cam_final.png",
+      "bytes": 286188,
+      "sha256": "d5d7af2b5ecde90ff2b1b65def710bc3acedf93e69e1f73f07428c54351dd7ac"
+    },
+    {
+      "path": "demo/top_cam.mp4",
+      "bytes": 1647503,
+      "sha256": "d3ccadd8eb57ff12806a99e714fd12105233e86f885403c2e73685eff17aef8b"
+    },
+    {
+      "path": "demo/trace.json",
+      "bytes": 280369,
+      "sha256": "bfdea7b1bf8d39219be087d32eb4eacf9f3dc917f7e9194fd4585721e923b441"
+    },
+    {
+      "path": "geometry.py",
+      "bytes": 5134,
+      "sha256": "144c8a49f324364442cbba62c6bbdee678ba8966a9db07c6dec40826e126fffd"
+    },
+    {
+      "path": "model_run/collect_result.py",
+      "bytes": 14316,
+      "sha256": "b415e3baaa805edb7b77d7333e0ca18f47472657c52e5fe5a6a81e95b129e779"
+    },
+    {
+      "path": "model_run/console.log",
+      "bytes": 73653,
+      "sha256": "354e37257f14ef3def21b4b1df338d64733e4b07094e13046e5c88758a5359ab"
+    },
+    {
+      "path": "model_run/eval/actions/20261109_141940_1e420c0f/scene-0-e0.jsonl",
+      "bytes": 707673,
+      "sha256": "e7f25329a3654a9ed90fa40aa05dcb208a1193e0e68189ebac2fdbd0cab6bb53"
+    },
+    {
+      "path": "model_run/eval/adhoc_91d53ebb.json",
+      "bytes": 3844369,
+      "sha256": "dc21f137a6f5860e244c74f32d14e27c8470f901ac9445950ffe06b8da1296f1"
+    },
+    {
+      "path": "model_run/eval/records/20261109_141940_1e420c0f/scene-0-e0/chunks.jsonl",
+      "bytes": 927396,
+      "sha256": "41e84ac86157f8091c9762124a1591122544db2459800367d4f19ac8ef9fe474"
+    },
+    {
+      "path": "model_run/eval/records/20261109_141940_1e420c0f/scene-0-e0/record.json",
+      "bytes": 3068265,
+      "sha256": "37b6cb1cc8f7fae56d8bff0363871156ca03c375704deacb5143bf5b436fca30"
+    },
+    {
+      "path": "model_run/EVIDENCE_CONTENTS.json",
+      "bytes": 3922,
+      "sha256": "5f002706060fd25cbb211cc017eb66f8c2b3d01a4ce33205a1d7ed2a836f286b"
+    },
+    {
+      "path": "model_run/explicit-config.ini",
+      "bytes": 66,
+      "sha256": "f1a7738346e2ced60db711fa73bcd865634376fbf2edf9e3c00054244d3ea103"
+    },
+    {
+      "path": "model_run/result.json",
+      "bytes": 6271,
+      "sha256": "fb3be34025db72634a1fa862fd135990045773e8f25136e021f5f48055b7a504"
+    },
+    {
+      "path": "model_run/run_dream1.py",
+      "bytes": 3209,
+      "sha256": "2525655fb3586d0e6b8d5927b241e01e200684baee16a5cb915f5d2867f671ff"
+    },
+    {
+      "path": "model_run/run_manifest.json",
+      "bytes": 6418,
+      "sha256": "0391b345bb6b805c9aecdc96ddd21464620b3140c5d780968d5962bb9d29cde3"
+    },
+    {
+      "path": "model_run/stages/final_left_cam.png",
+      "bytes": 31358,
+      "sha256": "0bb69eb23173192ef80a9a1843a884e4a46605648dc0d9a4420f77ea63f3d7dd"
+    },
+    {
+      "path": "model_run/stages/final_right_cam.png",
+      "bytes": 36848,
+      "sha256": "e8c9f00271a392418bf29994e244403f1aba6bb6b4718408e36c79b593ff1e25"
+    },
+    {
+      "path": "model_run/stages/final_top_cam.png",
+      "bytes": 43852,
+      "sha256": "a9ffdf42c7b15226744a2cfc1c35cc22e6d6829d2a5ea6dead1d1dde3f16ad6b"
+    },
+    {
+      "path": "model_run/stages/initial_left_cam.png",
+      "bytes": 23862,
+      "sha256": "e1c875cabf0ad3ab6c84801b823f70b0b92184d2fd4fc65e7ef5a827d11a2df0"
+    },
+    {
+      "path": "model_run/stages/initial_right_cam.png",
+      "bytes": 22779,
+      "sha256": "bc93424668ed5a648b0ad41b3052b02a98e1677d249941ac166ca0774469aac0"
+    },
+    {
+      "path": "model_run/stages/initial_top_cam.png",
+      "bytes": 49244,
+      "sha256": "426a683f053d01da0d5a0bda185e0d573c5fb10150cc72a022131180ffaa5e05"
+    },
+    {
+      "path": "model_run/stages/middle_left_cam.png",
+      "bytes": 24540,
+      "sha256": "105d7bd63f1cb657a2bb03acf666601e37a3d5da61d0cb6935cf57b903eb6dda"
+    },
+    {
+      "path": "model_run/stages/middle_right_cam.png",
+      "bytes": 24671,
+      "sha256": "70241ea94cdfca6e1213df8299de73430e66a43f75fa64bc2a0fb0b598479022"
+    },
+    {
+      "path": "model_run/stages/middle_top_cam.png",
+      "bytes": 43605,
+      "sha256": "e450d106455c856f0e45be6b46ed6830f213a876f4eb87f2eeb590acc4b61669"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~left_cam.mp4",
+      "bytes": 768571,
+      "sha256": "e7aa20ba6ebec6877405fbb23f91b2c7f7aa6f82af37d032870d70c9347fabf4"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~right_cam.mp4",
+      "bytes": 898736,
+      "sha256": "c5e67c797cbbf2a28e28becb2309a48f5030bc4a4c55ca4f21e1b76e87e6f242"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~top_cam.mp4",
+      "bytes": 529017,
+      "sha256": "fe3ea5cd2fe6f1de5475cd32bcfa6d532874e86fb3cd45bc6914bf748e7ada61"
+    },
+    {
+      "path": "package_manifest.json",
+      "bytes": 5252,
+      "sha256": "42af65e76c49f2bffe71e7c757f9f9e9d1a9f748af458a6df82bb7998eae97f4"
+    },
+    {
+      "path": "package_task.py",
+      "bytes": 15640,
+      "sha256": "49889e10d96138adf2dd98656110d1b08f4d10363e513d48f78fa70209e90664"
+    },
+    {
+      "path": "README.md",
+      "bytes": 27717,
+      "sha256": "917ac004452b63fceb2aa5b5131f8bf22ecdde853dd3840f0b5ffbaf85189a29"
+    },
+    {
+      "path": "retention_check.json",
+      "bytes": 64717,
+      "sha256": "1edb595f5393c7fa2f1cf44c3f2b38f8a373d828ae25fe7dfd6032fa1747e556"
+    },
+    {
+      "path": "runtime_environment.json",
+      "bytes": 1487,
+      "sha256": "191a6f34fc329d3d1bfe02f887632e28bce5465a5d1820a8f886711c4c15ced8"
+    },
+    {
+      "path": "scenekit.py",
+      "bytes": 21830,
+      "sha256": "46875582299a56e0c2feef349a382a4e7a1eddafa8317e590451c0a6b8bc14dc"
+    },
+    {
+      "path": "SCOPE_REVIEW.md",
+      "bytes": 3244,
+      "sha256": "4d3b7a8d4a57fb92662f20adb7f21ed916028848b57c6df0e7e5185706f9e064"
+    },
+    {
+      "path": "scoring_check.log",
+      "bytes": 5441,
+      "sha256": "54a2092ea079f63967ea8539071f1cc10521712b007bd27d74f42aff907dce79"
+    },
+    {
+      "path": "seating_check.json",
+      "bytes": 5353461,
+      "sha256": "5db01ac7e1e004be4abd9d5b390201ef73e7bab40ca33583972f082e2994c9de"
+    },
+    {
+      "path": "seating_check.log",
+      "bytes": 8623,
+      "sha256": "76744d6d517eb1a8b03e00f601899e9d82699b5e935c0ff095a29133c5f6a635"
+    },
+    {
+      "path": "source_fingerprint.py",
+      "bytes": 1306,
+      "sha256": "59fe8f7fcb9228463ca0db94a86420d5330bc577bc446eb55619bbe5473b22c2"
+    },
+    {
+      "path": "staging_check.json",
+      "bytes": 124265,
+      "sha256": "82252418183697795c09e1fcaad6d91cf915727ec44e34e3036314a50ec4f064"
+    },
+    {
+      "path": "staging_check.log",
+      "bytes": 4141,
+      "sha256": "7306cedc78e0271a08a70e27f1cea97cd4d7282de12e9fd330b145d4188cce8d"
+    },
+    {
+      "path": "task_assets/casting_frame.usda",
+      "bytes": 141224,
+      "sha256": "a0155e869885ba9f1f6834d3caee2228c6cd7d2f12a9c0a7ba38390226f30de4"
+    },
+    {
+      "path": "task_assets/casting_stand.usda",
+      "bytes": 207495,
+      "sha256": "dff864e3a099f4f351622e6a7237b96a4d85f5a7b2fbd2eaf154d1981baeb514"
+    },
+    {
+      "path": "task_assets/front_plate.usda",
+      "bytes": 15361,
+      "sha256": "5723803507116494d56ea31140fad124b4ac39d8c364064c403abf6568a11d13"
+    },
+    {
+      "path": "task_assets/rear_plate.usda",
+      "bytes": 18474,
+      "sha256": "bfdebbe53a343b69b31b698538872f312daf600c605f3e33587a3eec19cfb3c1"
+    },
+    {
+      "path": "task_assets/staging_cradle.usda",
+      "bytes": 9008,
+      "sha256": "709e39a500332eaa6d80cfcd96bfd41a3a4ec621315a9984e8822e25c2abb236"
+    },
+    {
+      "path": "task_assets/task_mechanics.json",
+      "bytes": 3963,
+      "sha256": "52d5cac6ae6d0943c4363b0ce640feafe856c7c4c3b33c2d9d3a73aa6fc86545"
+    },
+    {
+      "path": "task_docking_fixture.py",
+      "bytes": 646,
+      "sha256": "c64c120d01cd77a938f8c64211b6aeba9d4039903e6fe0259b3c54acab70ec93"
+    },
+    {
+      "path": "task.json",
+      "bytes": 12640,
+      "sha256": "ccff0c0dae24efca401a9859f1ceef15fa636c19a00b74eee6bd42f7bfcd7353"
+    },
+    {
+      "path": "task.py",
+      "bytes": 14078,
+      "sha256": "b13547fcf3e3a9eef8520bf9b18ec9140a381c6599bf035eb3790a83885b98a3"
+    },
+    {
+      "path": "test_retention.py",
+      "bytes": 10971,
+      "sha256": "2c81ec6d73e0770f74b9f8d5fc0da9fb2f6d594a52dbbbf76223b4dc7b54d4bf"
+    },
+    {
+      "path": "test_scoring.py",
+      "bytes": 20934,
+      "sha256": "faca512774647e7c835583f0015f1afff347375833b4a023c8f98495facfb478"
+    },
+    {
+      "path": "test_seating.py",
+      "bytes": 13274,
+      "sha256": "ab29c3bfd1da221f1dae6edf4e07f48c0ef3ef4e9f494aefc0ddf69c3ab4d160"
+    },
+    {
+      "path": "test_staging.py",
+      "bytes": 11414,
+      "sha256": "c90445802a3961ac647235fb6862705f6bf36ee3f7057cbb4e0f7876c81dca0b"
+    }
+  ],
+  "note": "Combined refined task and Dream-1 evidence. Prepared for media upload and a one-task pull request; not uploaded or submitted. Existing code-provenance limitations remain documented in README.",
+  "model_run_result": {
+    "schema_version": 1,
+    "execution_success": true,
+    "task_score": 0.0,
+    "task_success": false,
+    "task_success_basis": "Official task_score equals 1.0; execution completion does not require this.",
+    "configuration_verified": true,
+    "expected_configuration": {
+      "model": "dreamlabs/dream-1-beta",
+      "seed": 0,
+      "max_steps": 2400,
+      "object_jitter_m": 0,
+      "control_hz": 20,
+      "camera_pixels": [
+        320,
+        176
+      ],
+      "rows_per_request": 48,
+      "preroll_steps": 32,
+      "epochs": 1
+    },
+    "configuration_mismatches": [],
+    "missing_fields": [],
+    "source_unchanged": true,
+    "manifest": {
+      "file": "run_manifest.json",
+      "sha256": "0391b345bb6b805c9aecdc96ddd21464620b3140c5d780968d5962bb9d29cde3",
+      "returncode": 0,
+      "status": "completed",
+      "wall_seconds": 785.4381332439989,
+      "versions": {
+        "inspect-robots": "1.0.0",
+        "inspect-robots-dream": "0.1.0",
+        "dreamlabs-client": "1.0.14",
+        "yam-arena": "0.1.0"
+      },
+      "hosted_model_seeded": false
+    },
+    "official_log": {
+      "file": "eval/adhoc_91d53ebb.json",
+      "sha256": "dc21f137a6f5860e244c74f32d14e27c8470f901ac9445950ffe06b8da1296f1",
+      "version": 3,
+      "policy": "dream",
+      "policy_checkpoint": "dreamlabs/dream-1-beta",
+      "seed": 0,
+      "max_steps": 2400,
+      "control_hz": 20.0,
+      "total_trials": 1,
+      "errored_trials": 0,
+      "sample_count": 1,
+      "total_steps": 2400,
+      "duration_s": 783.2211090079982,
+      "frames_dir": "/home/ubuntu/gel-casting-clamp-work/tasks/gel-casting-complete/runs/dream1-eval-20261109-01/eval/frames/20261109_141940_1e420c0f",
+      "epochs": 1,
+      "reduced_present": true,
+      "instruction": "Close both green pressure cams to secure the aligned glass plates. Lift the cassette from its alignment cradle, hold the clear stand lever open, and place the cassette on the gray sealing pad. Release the lever onto the tall plate and withdraw both grippers, leaving the assembly upright and stable.",
+      "instruction_source": "samples[0].instruction",
+      "termination_reasons": [
+        "max_steps"
+      ],
+      "termination_source": "samples[0].termination_reasons"
+    },
+    "transcript": {
+      "source": "samples[0].policy_transcripts",
+      "model": "dreamlabs/dream-1-beta",
+      "control_hz": 20.0,
+      "rows_per_request": 48,
+      "preroll_steps": 32,
+      "dry_run": false,
+      "request_count": 50,
+      "request_steps": [
+        32,
+        2384
+      ],
+      "rtt_seconds": {
+        "count": 50,
+        "minimum": 0.33816868600115413,
+        "median": 0.37786517449967505,
+        "maximum": 3.7253023740013305
+      },
+      "inference_ms": {
+        "count": 50,
+        "minimum": 256.0,
+        "median": 260.0,
+        "maximum": 365.0
+      },
+      "attempts": {
+        "count": 50,
+        "minimum": 1.0,
+        "median": 2.0,
+        "maximum": 2.0
+      },
+      "response_rows": {
+        "count": 50,
+        "minimum": 48.0,
+        "median": 48.0,
+        "maximum": 48.0
+      },
+      "unique_session_count": 50
+    },
+    "videos_verified": true,
+    "videos": [
+      {
+        "file": "video/~f1~scene-0-e0~left_cam.mp4",
+        "expected_frames": 2401,
+        "method": "imageio_full_decode",
+        "codec": "h264",
+        "width": 320,
+        "height": 176,
+        "fps": 20.0,
+        "frame_count": 2401,
+        "full_scan": true,
+        "verified": true
+      },
+      {
+        "file": "video/~f1~scene-0-e0~right_cam.mp4",
+        "expected_frames": 2401,
+        "method": "imageio_full_decode",
+        "codec": "h264",
+        "width": 320,
+        "height": 176,
+        "fps": 20.0,
+        "frame_count": 2401,
+        "full_scan": true,
+        "verified": true
+      },
+      {
+        "file": "video/~f1~scene-0-e0~top_cam.mp4",
+        "expected_frames": 2401,
+        "method": "imageio_full_decode",
+        "codec": "h264",
+        "width": 320,
+        "height": 176,
+        "fps": 20.0,
+        "frame_count": 2401,
+        "full_scan": true,
+        "verified": true
+      }
+    ],
+    "stage_images": [
+      {
+        "camera": "top_cam",
+        "stage": "initial",
+        "raw_frame_index": 0,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_000000.npy",
+        "image": "stages/initial_top_cam.png"
+      },
+      {
+        "camera": "top_cam",
+        "stage": "middle",
+        "raw_frame_index": 1200,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_001200.npy",
+        "image": "stages/middle_top_cam.png"
+      },
+      {
+        "camera": "top_cam",
+        "stage": "final",
+        "raw_frame_index": 2400,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_002400.npy",
+        "image": "stages/final_top_cam.png"
+      },
+      {
+        "camera": "left_cam",
+        "stage": "initial",
+        "raw_frame_index": 0,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_000000.npy",
+        "image": "stages/initial_left_cam.png"
+      },
+      {
+        "camera": "left_cam",
+        "stage": "middle",
+        "raw_frame_index": 1200,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_001200.npy",
+        "image": "stages/middle_left_cam.png"
+      },
+      {
+        "camera": "left_cam",
+        "stage": "final",
+        "raw_frame_index": 2400,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_002400.npy",
+        "image": "stages/final_left_cam.png"
+      },
+      {
+        "camera": "right_cam",
+        "stage": "initial",
+        "raw_frame_index": 0,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_000000.npy",
+        "image": "stages/initial_right_cam.png"
+      },
+      {
+        "camera": "right_cam",
+        "stage": "middle",
+        "raw_frame_index": 1200,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_001200.npy",
+        "image": "stages/middle_right_cam.png"
+      },
+      {
+        "camera": "right_cam",
+        "stage": "final",
+        "raw_frame_index": 2400,
+        "raw_frame_count": 2401,
+        "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_002400.npy",
+        "image": "stages/final_right_cam.png"
+      }
+    ],
+    "issues": []
+  }
+}

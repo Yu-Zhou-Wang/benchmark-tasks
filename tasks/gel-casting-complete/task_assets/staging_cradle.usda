@@ -1,0 +1,209 @@
+#usda 1.0
+(
+    defaultPrim = "StagingCradle"
+    kilogramsPerUnit = 1
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "StagingCradle" (
+    prepend apiSchemas = ["PhysicsRigidBodyAPI", "PhysicsMassAPI", "PhysxRigidBodyAPI"]
+    doc = "Visible fixed preparation cradle, located at the initial frame origin. Place its origin at table height minus 9 mm. The 3 mm leveling pad contacts the flush glass bottoms at local Z 12 mm. Front alignment fingers rise to local Z 50 mm with 0.05 mm face clearance and do not contact the cams. Shallow 2.5 mm collars brace the two frame feet with 0.05 mm clearance; the frame rear rails support the rear plate. All parts remain independent. Lift the clamped cassette at least 45 mm to clear the open-top fixture. This fixture prevents loose upright plates tipping during initialization; it does not attach or retain the cassette during transfer."
+)
+{
+    point3f physics:centerOfMass = (0.003, 0, 0.025)
+    float3 physics:diagonalInertia = (0.000090166664, 0.000018373334, 0.00007520667)
+    bool physics:kinematicEnabled = 1
+    float physics:mass = 0.08
+    quatf physics:principalAxes = (1, 0, 0, 0)
+    bool physxRigidBody:enableCCD = 0
+    int physxRigidBody:solverPositionIterationCount = 64
+    int physxRigidBody:solverVelocityIterationCount = 8
+
+    def "Looks"
+    {
+        def Material "GrayRubber" (
+            prepend apiSchemas = ["PhysicsMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </StagingCradle/Looks/GrayRubber/Surface.outputs:surface>
+            float physics:dynamicFriction = 0.64
+            float physics:restitution = 0
+            float physics:staticFriction = 0.8
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.17, 0.19, 0.21)
+                float inputs:roughness = 0.8
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "leveling_pad" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.014, 0.105, 0.003)
+        double3 xformOp:translate = (0.002, 0, 0.0105)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "front_guide_0" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.005, 0.006, 0.041)
+        double3 xformOp:translate = (0.00805, -0.02, 0.0295)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "front_guide_1" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.005, 0.006, 0.041)
+        double3 xformOp:translate = (0.00805, 0.02, 0.0295)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_0_0" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.002, 0.0141, 0.0025)
+        double3 xformOp:translate = (-0.01355, -0.058, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_0_1" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.002, 0.0141, 0.0025)
+        double3 xformOp:translate = (0.01955, -0.058, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_0_2" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.0311, 0.002, 0.0025)
+        double3 xformOp:translate = (0.003, -0.06405, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_0_3" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.0311, 0.002, 0.0025)
+        double3 xformOp:translate = (0.003, -0.05195, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_1_0" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.002, 0.0141, 0.0025)
+        double3 xformOp:translate = (-0.01355, 0.058, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_1_1" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.002, 0.0141, 0.0025)
+        double3 xformOp:translate = (0.01955, 0.058, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_1_2" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.0311, 0.002, 0.0025)
+        double3 xformOp:translate = (0.003, 0.05195, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "foot_nest_1_3" (
+        prepend apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </StagingCradle/Looks/GrayRubber>
+        rel material:binding:physics = </StagingCradle/Looks/GrayRubber>
+        bool physics:collisionEnabled = 1
+        float physxCollision:contactOffset = 0.00005
+        float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.0311, 0.002, 0.0025)
+        double3 xformOp:translate = (0.003, 0.06405, 0.01025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+}
+

@@ -1,0 +1,98 @@
+{
+  "format_version": 1,
+  "task_directory": "gel-casting-complete",
+  "status": "development",
+  "metadata_schema_source": "https://github.com/robocurve/benchmark-tasks/blob/main/README.md",
+  "metadata_note": "Refined seating geometry is validated separately from the preserved earlier package. Only the explicitly selected runs/refined-final evidence may accompany this revision, and its source and asset fingerprints must match the packaged bytes. Media is omitted until a real upload exists; this development package is not a board submission.",
+  "required_files": [
+    "task.json",
+    "README.md",
+    "SCOPE_REVIEW.md",
+    "task.py",
+    "scenekit.py",
+    "demo.py",
+    "geometry.py",
+    "build_task_assets.py",
+    "test_scoring.py",
+    "test_retention.py",
+    "test_staging.py",
+    "test_seating.py",
+    "analyze_settling.py",
+    "source_fingerprint.py",
+    "check_cassette_path.py",
+    "contact_geometry_audit.py",
+    "task_docking_fixture.py",
+    "ASSET_CODE_LICENSE.txt",
+    "assets/LICENSE.txt",
+    "assets/rear_plate.usda",
+    "assets/front_plate.usda",
+    "assets/casting_frame.usda",
+    "assets/casting_stand.usda",
+    "task_assets/rear_plate.usda",
+    "task_assets/front_plate.usda",
+    "task_assets/casting_frame.usda",
+    "task_assets/casting_stand.usda",
+    "task_assets/staging_cradle.usda",
+    "task_assets/task_mechanics.json",
+    "retention_check.json",
+    "scoring_check.log",
+    "staging_check.json",
+    "staging_check.log",
+    "seating_check.json",
+    "seating_check.log",
+    "cassette_path_check.json",
+    "cassette_path_check.log",
+    "runtime_environment.json",
+    "package_manifest.json",
+    "package_task.py"
+  ],
+  "diagnostic_sources": {
+    "task_docking_fixture.py": "Preclamped reset for isolated grasp and docking contact diagnostics. It does not satisfy the full task's seen-open history and must never be presented as a complete task demonstration. Its debug runs are excluded."
+  },
+  "seating_evidence_policy": {
+    "corrected_path_report": "cassette_path_check.json",
+    "required_physical_checks": [
+      "closed_upward_restraint",
+      "open_upward_negative_control",
+      "open_lever_actually_held",
+      "closed_rear_registration",
+      "open_rear_registration",
+      "closed_glass_alignment_after_load",
+      "closed_gasket_and_shoe_seated_after_load"
+    ],
+    "retained_diagnostic": "straight_extraction_geometry",
+    "interpretation": "The original whole-stand straight-extraction check may remain false: the existing angled lever obstructs that nominal path. Do not rewrite its report. Assembly evidence requires all physical seating checks, a source-matched exact check of the corrected insertion path, and the new successful full robot recording; straight-up removal is not claimed."
+  },
+  "allowed_runtime_modules": [
+    {
+      "name": "OmniGlass.mdl",
+      "type": "MDL",
+      "provider": "NVIDIA Isaac Sim / Kit renderer",
+      "runtime_relative_path": "kit/mdl/core/Base/OmniGlass.mdl",
+      "exported_material": "OmniGlass",
+      "verified_installed_sha256": "cc3d21e95997fb16d9435982c4f0a14f3438b1705d2e2b3d3e75454e5b329d61",
+      "verification": "Read the installed module and its exported OmniGlass material. Installed kit/kernel/config/kit-core.json declares ${kit}/mdl/core/Base/ in renderer.mdl.searchPaths.templates. Installed Isaac Lab visual_materials_cfg.py uses OmniGlass.mdl for its glass material.",
+      "packaged": false,
+      "requirement": "The renderer must supply this built-in module and its own transitive MDL imports; it is not a missing local task asset."
+    }
+  ],
+  "optional_verified_demo": {
+    "selection": "Only runs/refined-final from the separately staged refined task; no fallback to an earlier successful run",
+    "required_source_directory": "runs/refined-final",
+    "required_files": ["result.json", "run_manifest.json", "trace.json", "gripper_trace.json", "setup.png", "seating_closeup.png", "physics_trace.json", "settling_check.json"],
+    "camera_files": ["*.mp4", "*_final.png"],
+    "eligibility": "variant full, success true, task_score 1.0, at most 2400 steps, at least one video, unchanged before/after source fingerprints matching the package, and a passing final-four-second 240 Hz settling report matching the physics trace hash",
+    "archive_directory": "demo"
+  },
+  "excluded_by_design": [
+    "legacy task behavior and task_reference.py/demo_reference.py",
+    "failed or unselected debug runs and their logs or snapshots",
+    "earlier geometry success results or benchmarks without current source/asset fingerprints",
+    "docking-fixture runs presented as full-task proof",
+    "staging probes, tuning sweeps, bytecode caches and temporary archives",
+    "comb, loose gasket, parts tray and other assets not used by this task",
+    "static assembly sequence files and product-view renders presented as manipulation results",
+    "credentials, machine-specific configuration and unrelated repository files"
+  ],
+  "license_note": "Copy the existing original asset/code notices unchanged. README documents the adapted scenekit.py provenance and the absence of an identified explicit upstream license; the asset code MIT notice does not relicense borrowed integration code."
+}

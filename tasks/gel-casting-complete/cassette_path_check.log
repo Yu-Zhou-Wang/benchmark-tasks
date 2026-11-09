@@ -1,0 +1,51 @@
+{
+  "check": "revised_cassette_insertion_corridor",
+  "passed": true,
+  "source_fingerprint": {
+    "algorithm": "sha256",
+    "files": {
+      "build_task_assets.py": "1138a156916f57719e3be7555b7b5af5c5cdeb56a5e2567675390a2fd5c7f472",
+      "check_cassette_path.py": "4030ecd2f31c57b72846f76f75f057d7775329a06a312a54523f4210307912f7",
+      "contact_geometry_audit.py": "73e15877ad4cfb58a70d6a838c7660e56847ca8285e45fcfdd42de3c2b8b381f",
+      "demo.py": "96e11eefc08e4da0d447d25ace1e0df4d5125de03134fd68d9884ab5fee6b383",
+      "geometry.py": "144c8a49f324364442cbba62c6bbdee678ba8966a9db07c6dec40826e126fffd",
+      "scenekit.py": "46875582299a56e0c2feef349a382a4e7a1eddafa8317e590451c0a6b8bc14dc",
+      "source_fingerprint.py": "59fe8f7fcb9228463ca0db94a86420d5330bc577bc446eb55619bbe5473b22c2",
+      "task.py": "b13547fcf3e3a9eef8520bf9b18ec9140a381c6599bf035eb3790a83885b98a3",
+      "task_assets/casting_frame.usda": "a0155e869885ba9f1f6834d3caee2228c6cd7d2f12a9c0a7ba38390226f30de4",
+      "task_assets/casting_stand.usda": "dff864e3a099f4f351622e6a7237b96a4d85f5a7b2fbd2eaf154d1981baeb514",
+      "task_assets/front_plate.usda": "5723803507116494d56ea31140fad124b4ac39d8c364064c403abf6568a11d13",
+      "task_assets/rear_plate.usda": "bfdebbe53a343b69b31b698538872f312daf600c605f3e33587a3eec19cfb3c1",
+      "task_assets/staging_cradle.usda": "709e39a500332eaa6d80cfcd96bfd41a3a4ec621315a9984e8822e25c2abb236",
+      "task_assets/task_mechanics.json": "52d5cac6ae6d0943c4363b0ce640feafe856c7c4c3b33c2d9d3a73aa6fc86545",
+      "test_seating.py": "ab29c3bfd1da221f1dae6edf4e07f48c0ef3ef4e9f494aefc0ddf69c3ab4d160"
+    }
+  },
+  "source_fingerprint_after": {
+    "algorithm": "sha256",
+    "files": {
+      "build_task_assets.py": "1138a156916f57719e3be7555b7b5af5c5cdeb56a5e2567675390a2fd5c7f472",
+      "check_cassette_path.py": "4030ecd2f31c57b72846f76f75f057d7775329a06a312a54523f4210307912f7",
+      "contact_geometry_audit.py": "73e15877ad4cfb58a70d6a838c7660e56847ca8285e45fcfdd42de3c2b8b381f",
+      "demo.py": "96e11eefc08e4da0d447d25ace1e0df4d5125de03134fd68d9884ab5fee6b383",
+      "geometry.py": "144c8a49f324364442cbba62c6bbdee678ba8966a9db07c6dec40826e126fffd",
+      "scenekit.py": "46875582299a56e0c2feef349a382a4e7a1eddafa8317e590451c0a6b8bc14dc",
+      "source_fingerprint.py": "59fe8f7fcb9228463ca0db94a86420d5330bc577bc446eb55619bbe5473b22c2",
+      "task.py": "b13547fcf3e3a9eef8520bf9b18ec9140a381c6599bf035eb3790a83885b98a3",
+      "task_assets/casting_frame.usda": "a0155e869885ba9f1f6834d3caee2228c6cd7d2f12a9c0a7ba38390226f30de4",
+      "task_assets/casting_stand.usda": "dff864e3a099f4f351622e6a7237b96a4d85f5a7b2fbd2eaf154d1981baeb514",
+      "task_assets/front_plate.usda": "5723803507116494d56ea31140fad124b4ac39d8c364064c403abf6568a11d13",
+      "task_assets/rear_plate.usda": "bfdebbe53a343b69b31b698538872f312daf600c605f3e33587a3eec19cfb3c1",
+      "task_assets/staging_cradle.usda": "709e39a500332eaa6d80cfcd96bfd41a3a4ec621315a9984e8822e25c2abb236",
+      "task_assets/task_mechanics.json": "52d5cac6ae6d0943c4363b0ce640feafe856c7c4c3b33c2d9d3a73aa6fc86545",
+      "test_seating.py": "ab29c3bfd1da221f1dae6edf4e07f48c0ef3ef4e9f494aefc0ddf69c3ab4d160"
+    }
+  },
+  "source_unchanged": true,
+  "path_function": "demo.dock_forward_offset",
+  "height_step_m": 0.001,
+  "strict_penetration_depth_m": 5e-05,
+  "scope": "Cassette versus all enabled stand colliders, including invisible proxies.",
+  "limits": "Nominal frame orientation and grasp; discrete poses, not a continuous or dynamic guarantee."
+}
+overlap samples: [0, 0]

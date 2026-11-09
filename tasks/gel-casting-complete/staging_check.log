@@ -1,0 +1,22 @@
+Loading user config located at: '/data/IsaacLab-Arena/.venv/lib/python3.12/site-packages/isaacsim/kit/data/Kit/IsaacLab/3.0/user.config.json'
+WARNING: All log messages before absl::InitializeLog() is called are written to STDERR
+E0000 00:00:1794231200.732353  419239 descriptor_database.cc:633] File already exists in database: grpc/health/v1/health.proto
+W0000 00:00:1794231200.732404  419239 message.cc:301] Protobuf GeneratedMessageFactory: File is already registered: grpc/health/v1/health.proto
+2026-11-09T13:33:21Z [0ms] [Warning] [omni.usd_config.extension] Enable omni.materialx.libs extension to use MaterialX
+2026-11-09T13:33:21Z [15ms] [Warning] [omni.platforminfo.plugin] failed to open the default display.  Can't verify X Server version.
+Warp 1.16.0 initialized:
+   CUDA Toolkit 12.9, Driver 12.7
+   Devices:
+     "cpu"      : "x86_64"
+     "cuda:0"   : "NVIDIA L40S" (44 GiB, sm_89, mempool enabled)
+   Kernel cache:
+     /home/ubuntu/.cache/warp/1.16.0
+[ISAACLAB] AppLauncher initialization complete
+[ISAACLAB] Kit version: 110.3.0+feature.371399.00c488ae.gl
+[ISAACLAB] Kit kernel:  210.3.2+release.14366.2926fc80.gl
+[ISAACLAB] Kit hash:    00c488ae
+2026-11-09T13:33:23Z [2,279ms] [Warning] [carb] Failed to find a plugin with an interface pointer: 0x2a3e9a50. Client: carb.scripting-python.plugin
+2026-11-09T13:33:23Z [2,793ms] [Warning] [omni.physx.plugin] Detected a rigid at /World/current_jigCradle with more than 4 velocity iterations being added to a TGS scene.The related behavior changed recently, please consult the changelog. This warning will only print once.
+2026-11-09T13:33:24Z [3,433ms] [Warning] [usdrt.population.plugin] Last global time was not created. Did you call setEnableUsdNoticeHandling?
+2026-11-09T13:33:24Z [3,435ms] [Warning] [omni.physx.plugin] Detected an articulation at /World/current_jigFrame with more than 4 velocity iterations being added to a TGS scene.The related behavior changed recently, please consult the changelog. This warning will only print once.
+STAGING_RESULT {"passed": true, "geometric_lift_check": {"passed": true, "method": "Conservative collision-AABB sweep; no physics transport.", "nominal_cam_degrees": [0.0, 0.0], "lift_m": 0.045, "height_sample_spacing_m": 0.0005, "lowest_moving_collision_z_m": 0.008999999612569809, "highest_fixture_collision_z_m": 0.050000000566244124, "full_vertical_clearance_at_45mm_m": 0.0039999990463256835, "overlap_count": 0, "overlaps": []}, "cases": {"legacy_low_guides": {"passed": true, "all_gaps_valid": true, "all_bottoms_valid": true, "cams_remain_open": true, "gap_range_m": [0.0009982875559048135, 0.0010158857552062558], "final": {"time_s": 5.0, "gap_samples_m": [0.0010007146959926786, 0.001015885551479672, 0.0010004151305430206, 0.0010155859860300149], "glass_bottom_error_m": [-2.0761689042310405e-06, -2.379103085276696e-06, -6.9917324698638705e-06, -8.234928605942507e-05], "cams_deg": [-100.0023193359375, 100.00225830078125], "plate_pose": {"rear": [-6.173750443849713e-05, -0.11999981850385666, 0.2529977262020111, -1.7228269371116767e-06, -0.000750298670027405, -2.1453395220305538e-06, 0.9999996423721313], "front": [0.003953233826905489, -0.11996884644031525, 0.24845528602600098, -0.0004281685396563262, -0.0006419337587431073, -8.096222927633789e-07, 0.9999996423721313]}}}, "current_jig": {"passed": true, "all_gaps_valid": true, "all_bottoms_valid": true, "cams_remain_open": true, "gap_range_m": [0.0008844287952299687, 0.0011439738324538744], "final": {"time_s": 5.0, "gap_samples_m": [0.0011414698926956075, 0.0009844741748545735, 0.001047906070053305, 0.000890910352212271], "glass_bottom_error_m": [-1.0987945256342446e-06, -1.2160907737930604e-06, -9.411576426966023e-06, -8.483373544173126e-05], "cams_deg": [-100.00421142578125, 100.00736236572266], "plate_pose": {"rear": [-8.640596206532791e-05, 0.12006419152021408, 0.25299882888793945, -7.641448860340461e-07, -0.0004082885570824146, -0.00023926423455122858, 0.9999998807907104], "front": [0.003933493979275227, 0.12006495893001556, 0.24845269322395325, -0.0004280879511497915, -0.001529357279650867, 0.00029265412013046443, 0.9999986290931702]}}}}}

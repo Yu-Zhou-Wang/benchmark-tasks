@@ -1,0 +1,259 @@
+{
+  "success": true,
+  "task_score": 1.0,
+  "steps": 1413,
+  "record_every": 2,
+  "video_fps": 10.0,
+  "variant": "full",
+  "controller_failure": null,
+  "final_state": {
+    "steps": 1413,
+    "seen_open": [
+      true,
+      true
+    ],
+    "transported": true,
+    "violations": [],
+    "hands_clear": true,
+    "aligned": true,
+    "cams_closed": [
+      true,
+      true
+    ],
+    "docked": true,
+    "clip_closed": true,
+    "stable": true,
+    "upright": true,
+    "plate_error_m": {
+      "rear": 2.8571493800197494e-05,
+      "front": 0.0001739615641821982
+    },
+    "glass_gap_samples_m": [
+      0.0009979860112366433,
+      0.0008777420963356421,
+      0.0009978529145291824,
+      0.0008776089996281812
+    ],
+    "bottom_error_m": [
+      2.049582015586221e-05,
+      -1.785647137595922e-06,
+      -0.00018051334352442786,
+      -9.255382861673468e-05
+    ],
+    "cam_degrees": [
+      0.3703881386416861,
+      -0.38988686129861805
+    ],
+    "rear_support_clearances_m": [
+      0.00017837381546524644,
+      0.0003213007450315313,
+      3.279951628150542e-05,
+      0.0001757264458477903
+    ],
+    "registered": true,
+    "glass_gasket_gaps_m": [
+      0.0002069309883054541,
+      5.3897417482007964e-05,
+      -3.554704671863626e-06,
+      -4.634744976131887e-05
+    ],
+    "clip_shoe_gaps_m": [
+      -0.00020421954643278645,
+      -0.0001728214700763564
+    ],
+    "clip_shoe_seated": true,
+    "dock_error_m": [
+      -0.0002382674217659921,
+      1.0122851313677461e-05,
+      0.00012106242925242569
+    ],
+    "clip_degrees": 0.1334111635511633,
+    "stability_duration_s": 3.9499999999997755,
+    "stability_samples": 80,
+    "stability_position_diameter_m": {
+      "frame": 3.125668824102896e-07,
+      "rear": 3.213570386726501e-07,
+      "front": 3.0564427061667763e-07,
+      "stand": 1.4931013326446103e-07
+    },
+    "stability_rotation_diameter_deg": {
+      "frame": 0.00037479398919598424,
+      "rear": 0.00029203551901608467,
+      "front": 0.00034159909297063997,
+      "stand": 0.00015093211331153417
+    },
+    "stability_joint_ranges_deg": {
+      "left_cam": 0.0010256756338390632,
+      "right_cam": 0.0006166113355787683,
+      "top_clip": 0.0008535868832664764
+    },
+    "stability_reason": "qualified",
+    "tcps": {
+      "left": [
+        0.3231571421651934,
+        0.3054196206409485,
+        1.007972948102074
+      ],
+      "right": [
+        0.32296289116480686,
+        -0.30414400437855255,
+        1.007040131242908
+      ]
+    }
+  },
+  "max_ik_error_mm": {
+    "left": 0.09074082843451067,
+    "right": 0.09311636580602278
+  },
+  "gripper_telemetry": {
+    "sample_hz": 20,
+    "sampling": "after_each_control_step_plus_initial_reset",
+    "joint_names": [
+      "joint7",
+      "joint8"
+    ],
+    "joint_units": "metres",
+    "nominal_gap_definition": "-(joint7 + joint8)",
+    "pad_gap_at_tcp_definition": "nominal_gap_m + closed_pad_gap_at_tcp_m",
+    "closed_pad_gap_at_tcp_m": 6.280016929622887e-05,
+    "commanded_max_nominal_gap_m": 0.0939,
+    "gap_threshold_m": 0.094,
+    "joint_limits_m": {
+      "left": [
+        [
+          -0.046950001269578934,
+          4.609269966437046e-15
+        ],
+        [
+          -0.046950001269578934,
+          0.0
+        ]
+      ],
+      "right": [
+        [
+          -0.046950001269578934,
+          4.609269966437046e-15
+        ],
+        [
+          -0.046950001269578934,
+          0.0
+        ]
+      ]
+    },
+    "sample_count": 1414,
+    "hands": {
+      "left": {
+        "command_normalized_range": [
+          0.0,
+          1.0
+        ],
+        "finger_position_ranges_m": {
+          "joint7": [
+            -0.04695000872015953,
+            3.5341498616503486e-09
+          ],
+          "joint8": [
+            -0.046950001269578934,
+            6.099465110764868e-08
+          ]
+        },
+        "nominal_gap_range_m": [
+          -6.402522934045862e-08,
+          0.09390000626444817
+        ],
+        "pad_gap_at_tcp_range_m": [
+          6.273614406688841e-05,
+          0.0939628064337444
+        ],
+        "samples_above_94mm": 0,
+        "max_94mm_exceedance_m": 0.0,
+        "max_joint_limit_exceedance_m": 6.099465110764868e-08,
+        "final": {
+          "command_normalized": 1.0,
+          "command_nominal_gap_m": 0.0939,
+          "finger_positions_m": {
+            "joint7": -0.04695000872015953,
+            "joint8": -0.046949997544288635
+          },
+          "measured_normalized_unclamped": 1.000000066714038,
+          "nominal_gap_m": 0.09390000626444817,
+          "pad_gap_at_tcp_m": 0.0939628064337444
+        }
+      },
+      "right": {
+        "command_normalized_range": [
+          0.0,
+          1.0
+        ],
+        "finger_position_ranges_m": {
+          "joint7": [
+            -0.04695121571421623,
+            4.5655634828278835e-09
+          ],
+          "joint8": [
+            -0.04695068672299385,
+            4.2504275654664525e-08
+          ]
+        },
+        "nominal_gap_range_m": [
+          -4.69824867899149e-08,
+          0.09390056878328323
+        ],
+        "pad_gap_at_tcp_range_m": [
+          6.275318680943896e-05,
+          0.09396336895257947
+        ],
+        "samples_above_94mm": 0,
+        "max_94mm_exceedance_m": 0.0,
+        "max_joint_limit_exceedance_m": 1.214444637298584e-06,
+        "final": {
+          "command_normalized": 1.0,
+          "command_nominal_gap_m": 0.0939,
+          "finger_positions_m": {
+            "joint7": -0.04695000499486923,
+            "joint8": -0.046949997544288635
+          },
+          "measured_normalized_unclamped": 1.000000027041085,
+          "nominal_gap_m": 0.09390000253915787,
+          "pad_gap_at_tcp_m": 0.0939628027084541
+        }
+      }
+    }
+  },
+  "reset_configuration": {
+    "seed": null,
+    "object_jitter_m": 0.0,
+    "scene_id": "gel-casting-demo",
+    "scene": "station",
+    "task_file": "task.py",
+    "instruction": "Close both green pressure cams to secure the aligned glass plates. Lift the cassette from its alignment cradle, hold the clear stand lever open, and place the cassette on the gray sealing pad. Release the lever onto the tall plate and withdraw both grippers, leaving the assembly upright and stable.",
+    "control_hz": 20,
+    "physics_dt_s": 0.004166666666666667
+  },
+  "timing_s": {
+    "startup_and_reset_s": 16.99012369800039,
+    "setup_after_reset_s": 0.15319992999866372,
+    "controller_loop_s": 349.7841812580009,
+    "video_export_s": 9.321381400000973,
+    "total_through_video_export_s": 376.6290337999999,
+    "closeup_capture_s": 0.16554764500324382,
+    "total_through_closeup_s": 376.9557935800003
+  },
+  "run_manifest": "run_manifest.json",
+  "source_unchanged": true,
+  "seating_closeup": {
+    "image": "seating_closeup.png",
+    "eye": [
+      0.440005122423172,
+      -0.22000209225254366,
+      0.9474628686904907
+    ],
+    "target": [
+      0.160005122423172,
+      -2.0922525436617434e-06,
+      0.8024628686904908
+    ],
+    "physics_step_before": 17076,
+    "physics_step_after": 17076
+  }
+}

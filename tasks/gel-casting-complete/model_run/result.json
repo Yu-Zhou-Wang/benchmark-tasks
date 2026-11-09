@@ -1,0 +1,215 @@
+{
+  "schema_version": 1,
+  "execution_success": true,
+  "task_score": 0.0,
+  "task_success": false,
+  "task_success_basis": "Official task_score equals 1.0; execution completion does not require this.",
+  "configuration_verified": true,
+  "expected_configuration": {
+    "model": "dreamlabs/dream-1-beta",
+    "seed": 0,
+    "max_steps": 2400,
+    "object_jitter_m": 0,
+    "control_hz": 20,
+    "camera_pixels": [
+      320,
+      176
+    ],
+    "rows_per_request": 48,
+    "preroll_steps": 32,
+    "epochs": 1
+  },
+  "configuration_mismatches": [],
+  "missing_fields": [],
+  "source_unchanged": true,
+  "manifest": {
+    "file": "run_manifest.json",
+    "sha256": "0391b345bb6b805c9aecdc96ddd21464620b3140c5d780968d5962bb9d29cde3",
+    "returncode": 0,
+    "status": "completed",
+    "wall_seconds": 785.4381332439989,
+    "versions": {
+      "inspect-robots": "1.0.0",
+      "inspect-robots-dream": "0.1.0",
+      "dreamlabs-client": "1.0.14",
+      "yam-arena": "0.1.0"
+    },
+    "hosted_model_seeded": false
+  },
+  "official_log": {
+    "file": "eval/adhoc_91d53ebb.json",
+    "sha256": "dc21f137a6f5860e244c74f32d14e27c8470f901ac9445950ffe06b8da1296f1",
+    "version": 3,
+    "policy": "dream",
+    "policy_checkpoint": "dreamlabs/dream-1-beta",
+    "seed": 0,
+    "max_steps": 2400,
+    "control_hz": 20.0,
+    "total_trials": 1,
+    "errored_trials": 0,
+    "sample_count": 1,
+    "total_steps": 2400,
+    "duration_s": 783.2211090079982,
+    "frames_dir": "/home/ubuntu/gel-casting-clamp-work/tasks/gel-casting-complete/runs/dream1-eval-20261109-01/eval/frames/20261109_141940_1e420c0f",
+    "epochs": 1,
+    "reduced_present": true,
+    "instruction": "Close both green pressure cams to secure the aligned glass plates. Lift the cassette from its alignment cradle, hold the clear stand lever open, and place the cassette on the gray sealing pad. Release the lever onto the tall plate and withdraw both grippers, leaving the assembly upright and stable.",
+    "instruction_source": "samples[0].instruction",
+    "termination_reasons": [
+      "max_steps"
+    ],
+    "termination_source": "samples[0].termination_reasons"
+  },
+  "transcript": {
+    "source": "samples[0].policy_transcripts",
+    "model": "dreamlabs/dream-1-beta",
+    "control_hz": 20.0,
+    "rows_per_request": 48,
+    "preroll_steps": 32,
+    "dry_run": false,
+    "request_count": 50,
+    "request_steps": [
+      32,
+      2384
+    ],
+    "rtt_seconds": {
+      "count": 50,
+      "minimum": 0.33816868600115413,
+      "median": 0.37786517449967505,
+      "maximum": 3.7253023740013305
+    },
+    "inference_ms": {
+      "count": 50,
+      "minimum": 256.0,
+      "median": 260.0,
+      "maximum": 365.0
+    },
+    "attempts": {
+      "count": 50,
+      "minimum": 1.0,
+      "median": 2.0,
+      "maximum": 2.0
+    },
+    "response_rows": {
+      "count": 50,
+      "minimum": 48.0,
+      "median": 48.0,
+      "maximum": 48.0
+    },
+    "unique_session_count": 50
+  },
+  "videos_verified": true,
+  "videos": [
+    {
+      "file": "video/~f1~scene-0-e0~left_cam.mp4",
+      "expected_frames": 2401,
+      "method": "imageio_full_decode",
+      "codec": "h264",
+      "width": 320,
+      "height": 176,
+      "fps": 20.0,
+      "frame_count": 2401,
+      "full_scan": true,
+      "verified": true
+    },
+    {
+      "file": "video/~f1~scene-0-e0~right_cam.mp4",
+      "expected_frames": 2401,
+      "method": "imageio_full_decode",
+      "codec": "h264",
+      "width": 320,
+      "height": 176,
+      "fps": 20.0,
+      "frame_count": 2401,
+      "full_scan": true,
+      "verified": true
+    },
+    {
+      "file": "video/~f1~scene-0-e0~top_cam.mp4",
+      "expected_frames": 2401,
+      "method": "imageio_full_decode",
+      "codec": "h264",
+      "width": 320,
+      "height": 176,
+      "fps": 20.0,
+      "frame_count": 2401,
+      "full_scan": true,
+      "verified": true
+    }
+  ],
+  "stage_images": [
+    {
+      "camera": "top_cam",
+      "stage": "initial",
+      "raw_frame_index": 0,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_000000.npy",
+      "image": "stages/initial_top_cam.png"
+    },
+    {
+      "camera": "top_cam",
+      "stage": "middle",
+      "raw_frame_index": 1200,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_001200.npy",
+      "image": "stages/middle_top_cam.png"
+    },
+    {
+      "camera": "top_cam",
+      "stage": "final",
+      "raw_frame_index": 2400,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~top_cam_002400.npy",
+      "image": "stages/final_top_cam.png"
+    },
+    {
+      "camera": "left_cam",
+      "stage": "initial",
+      "raw_frame_index": 0,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_000000.npy",
+      "image": "stages/initial_left_cam.png"
+    },
+    {
+      "camera": "left_cam",
+      "stage": "middle",
+      "raw_frame_index": 1200,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_001200.npy",
+      "image": "stages/middle_left_cam.png"
+    },
+    {
+      "camera": "left_cam",
+      "stage": "final",
+      "raw_frame_index": 2400,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~left_cam_002400.npy",
+      "image": "stages/final_left_cam.png"
+    },
+    {
+      "camera": "right_cam",
+      "stage": "initial",
+      "raw_frame_index": 0,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_000000.npy",
+      "image": "stages/initial_right_cam.png"
+    },
+    {
+      "camera": "right_cam",
+      "stage": "middle",
+      "raw_frame_index": 1200,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_001200.npy",
+      "image": "stages/middle_right_cam.png"
+    },
+    {
+      "camera": "right_cam",
+      "stage": "final",
+      "raw_frame_index": 2400,
+      "raw_frame_count": 2401,
+      "source": "eval/frames/20261109_141940_1e420c0f/~f1~scene-0-e0~right_cam_002400.npy",
+      "image": "stages/final_right_cam.png"
+    }
+  ],
+  "issues": []
+}

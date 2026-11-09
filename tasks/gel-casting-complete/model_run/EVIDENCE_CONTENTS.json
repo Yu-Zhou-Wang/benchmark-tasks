@@ -1,0 +1,118 @@
+{
+  "kind": "Dream-1 evaluation evidence",
+  "raw_frames_preserved_at": "/home/ubuntu/gel-casting-clamp-work/tasks/gel-casting-complete/runs/dream1-eval-20261109-01/eval/frames",
+  "raw_frames_included": false,
+  "task_code_required": "gel-casting-refined.zip or the task folder on Brev",
+  "files": [
+    {
+      "path": "collect_result.py",
+      "bytes": 14316,
+      "sha256": "b415e3baaa805edb7b77d7333e0ca18f47472657c52e5fe5a6a81e95b129e779"
+    },
+    {
+      "path": "console.log",
+      "bytes": 73653,
+      "sha256": "354e37257f14ef3def21b4b1df338d64733e4b07094e13046e5c88758a5359ab"
+    },
+    {
+      "path": "eval/actions/20261109_141940_1e420c0f/scene-0-e0.jsonl",
+      "bytes": 707673,
+      "sha256": "e7f25329a3654a9ed90fa40aa05dcb208a1193e0e68189ebac2fdbd0cab6bb53"
+    },
+    {
+      "path": "eval/adhoc_91d53ebb.json",
+      "bytes": 3844369,
+      "sha256": "dc21f137a6f5860e244c74f32d14e27c8470f901ac9445950ffe06b8da1296f1"
+    },
+    {
+      "path": "eval/records/20261109_141940_1e420c0f/scene-0-e0/chunks.jsonl",
+      "bytes": 927396,
+      "sha256": "41e84ac86157f8091c9762124a1591122544db2459800367d4f19ac8ef9fe474"
+    },
+    {
+      "path": "eval/records/20261109_141940_1e420c0f/scene-0-e0/record.json",
+      "bytes": 3068265,
+      "sha256": "37b6cb1cc8f7fae56d8bff0363871156ca03c375704deacb5143bf5b436fca30"
+    },
+    {
+      "path": "explicit-config.ini",
+      "bytes": 66,
+      "sha256": "f1a7738346e2ced60db711fa73bcd865634376fbf2edf9e3c00054244d3ea103"
+    },
+    {
+      "path": "result.json",
+      "bytes": 6271,
+      "sha256": "fb3be34025db72634a1fa862fd135990045773e8f25136e021f5f48055b7a504"
+    },
+    {
+      "path": "run_dream1.py",
+      "bytes": 3209,
+      "sha256": "2525655fb3586d0e6b8d5927b241e01e200684baee16a5cb915f5d2867f671ff"
+    },
+    {
+      "path": "run_manifest.json",
+      "bytes": 6418,
+      "sha256": "0391b345bb6b805c9aecdc96ddd21464620b3140c5d780968d5962bb9d29cde3"
+    },
+    {
+      "path": "stages/final_left_cam.png",
+      "bytes": 31358,
+      "sha256": "0bb69eb23173192ef80a9a1843a884e4a46605648dc0d9a4420f77ea63f3d7dd"
+    },
+    {
+      "path": "stages/final_right_cam.png",
+      "bytes": 36848,
+      "sha256": "e8c9f00271a392418bf29994e244403f1aba6bb6b4718408e36c79b593ff1e25"
+    },
+    {
+      "path": "stages/final_top_cam.png",
+      "bytes": 43852,
+      "sha256": "a9ffdf42c7b15226744a2cfc1c35cc22e6d6829d2a5ea6dead1d1dde3f16ad6b"
+    },
+    {
+      "path": "stages/initial_left_cam.png",
+      "bytes": 23862,
+      "sha256": "e1c875cabf0ad3ab6c84801b823f70b0b92184d2fd4fc65e7ef5a827d11a2df0"
+    },
+    {
+      "path": "stages/initial_right_cam.png",
+      "bytes": 22779,
+      "sha256": "bc93424668ed5a648b0ad41b3052b02a98e1677d249941ac166ca0774469aac0"
+    },
+    {
+      "path": "stages/initial_top_cam.png",
+      "bytes": 49244,
+      "sha256": "426a683f053d01da0d5a0bda185e0d573c5fb10150cc72a022131180ffaa5e05"
+    },
+    {
+      "path": "stages/middle_left_cam.png",
+      "bytes": 24540,
+      "sha256": "105d7bd63f1cb657a2bb03acf666601e37a3d5da61d0cb6935cf57b903eb6dda"
+    },
+    {
+      "path": "stages/middle_right_cam.png",
+      "bytes": 24671,
+      "sha256": "70241ea94cdfca6e1213df8299de73430e66a43f75fa64bc2a0fb0b598479022"
+    },
+    {
+      "path": "stages/middle_top_cam.png",
+      "bytes": 43605,
+      "sha256": "e450d106455c856f0e45be6b46ed6830f213a876f4eb87f2eeb590acc4b61669"
+    },
+    {
+      "path": "video/~f1~scene-0-e0~left_cam.mp4",
+      "bytes": 768571,
+      "sha256": "e7aa20ba6ebec6877405fbb23f91b2c7f7aa6f82af37d032870d70c9347fabf4"
+    },
+    {
+      "path": "video/~f1~scene-0-e0~right_cam.mp4",
+      "bytes": 898736,
+      "sha256": "c5e67c797cbbf2a28e28becb2309a48f5030bc4a4c55ca4f21e1b76e87e6f242"
+    },
+    {
+      "path": "video/~f1~scene-0-e0~top_cam.mp4",
+      "bytes": 529017,
+      "sha256": "fe3ea5cd2fe6f1de5475cd32bcfa6d532874e86fb3cd45bc6914bf748e7ada61"
+    }
+  ]
+}
