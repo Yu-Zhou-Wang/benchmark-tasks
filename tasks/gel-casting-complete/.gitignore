@@ -1,0 +1,3 @@
+# Videos are submitted through the task board; retain local recordings.
+/demo/*.mp4
+/model_run/video/*.mp4

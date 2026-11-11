@@ -98,7 +98,9 @@
       "path": "stages/middle_top_cam.png",
       "bytes": 43605,
       "sha256": "e450d106455c856f0e45be6b46ed6830f213a876f4eb87f2eeb590acc4b61669"
-    },
+    }
+  ],
+  "omitted_recordings": [
     {
       "path": "video/~f1~scene-0-e0~left_cam.mp4",
       "bytes": 768571,
@@ -114,5 +116,10 @@
       "bytes": 529017,
       "sha256": "fe3ea5cd2fe6f1de5475cd32bcfa6d532874e86fb3cd45bc6914bf748e7ada61"
     }
-  ]
+  ],
+  "recording_storage": {
+    "media": "M-EVJ8Z6",
+    "original_commit": "1bb885c3a799aec39a2204cca0586e008d629802",
+    "note": "The top-camera model video is attached through the task board. All three original model videos remain local and in the original commit; they are excluded from the submitted code archive."
+  }
 }

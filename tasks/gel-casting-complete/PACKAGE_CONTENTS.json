@@ -4,7 +4,7 @@
   "created_utc": "2026-11-09T15:03:03.7872903Z",
   "title": "Secure and dock a gel-casting cassette",
   "metadata_has_media": true,
-  "robot_demo_included": true,
+  "robot_demo_included": false,
   "diagnostic_sources": {
     "task_docking_fixture.py": "Preclamped reset for isolated grasp and docking contact diagnostics. It does not satisfy the full task's seen-open history and must never be presented as a complete task demonstration. Its debug runs are excluded."
   },
@@ -65,6 +65,11 @@
     "steps": 1413
   },
   "files": [
+    {
+      "path": ".gitignore",
+      "bytes": 107,
+      "sha256": "0e53c8bc2b8f43ec4b9c0aa862dcaff9f0a9dd98e1e534b249d649ab4b737b45"
+    },
     {
       "path": "analyze_settling.py",
       "bytes": 10165,
@@ -141,11 +146,6 @@
       "sha256": "c20564d63ad9d8345542649f165d0761c0966e198aaf546bc5ccdc3ddbf9bdb4"
     },
     {
-      "path": "demo/left_cam.mp4",
-      "bytes": 3002217,
-      "sha256": "5a92b53a1d3e43ec34721daf29211b06232c2627f87769e306e3bfcf4aa8ba30"
-    },
-    {
       "path": "demo/physics_trace.json",
       "bytes": 4087510,
       "sha256": "bba23b3449cdc4b37e5209854f3b575514b5e20265c556f85b32a8be9904d8a0"
@@ -159,11 +159,6 @@
       "path": "demo/right_cam_final.png",
       "bytes": 145444,
       "sha256": "f2f9c9d03fc1aec523a532772e2a4cf4212c84ef807053aad80dc77f4f0db821"
-    },
-    {
-      "path": "demo/right_cam.mp4",
-      "bytes": 2790373,
-      "sha256": "51a1d387d3b35e890427f3047c018aac28f6d215340f1d0f821dcd2db8e8c2ec"
     },
     {
       "path": "demo/run_manifest.json",
@@ -189,11 +184,6 @@
       "path": "demo/top_cam_final.png",
       "bytes": 286188,
       "sha256": "d5d7af2b5ecde90ff2b1b65def710bc3acedf93e69e1f73f07428c54351dd7ac"
-    },
-    {
-      "path": "demo/top_cam.mp4",
-      "bytes": 1647503,
-      "sha256": "d3ccadd8eb57ff12806a99e714fd12105233e86f885403c2e73685eff17aef8b"
     },
     {
       "path": "demo/trace.json",
@@ -237,8 +227,8 @@
     },
     {
       "path": "model_run/EVIDENCE_CONTENTS.json",
-      "bytes": 3922,
-      "sha256": "5f002706060fd25cbb211cc017eb66f8c2b3d01a4ce33205a1d7ed2a836f286b"
+      "bytes": 4275,
+      "sha256": "fe74b93133c0054789126afec76c35c658083fed46089f0a907a21d6d1af3638"
     },
     {
       "path": "model_run/explicit-config.ini",
@@ -306,24 +296,9 @@
       "sha256": "e450d106455c856f0e45be6b46ed6830f213a876f4eb87f2eeb590acc4b61669"
     },
     {
-      "path": "model_run/video/~f1~scene-0-e0~left_cam.mp4",
-      "bytes": 768571,
-      "sha256": "e7aa20ba6ebec6877405fbb23f91b2c7f7aa6f82af37d032870d70c9347fabf4"
-    },
-    {
-      "path": "model_run/video/~f1~scene-0-e0~right_cam.mp4",
-      "bytes": 898736,
-      "sha256": "c5e67c797cbbf2a28e28becb2309a48f5030bc4a4c55ca4f21e1b76e87e6f242"
-    },
-    {
-      "path": "model_run/video/~f1~scene-0-e0~top_cam.mp4",
-      "bytes": 529017,
-      "sha256": "fe3ea5cd2fe6f1de5475cd32bcfa6d532874e86fb3cd45bc6914bf748e7ada61"
-    },
-    {
       "path": "package_manifest.json",
-      "bytes": 5294,
-      "sha256": "d0d621e70f711a60dd8b271050e1e863dedbe1f6db8637a3a826220fe0c77a44"
+      "bytes": 5594,
+      "sha256": "3494c96431903d1153f100f0f09f8333e942de76b65d1453889ca0c40bd2624f"
     },
     {
       "path": "package_task.py",
@@ -332,8 +307,8 @@
     },
     {
       "path": "README.md",
-      "bytes": 27860,
-      "sha256": "88f2e7d75c10b15e2af606613c7125bc4666ae45c3b0c8c2a26ba5a71f354e94"
+      "bytes": 28730,
+      "sha256": "a52f6e3f8cf70e4ba4a43e4c02a30ca44d57bd1213195ad1cab7787c2cec0c96"
     },
     {
       "path": "retention_check.json",
@@ -422,8 +397,8 @@
     },
     {
       "path": "task.json",
-      "bytes": 12590,
-      "sha256": "86fea5150fae6b7a6490e817b2d82cb850ee6a4a3c51370910c50eeec8136ac8"
+      "bytes": 8291,
+      "sha256": "40b3bed9943668b09f6ade98660c951c7d8272dad0d7468dd6ad1e2c32f65f2b"
     },
     {
       "path": "task.py",
@@ -451,7 +426,7 @@
       "sha256": "c90445802a3961ac647235fb6862705f6bf36ee3f7057cbb4e0f7876c81dca0b"
     }
   ],
-  "note": "Combined refined task and Dream-1 evidence. Uploaded media M-EVJ8Z6 is referenced in task.json. Hashes identify packaged bytes, not validation freshness. Existing code-provenance limitations remain documented in README.",
+  "note": "Combined refined task and Dream-1 evidence, with six MP4 recordings excluded to meet the code-archive size limit. Uploaded media M-EVJ8Z6 is referenced in task.json. Hashes identify packaged bytes, not validation freshness. Existing code-provenance limitations remain documented in README.",
   "model_run_result": {
     "schema_version": 1,
     "execution_success": true,
@@ -666,5 +641,43 @@
       }
     ],
     "issues": []
+  },
+  "omitted_recordings": [
+    {
+      "path": "demo/left_cam.mp4",
+      "bytes": 3002217,
+      "sha256": "5a92b53a1d3e43ec34721daf29211b06232c2627f87769e306e3bfcf4aa8ba30"
+    },
+    {
+      "path": "demo/right_cam.mp4",
+      "bytes": 2790373,
+      "sha256": "51a1d387d3b35e890427f3047c018aac28f6d215340f1d0f821dcd2db8e8c2ec"
+    },
+    {
+      "path": "demo/top_cam.mp4",
+      "bytes": 1647503,
+      "sha256": "d3ccadd8eb57ff12806a99e714fd12105233e86f885403c2e73685eff17aef8b"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~left_cam.mp4",
+      "bytes": 768571,
+      "sha256": "e7aa20ba6ebec6877405fbb23f91b2c7f7aa6f82af37d032870d70c9347fabf4"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~right_cam.mp4",
+      "bytes": 898736,
+      "sha256": "c5e67c797cbbf2a28e28becb2309a48f5030bc4a4c55ca4f21e1b76e87e6f242"
+    },
+    {
+      "path": "model_run/video/~f1~scene-0-e0~top_cam.mp4",
+      "bytes": 529017,
+      "sha256": "fe3ea5cd2fe6f1de5475cd32bcfa6d532874e86fb3cd45bc6914bf748e7ada61"
+    }
+  ],
+  "updated_utc": "2026-11-11T09:52:48.125351+00:00",
+  "recording_storage": {
+    "media": "M-EVJ8Z6",
+    "original_commit": "1bb885c3a799aec39a2204cca0586e008d629802",
+    "note": "Top-camera model and demo videos plus the setup screenshot are uploaded to the task board. The code archive retains demonstration results and validation evidence; all six original MP4s remain local and in the original commit."
   }
 }

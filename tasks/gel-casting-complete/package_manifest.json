@@ -3,7 +3,7 @@
   "task_directory": "gel-casting-complete",
   "status": "development",
   "metadata_schema_source": "https://github.com/robocurve/benchmark-tasks/blob/main/README.md",
-  "metadata_note": "Refined seating geometry is validated separately from the preserved earlier package. Only the explicitly selected runs/refined-final evidence may accompany this revision, and its source and asset fingerprints must match the packaged bytes. The model-run video, full-score scripted demonstration and setup screenshot are uploaded under media ID M-EVJ8Z6, referenced in task.json.",
+  "metadata_note": "Refined seating geometry is validated separately from the preserved earlier package. Only the explicitly selected runs/refined-final evidence may accompany this revision, and its source and asset fingerprints must match the packaged bytes. The model-run video, full-score scripted demonstration and setup screenshot are uploaded under media ID M-EVJ8Z6, referenced in task.json. The GitHub submission excludes the six MP4 copies; PACKAGE_CONTENTS.json lists their preserved hashes. This manifest and package_task.py describe the full local development archive, which still requires the original recordings.",
   "required_files": [
     "task.json",
     "README.md",
@@ -79,8 +79,20 @@
   "optional_verified_demo": {
     "selection": "Only runs/refined-final from the separately staged refined task; no fallback to an earlier successful run",
     "required_source_directory": "runs/refined-final",
-    "required_files": ["result.json", "run_manifest.json", "trace.json", "gripper_trace.json", "setup.png", "seating_closeup.png", "physics_trace.json", "settling_check.json"],
-    "camera_files": ["*.mp4", "*_final.png"],
+    "required_files": [
+      "result.json",
+      "run_manifest.json",
+      "trace.json",
+      "gripper_trace.json",
+      "setup.png",
+      "seating_closeup.png",
+      "physics_trace.json",
+      "settling_check.json"
+    ],
+    "camera_files": [
+      "*.mp4",
+      "*_final.png"
+    ],
     "eligibility": "variant full, success true, task_score 1.0, at most 2400 steps, at least one video, unchanged before/after source fingerprints matching the package, and a passing final-four-second 240 Hz settling report matching the physics trace hash",
     "archive_directory": "demo"
   },
