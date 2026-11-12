@@ -1,0 +1,201 @@
+{
+  "backend": "CPU PhysX on Brev L40S; GPU rendering",
+  "control_hz": 20,
+  "seed": 0,
+  "object_jitter": 0,
+  "max_steps": 1200,
+  "native_camera_size": [
+    1280,
+    720
+  ],
+  "episodes": [
+    {
+      "episode": 0,
+      "idle_score_zero": true,
+      "steps": 672,
+      "simulated_s": 33.6,
+      "score": 1.0,
+      "success": true,
+      "termination_reason": "success",
+      "routing": {
+        "score": 1.0,
+        "unsafe_processing": false,
+        "valid": true,
+        "released_stable_s": {
+          "specimen_a": 19.500000000000142,
+          "specimen_b": 2.000000000000001
+        },
+        "credited": [
+          "specimen_a",
+          "specimen_b"
+        ]
+      },
+      "diagnostics": {
+        "specimen_a": {
+          "bounds": [
+            [
+              0.2888361799098783,
+              0.2969853554437533,
+              0.750599444985169
+            ],
+            [
+              0.34972900277597374,
+              0.34221044438382237,
+              0.7906002391578975
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        },
+        "specimen_b": {
+          "bounds": [
+            [
+              0.1294581983826038,
+              0.29735018674886016,
+              0.7505993823345914
+            ],
+            [
+              0.19012539641643794,
+              0.34226403768503877,
+              0.7906001825991854
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        }
+      }
+    },
+    {
+      "episode": 1,
+      "idle_score_zero": true,
+      "steps": 672,
+      "simulated_s": 33.6,
+      "score": 1.0,
+      "success": true,
+      "termination_reason": "success",
+      "routing": {
+        "score": 1.0,
+        "unsafe_processing": false,
+        "valid": true,
+        "released_stable_s": {
+          "specimen_a": 19.500000000000142,
+          "specimen_b": 2.000000000000001
+        },
+        "credited": [
+          "specimen_a",
+          "specimen_b"
+        ]
+      },
+      "diagnostics": {
+        "specimen_a": {
+          "bounds": [
+            [
+              0.2891479790460854,
+              0.296778706380313,
+              0.750599444677769
+            ],
+            [
+              0.3499200880277366,
+              0.3418371402535981,
+              0.7906002394652974
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        },
+        "specimen_b": {
+          "bounds": [
+            [
+              0.12977188325115976,
+              0.2972056496650829,
+              0.7505993830975057
+            ],
+            [
+              0.19051689410021963,
+              0.3422267209976063,
+              0.7906001818362711
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        }
+      }
+    },
+    {
+      "episode": 2,
+      "idle_score_zero": true,
+      "steps": 672,
+      "simulated_s": 33.6,
+      "score": 1.0,
+      "success": true,
+      "termination_reason": "success",
+      "routing": {
+        "score": 1.0,
+        "unsafe_processing": false,
+        "valid": true,
+        "released_stable_s": {
+          "specimen_a": 19.500000000000142,
+          "specimen_b": 2.000000000000001
+        },
+        "credited": [
+          "specimen_a",
+          "specimen_b"
+        ]
+      },
+      "diagnostics": {
+        "specimen_a": {
+          "bounds": [
+            [
+              0.28878244508251744,
+              0.29701014970699935,
+              0.7505994449872616
+            ],
+            [
+              0.3496740187312643,
+              0.342233512650331,
+              0.7906002391558048
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        },
+        "specimen_b": {
+          "bounds": [
+            [
+              0.12951046608102126,
+              0.2983700738816653,
+              0.7505994442071384
+            ],
+            [
+              0.19030981876242356,
+              0.3434660925001706,
+              0.790600239935928
+            ]
+          ],
+          "correct_tray": true,
+          "released": true
+        }
+      }
+    }
+  ],
+  "wall_s": 380.8941829489995,
+  "source_sha256": {
+    "assets/process.png": "98a2ee0819761ea080054b027ff8f5e2a8655ae321234c021e001e6845ae5c41",
+    "assets/quarantine.png": "05de5e67243e340e917c0f6113d6d96f1dc789cce7f0702f9ffbb684203081cc",
+    "assets/specimen_a.png": "8dfe9003a52d1ed6825f1f868d8d90c2d7f89a892cf5c2985b7c42c6a9ab1f17",
+    "assets/specimen_a_request.png": "0b72489fff22da7380eb824bd2488c5d3a9d3dc51cf95d05e71bc2240e1d4f99",
+    "assets/specimen_b.png": "892cb2aaef02352fc6d1d7b35306a19cccba496b7f018975989b3b6dc2d85260",
+    "assets/specimen_b_request.png": "7df4d9e44d9f9012234824d0f624651f9ffaf5b757311a69f136a16cf10803be",
+    "build_labels.py": "34c9487c45604c445af817fa3727c9d3787e3ac22ff807bb97fd19595ad234c8",
+    "collision_bounds.py": "66bdd06f2e2f6152f20534990cabd1a81b6ea67e106e5d52f8db4a1920715006",
+    "labelkit.py": "9a90c5738487baeb23a308163474f39caf5a030e51cb99d7378f1c8016c62129",
+    "run_trial.py": "67577a55bb3086ba32bc120f189bcaafce4522bc7a9ed99060dfa12010c23045",
+    "scoring.py": "0e24db3fa3565eea1c879eb6dde6789c2779bd5526abfdd1503e920053c08edf",
+    "specification.py": "69266804bd923a5236a00a0319e025e0860b837773220fe9f3aa7cb8cc82e335",
+    "task.py": "a0674ade4fd21787bb85ffefef5c68c59120c390d3000415986f6a90854e2e31",
+    "test_collision_bounds.py": "cfcc5cd7262aa4b57836b00f9290684390d27d0cd4647c016a5a5b354c6fcb77",
+    "test_scoring.py": "9f214687681611554a44362cc48ee4437c8346ef7f19454583c200f01e29e1c5",
+    "validate.py": "1085943398930cd9b50baf2d6474b79bbe2c7367bf81c60ab25acba902dddd32"
+  },
+  "sources_unchanged": true
+}

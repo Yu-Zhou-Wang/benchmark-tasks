@@ -1,0 +1,22 @@
+{
+  "policy": "Dream-1",
+  "evaluation_status": "success",
+  "task_score": 0.0,
+  "task_success": false,
+  "scored": true,
+  "steps": 1200,
+  "control_hz": 20,
+  "max_steps": 1200,
+  "seed": 0,
+  "object_jitter": 0,
+  "wall_s": 289.79975798099986,
+  "termination_reasons": [
+    "max_steps"
+  ],
+  "instruction": "All names and IDs on this simulated training bench are fictional. Check each closed specimen container against the request card beside it. Both the patient name and sample ID must match. Put matching specimens in the PROCESS tray and any specimen with a mismatch in the QUARANTINE tray. Keep the containers upright and closed. Release both containers and move both hands clear.",
+  "error": null,
+  "source_log": "adhoc_a4b1996c.json",
+  "started_utc": "2026-11-12T07:43:55.844502+00:00",
+  "ended_utc": "2026-11-12T07:48:45.644253+00:00",
+  "source_manifest": "validation_final.json"
+}
