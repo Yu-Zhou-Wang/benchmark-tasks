@@ -1,0 +1,12 @@
+{
+  "CITATION.cff": "21bffc8097088db3c96acde4bff282977a47bd631b29d8a00684f90d82ee041b",
+  "LICENSE": "b759a3a1deb011cfe3e2cd3d04eb85e466438f29804f042b6eacc2afb3e5c733",
+  "LICENSE-ASSETS.md": "b9c2481ed61d7d2694d52978d7477db2362a33b6485248bcffdbe1993d5c9fa5",
+  "NOTICE.md": "9353a58339fd8835a5a2d760ed88d351f33e5489b5b66680d0f02b0e6a39eea6",
+  "README.md": "6a000fecf0529d7ebed4f6a3f9781af8d2a8abddd3f848d86993453d9c535c4a",
+  "asset.contract.json": "8b9fb549dbcf28b4b61dbcee23edbcd1fea81f6d1ca0c7d125b23093a1ff1066",
+  "body.urdf": "48211207d0277ed33a0440f63bee6fced70975e1237bfa6cb5985d12b3b79fa8",
+  "cap.urdf": "916c1804fe26ea577b863e194c9d48974e580915916b113d8d2620a55fad0727",
+  "duran_gl45_100ml_clear__body.obj": "f8be2d13b58583b3bd433f1e2d4c3022a44cdd13b023e950a6ae4104f59f5fef",
+  "duran_gl45_100ml_clear__cap.obj": "ab9f22d94bfb2ddb20f2b20c364e07ad4690a59a28b16bf76fa6708b19a09ed9"
+}

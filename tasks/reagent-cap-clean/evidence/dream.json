@@ -1,0 +1,41 @@
+{
+  "policy": "Dream-1",
+  "status": "success",
+  "task_score": 0.0,
+  "error": null,
+  "errored_trials": 0,
+  "steps": 1000,
+  "wall_s": 206.30052944199997,
+  "instruction": "The blue reagent-bottle cap is already unscrewed and resting loosely on the neck. Lift it off and park it in the centre of the green pad with its hollow interior facing upward. Touch only the cap's exterior: keep its inner surface and opening rim away from both grippers, the bench and the pad throughout. Leave the cap released and stable for two seconds. The empty bottle is secured in a bench holder. No unscrewing is needed.",
+  "termination_reasons": [
+    "max_steps"
+  ],
+  "cli_seed": 0,
+  "reset_events": [
+    {
+      "data": {
+        "seed": 1415158438
+      },
+      "kind": "reset",
+      "t": -1
+    }
+  ],
+  "source_log": "adhoc_6554744d.json",
+  "started_utc": "2026-11-12T08:53:04.302950+00:00",
+  "completed_utc": "2026-11-12T08:56:30.603472+00:00",
+  "source_sha256": {
+    "assets/body.usda": "79d7590b452eb93d996b52432274615e6185a5aa84072dbe5cff5d074092fd4f",
+    "assets/cap.usda": "220cb06a14fa342ddec0a02ac66c8efc25d4d8c8db4fe93a52f483361636c3ec",
+    "build_assets.py": "12f7dbd6b8b6690ff1bc28350228cc21eedc4cdfb96f3e90815086c6152fcefd",
+    "monitor.py": "773caa91a31c1fead78c0df7850803ff3c6d8d2f7b3f934a67b0e6c244a5cf19",
+    "motion.py": "9df54caf080adc014677df15c77840b37c77fcd0214b286253b76d0afe48c5a1",
+    "negative.py": "0fcc2ba1693db63b1d4a3ef11278f31a3a203df53a26f7d7c498d471b1e8042f",
+    "run_trial.py": "03eda873b5e322870eb9ad8c84fec3bc9191f723dbdbce2e8b03ce3a88496fd4",
+    "scenekit.py": "1f9da5334e9b63881d09287a8c9687dfea9218e16dedfa6dd66cb6ab7daa7b85",
+    "specification.py": "77cd730f5f095fb833cdc6676c09c8d89e3b6d2ba516293ff2b1c6d8633c8a8c",
+    "task.py": "2cc91679b814adb512feff75f09b20850941d78ea46265b756f11338a47d1395",
+    "test_scoring.py": "35808fb6abb853ba6a7448a3be688932c42006c85dc2345fc84f6fba7916f052",
+    "validate.py": "5f76fb1ccf91dd83c0236f8e89bbed7f4fbe1e0b4b366477d28b56e6930fce95"
+  },
+  "expired_retry_warnings": 6
+}

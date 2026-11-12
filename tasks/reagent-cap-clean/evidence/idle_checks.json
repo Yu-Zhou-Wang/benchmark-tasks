@@ -1,0 +1,65 @@
+[
+  {
+    "score": 0.0,
+    "contaminated": false,
+    "first_contact": null,
+    "removed": false,
+    "hold": 0.0,
+    "polls": 480,
+    "points": 0,
+    "fallen": false,
+    "error": null,
+    "anchor": null,
+    "center": [
+      0.24000333184022354,
+      0.1999999116062073,
+      0.8385002861016291
+    ],
+    "low": 0.8249999980778258,
+    "up": false,
+    "placed": false,
+    "clear": true
+  },
+  {
+    "score": 0.0,
+    "contaminated": false,
+    "first_contact": null,
+    "removed": false,
+    "hold": 0.0,
+    "polls": 480,
+    "points": 0,
+    "fallen": false,
+    "error": null,
+    "anchor": null,
+    "center": [
+      0.23999981650925176,
+      0.1999999534209722,
+      0.8385001668926229
+    ],
+    "low": 0.8249999485914933,
+    "up": false,
+    "placed": false,
+    "clear": true
+  },
+  {
+    "score": 0.0,
+    "contaminated": false,
+    "first_contact": null,
+    "removed": false,
+    "hold": 0.0,
+    "polls": 480,
+    "points": 0,
+    "fallen": false,
+    "error": null,
+    "anchor": null,
+    "center": [
+      0.2400001007153976,
+      0.19999994252342307,
+      0.8385000476836707
+    ],
+    "low": 0.8249999727237802,
+    "up": false,
+    "placed": false,
+    "clear": true
+  }
+]

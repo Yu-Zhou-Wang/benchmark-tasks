@@ -1,0 +1,713 @@
+{
+ "schema_version": "1.0.0",
+ "asset_type_id": "labware.duran_gl45_100ml_clear",
+ "asset_version": "1.0.0",
+ "name_zh": "DURAN GL45 试剂瓶 100 mL（透明，蓝色 PP 螺旋盖）",
+ "category": "labware.container.reagent_bottle",
+ "asset_kind": "passive",
+ "coverage": "full",
+ "description_zh": "DURAN Original GL 45 试剂瓶 100 mL（clear），带蓝色 PP 螺旋盖；外径 56 mm、带盖高 105 mm（目录）。盖为独立 link（俯视逆时针 1.25 圈拧下），抓取坐标在瓶颈/肩部（Franka ≤ 74 mm）。",
+ "coordinate_system": {
+  "status": "defined",
+  "length_unit": "m",
+  "angle_unit": "rad",
+  "handedness": "right",
+  "up_axis": "+Z",
+  "frame": "资产根坐标：底面占地中心，z=0 为放置面；+X 向右，+Y 向后，正面朝 −Y；四元数按 (x, y, z, w)"
+ },
+ "artifacts": {
+  "model_glb": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/model.glb",
+   "format": "glb",
+   "status": "available",
+   "sha256": "5d9453cbce2515b85c5dd88b821cc1fa8f1a64f34819c4ef371f48530fd056f6"
+  },
+  "model_urdf": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/model.urdf",
+   "format": "urdf",
+   "status": "available",
+   "sha256": "6a7240083d06acef20990e42e550201f3af330ed6b87ede860979001ff84fa65"
+  },
+  "geometry_manifest": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/geometry_manifest.json",
+   "format": "json",
+   "status": "available",
+   "sha256": "1a5af03c7b42723b116b92e8d73b92bf6b6c13b2ade54e60ab0beb0f1e3afa2b"
+  },
+  "collision_proxies": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/collision_proxies.json",
+   "format": "json",
+   "status": "available",
+   "sha256": "b76d9dfef30f40dcf50342a399c694b1e821c8f0c957c0a8a3cb6d859f2a8192"
+  },
+  "model_solid_urdf": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/model_solid.urdf",
+   "format": "urdf",
+   "status": "available",
+   "sha256": "fac9564a42a0325c6a05146eb6ef76f356d3ef4cd9bdedd36f6f3d6f2b8f35b2"
+  },
+  "part_body_urdf": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/parts/body.urdf",
+   "format": "urdf",
+   "status": "available",
+   "sha256": "48211207d0277ed33a0440f63bee6fced70975e1237bfa6cb5985d12b3b79fa8"
+  },
+  "part_cap_urdf": {
+   "path": "assets/labware/containers/duran_gl45_100ml_clear/parts/cap.urdf",
+   "format": "urdf",
+   "status": "available",
+   "sha256": "916c1804fe26ea577b863e194c9d48974e580915916b113d8d2620a55fad0727"
+  }
+ },
+ "sources": {
+  "duran_gl45_clear": {
+   "kind": "manufacturer",
+   "reference": "DWK Life Sciences, DURAN Original GL 45 laboratory bottle, clear (e.g. https://www.dwk.com/na/duran-original-gl-45-laboratory-bottle-clear-with-screw-cap-and-pouring-ring-pp-blue-1000-ml-218015455); dimension table also listed by Parkes Scientific (https://parkesscientific.com/p/duran-21801-original-laboratory-bottles-with-high-temperature-closures-red)",
+   "locator": "cat. 21801 24 5x (100 mL), 21801 36 5x (250 mL), 21801 44 5x (500 mL), 21801 54 5x (1000 mL), with screw cap + pouring ring PP blue; table columns capacity / thread / OD / height",
+   "note": "OD x height with cap and pouring ring: 100 mL 56 x 105 mm, 250 mL 70 x 143 mm, 500 mL 86 x 181 mm, 1000 mL 101 x 230 mm; the bottle-only versions are 5 mm lower (100/138/176/225 mm). Read from the vendor/distributor tables via web search, accessed 2026-10-22 (dwk.com 403 to direct download)."
+  },
+  "gl45_thread": {
+   "kind": "publication",
+   "reference": "DIN 168-1 (knuckle threads for glass containers); GL 45 values as quoted from 'Guide to World Screw Threads' in https://www.practicalmachinist.com/forum/threads/gl-45-threads.264357/",
+   "locator": "GL 45: neck major diameter 45.00 mm, pitch 4 mm, thread depth 1.36 mm",
+   "note": "DIN 168-1 is paywalled; the secondary quotation is used for the neck major diameter (45 mm) and pitch (4 mm). accessed 2026-10-22."
+  },
+  "duran_gl45_cap": {
+   "kind": "manufacturer",
+   "reference": "DWK DURAN screw cap PP blue GL 45 (type K, DWK 293032803), distributor listing https://www.labfriend.com.au/dwk-duran-screw-caps-pp-blue-gl45-k",
+   "locator": "dimensions (O x H) 58 x 27 mm",
+   "note": "Blue PP GL 45 screw cap: 58 mm outside diameter, 27 mm high. accessed 2026-10-22."
+  },
+  "iso3585": {
+   "kind": "publication",
+   "reference": "ISO 3585:1998 Borosilicate glass 3.3 - Properties (DURAN is borosilicate glass 3.3)",
+   "locator": "Table 1: density 2.23 g/cm3",
+   "note": "Density of borosilicate glass 3.3 = 2230 kg/m3, used to compute empty glass masses from the modelled wall volume."
+  },
+  "pp_hdpe_density": {
+   "kind": "assumption",
+   "reference": "typical resin densities: PP 900 kg/m3, HDPE 950 kg/m3, PS 1050 kg/m3, PE 950 kg/m3",
+   "locator": "engineering value",
+   "note": "Used only to compute the mass of plastic parts from their modelled volume; the grade-to-grade spread is about +/-2 %."
+  },
+  "wall_assumption": {
+   "kind": "assumption",
+   "reference": "wall and bottom thicknesses of containers / caps",
+   "locator": "engineering value",
+   "note": "Manufacturers do not publish wall thicknesses; glass bottles 2.5 mm wall / 4 mm bottom, plastic tubes 0.8-1.0 mm, caps 2-3 mm, chosen from typical pressed-glass and moulded-PP practice. They set the empty mass and the interior volume (the computed brim volume is checked against the nominal capacity)."
+  },
+  "neck_profile_estimate": {
+   "kind": "photo",
+   "reference": "product photographs of the same catalogue items (vendor pages)",
+   "locator": "shoulder / neck / collar proportions",
+   "note": "Shoulder height, collar and thread-zone heights are estimated from product photos and scaled to the documented OD / height; the documented values (OD, height, thread) are kept exactly."
+  },
+  "closure_turns": {
+   "kind": "assumption",
+   "reference": "screw-cap release angle",
+   "locator": "engineering value",
+   "note": "Turns until a screw cap is free: GL 45 1.25 turns (pitch 4 mm, ~5 mm engagement), SPI 400-type finishes 1 turn, 415-type 2 turns, vial and tube caps 1-1.5 turns. No manufacturer publishes these; the detach rule only needs a threshold."
+  },
+  "robot_access": {
+   "kind": "code",
+   "reference": "robot-access constraints of the Franka arm set-up for the storage tasks, 2026-10-22",
+   "locator": "Franka gripper <= 80 mm open (grasp zones <= 74 mm), hand collision 37 mm above TCP, top-down access, bench-shelf pitch >= 11 cm and >= 25 cm free above bottle tops",
+   "note": "Used to place grasp frames and the bench-shelf slot layout."
+  }
+ },
+ "components": {
+  "body": {
+   "name_zh": "瓶身",
+   "function_zh": "盛放试剂/样品；提供抓取部位、倾倒口与螺纹颈",
+   "physical_meaning_zh": "borosilicate_3_3 壳体；外径 56.0 mm、本体高 100.0 mm；内腔为 LiquidContents 的计数区",
+   "parent": null,
+   "geometry_status": "bound",
+   "geometry": [
+    {
+     "artifact_id": "model_urdf",
+     "selector": "link:body",
+     "role": "both"
+    },
+    {
+     "artifact_id": "model_glb",
+     "selector": "duran_gl45_100ml_clear__body",
+     "role": "visual"
+    }
+   ],
+   "capability_ids": [],
+   "passive_reason": "被动容器/器具：只提供几何、容积、质量与抓取/放置坐标；盛装物由宿主的物质账本记录，倾倒和搬运属于机器人技能。",
+   "properties": {
+    "outer_diameter_m": {
+     "value": 0.056,
+     "unit": "m",
+     "meaning_zh": "瓶身外径（目录）",
+     "evidence": "documented",
+     "source_ids": [
+      "duran_gl45_clear"
+     ],
+     "uncertainty": null
+    },
+    "height_with_cap_m": {
+     "value": 0.105,
+     "unit": "m",
+     "meaning_zh": "带盖总高（目录或由目录推得）",
+     "evidence": "documented",
+     "source_ids": [
+      "duran_gl45_clear"
+     ],
+     "uncertainty": null
+    },
+    "nominal_capacity_m3": {
+     "value": 9.999999999999999e-05,
+     "unit": "m3",
+     "meaning_zh": "标称容量（目录）",
+     "evidence": "documented",
+     "source_ids": [
+      "duran_gl45_clear"
+     ],
+     "uncertainty": null
+    },
+    "brim_capacity_m3": {
+     "value": 0.000163256,
+     "unit": "m3",
+     "meaning_zh": "建模内腔到瓶口的满口容量（由壁厚假设计算）",
+     "evidence": "assumption",
+     "source_ids": [
+      "wall_assumption"
+     ],
+     "uncertainty": null
+    },
+    "wall_thickness_m": {
+     "value": 0.0022,
+     "unit": "m",
+     "meaning_zh": "壁厚（假设，厂家不公布）",
+     "evidence": "assumption",
+     "source_ids": [
+      "wall_assumption"
+     ],
+     "uncertainty": null
+    },
+    "mass_kg": {
+     "value": 0.129314,
+     "unit": "kg",
+     "meaning_zh": "该 link 的仿真质量（由建模壁厚体积 58.0 cm3 × borosilicate_3_3 密度 2230 kg/m3 计算）",
+     "evidence": "assumption",
+     "source_ids": [],
+     "uncertainty": null
+    }
+   }
+  },
+  "cap": {
+   "name_zh": "螺旋盖",
+   "function_zh": "密封瓶口；拧松后整体取下，可放回再拧紧",
+   "physical_meaning_zh": "pp 螺旋盖 Ø58.0×27.0 mm；GL45 螺纹",
+   "parent": "body",
+   "geometry_status": "bound",
+   "geometry": [
+    {
+     "artifact_id": "model_urdf",
+     "selector": "link:cap",
+     "role": "both"
+    },
+    {
+     "artifact_id": "model_glb",
+     "selector": "duran_gl45_100ml_clear__cap",
+     "role": "visual"
+    }
+   ],
+   "capability_ids": [],
+   "passive_reason": "被动部件：开合/旋下由机器人抓握+意图触发（touch + intent），资产本身没有执行器、传感器或自驱动 API。",
+   "properties": {
+    "outer_diameter_m": {
+     "value": 0.058,
+     "unit": "m",
+     "meaning_zh": "盖外径",
+     "evidence": "documented",
+     "source_ids": [
+      "duran_gl45_cap"
+     ],
+     "uncertainty": null
+    },
+    "release_turns": {
+     "value": 1.25,
+     "unit": "1",
+     "meaning_zh": "拧下所需圈数",
+     "evidence": "assumption",
+     "source_ids": [
+      "closure_turns"
+     ],
+     "uncertainty": null
+    },
+    "mass_kg": {
+     "value": 0.027284,
+     "unit": "kg",
+     "meaning_zh": "该 link 的仿真质量（由建模体积 30.32 cm3 × pp 密度计算）",
+     "evidence": "assumption",
+     "source_ids": [],
+     "uncertainty": null
+    }
+   }
+  }
+ },
+ "state_slots": {
+  "closure.state": {
+   "component_ids": [
+    "cap"
+   ],
+   "value_schema": {
+    "type": "string",
+    "enum": [
+     "closed",
+     "loosened",
+     "detached"
+    ]
+   },
+   "unit": "1",
+   "reference_conditions": null,
+   "meaning_zh": "盖的场景状态：拧紧 / 已拧松未脱离 / 已取下（由场景或宿主按 closure.rule 记录）",
+   "origin": "scene",
+   "access": "read_only",
+   "visibility": "agent",
+   "read_binding": null,
+   "write_via": null,
+   "sampling": {
+    "mode": "instant",
+    "time_domain": "simulation",
+    "window_description": null
+   },
+   "source_ids": [
+    "closure_turns"
+   ]
+  }
+ },
+ "capabilities": {},
+ "model_bindings": {
+  "joint_cap": {
+   "component_id": "cap",
+   "artifact_id": "model_urdf",
+   "target": "cap_joint",
+   "channel": "joint",
+   "attribute": "position",
+   "unit": "rad",
+   "limits": [
+    0.0,
+    7.853982
+   ],
+   "state_id": null,
+   "mapping_zh": "正方向 = 俯视逆时针 = 拧松；累计 1.25 圈（7.854 rad）后盖脱离螺纹（touch + intent：夹住盖 + 腕部转动即记账，不靠接触物理拧出）",
+   "authority": "none",
+   "direction": "none",
+   "sync_status": "unbound",
+   "source_ids": [
+    "closure_turns"
+   ]
+  }
+ },
+ "ports": {
+  "mouth": {
+   "component_id": "body",
+   "medium": "liquid",
+   "direction": "bidirectional",
+   "frame": "frame:pour_lip",
+   "meaning_zh": "瓶口：倒出/加入液体或粉末（开盖后）",
+   "connection_constraints": [
+    "盖必须为 detached 状态才能倒出或加入",
+    "倾倒属于机器人技能，转移量由宿主账本记录"
+   ]
+  }
+ },
+ "mechanisms": {
+  "closure.thread": {
+   "component_ids": [
+    "body",
+    "cap"
+   ],
+   "state_ids": [
+    "closure.state"
+   ],
+   "meaning_zh": "螺旋盖的开合规则（touch + intent）：夹住盖并转动的累计角度达到阈值即脱离；反向同角度即拧紧。不模拟螺纹接触力。",
+   "implementation": "qualitative",
+   "equations": [
+    "state = detached if cumulative_unscrew_rad >= detach_after_rad (cap grasped)",
+    "state = closed if cap at cap_seat and cumulative_screw_rad >= detach_after_rad"
+   ],
+   "parameters": {
+    "detach_after_rad": {
+     "value": 7.853982,
+     "unit": "rad",
+     "meaning_zh": "拧下所需累计转角",
+     "evidence": "assumption",
+     "source_ids": [
+      "closure_turns"
+     ],
+     "uncertainty": "±0.5 圈"
+    },
+    "thread_pitch_m": {
+     "value": 0.004,
+     "unit": "m",
+     "meaning_zh": "螺距",
+     "evidence": "documented",
+     "source_ids": [
+      "gl45_thread"
+     ],
+     "uncertainty": null
+    }
+   },
+   "source_ids": [
+    "closure_turns"
+   ],
+   "limitations": [
+    "不计螺纹摩擦、密封圈与扭矩；单臂开盖要求容器被存放位或夹具固定。"
+   ]
+  }
+ },
+ "limitations": [
+  "被动容器：没有主动硬件 API；开盖、倾倒、搬运属于机器人技能，内容物由宿主物质账本记录。",
+  "外径/高度/容量/螺纹/盖尺寸为目录值；肩部与颈圈比例为照片估计；壁厚与底厚为假设，空瓶质量由此计算。",
+  "开盖用 touch + intent 规则（closure.thread），不模拟螺纹接触；拧下后盖作为 parts/cap.urdf 独立刚体。",
+  "model.urdf 的瓶身碰撞为壁环盒 + 底盘（可装粒子液体）；只记账的存放容器可用 model_solid.urdf。"
+ ],
+ "extensions": {
+  "chemistry_lab.labware": {
+   "type_id": "labware.duran_gl45_100ml_clear",
+   "family": "reagent_bottle",
+   "labware_class": "bottle",
+   "fits": [
+    "bottle",
+    "gl45_bottle"
+   ],
+   "maker": "DWK Life Sciences (DURAN)",
+   "model": "DURAN Original GL 45 laboratory bottle, clear, 100 mL, PP screw cap + pouring ring",
+   "catalogue_no": "21801 24 5",
+   "nominal_capacity_m3": 9.999999999999999e-05,
+   "brim_capacity_m3": 0.000163256,
+   "nominal_capacity_evidence": "documented",
+   "nominal_source_id": "duran_gl45_clear",
+   "outer": {
+    "diameter_m": 0.056,
+    "height_body_m": 0.1,
+    "height_with_cap_m": 0.105,
+    "source_id": "duran_gl45_clear"
+   },
+   "interior": {
+    "shape": "revolved",
+    "radius_m": 0.0258,
+    "floor_m": 0.004,
+    "height_m": 0.1,
+    "body_top_m": 0.0676,
+    "neck_radius_m": 0.017,
+    "nominal_fill_height_m": 0.05211,
+    "volume_table_m_ml": [
+     [
+      0.004,
+      0.0
+     ],
+     [
+      0.0088,
+      9.425
+     ],
+     [
+      0.0136,
+      19.463
+     ],
+     [
+      0.0184,
+      29.5
+     ],
+     [
+      0.0232,
+      39.538
+     ],
+     [
+      0.028,
+      49.576
+     ],
+     [
+      0.0328,
+      59.613
+     ],
+     [
+      0.0376,
+      69.651
+     ],
+     [
+      0.0424,
+      79.688
+     ],
+     [
+      0.0472,
+      89.726
+     ],
+     [
+      0.052,
+      99.764
+     ],
+     [
+      0.0568,
+      109.801
+     ],
+     [
+      0.0616,
+      119.839
+     ],
+     [
+      0.0664,
+      129.877
+     ],
+     [
+      0.0712,
+      137.1
+     ],
+     [
+      0.076,
+      141.466
+     ],
+     [
+      0.0808,
+      145.824
+     ],
+     [
+      0.0856,
+      150.182
+     ],
+     [
+      0.0904,
+      154.54
+     ],
+     [
+      0.0952,
+      158.898
+     ],
+     [
+      0.1,
+      163.256
+     ]
+    ],
+    "profile_rz_m": [
+     [
+      0.0,
+      0.004
+     ],
+     [
+      0.023,
+      0.004
+     ],
+     [
+      0.0258,
+      0.0068
+     ],
+     [
+      0.0258,
+      0.0665
+     ],
+     [
+      0.017,
+      0.0715
+     ],
+     [
+      0.017,
+      0.1
+     ]
+    ],
+    "note_zh": "LiquidContents 计数圆柱可取 radius_m / floor_m / height_m；精确液位用 volume_table（高度 m → 体积 mL）"
+   },
+   "closure": {
+    "type": "screw_cap",
+    "thread": "GL45",
+    "link": "cap",
+    "joint": "cap_joint",
+    "axis": [
+     0,
+     0,
+     1
+    ],
+    "unscrew_sign": 1,
+    "turns": 1.25,
+    "pitch_m": 0.004,
+    "detach_after_rad": 7.853982,
+    "lift_at_detach_m": 0.005,
+    "cap_seat_z_m": 0.078,
+    "clear_lift_m": 0.024,
+    "rule_zh": "开盖 = 夹住盖（cap_grasp）+ 腕部绕盖轴正向累计转动 ≥ detach_after_rad → 盖与瓶身分离为独立刚体（parts/cap.urdf），盖可放到台面；盖回 = 盖对准 cap_seat + 反向转动同样角度 → 重新固连。容器需由存放位/夹具固定（单臂）。",
+    "parts": {
+     "body": "parts/body.urdf",
+     "cap": "parts/cap.urdf"
+    }
+   },
+   "frames": {
+    "grasp": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.072
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "width_m": 0.058,
+     "franka_ok": true,
+     "yaw_free": true,
+     "hand_bottom_z_m": 0.109,
+     "note_zh": "俯抓瓶颈/肩部（手掌碰撞面在 TCP 上方 37 mm，须高于盖顶）；带盖与开盖后都可用",
+     "finger_contact_z_m": [
+      0.063,
+      0.081
+     ],
+     "holds": "body"
+    },
+    "pre_grasp": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.192
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "note_zh": "抓取前悬停点：竖直下降到 grasp"
+    },
+    "post_grasp": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.192
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "note_zh": "抓取后竖直抬起到此"
+    },
+    "place": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.072
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "note_zh": "放置时 TCP 在物体坐标中的位置（= grasp）；目标位姿 = 存放位/仪器位 ⊗ place"
+    },
+    "pre_place": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.192
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "note_zh": "放置前悬停点"
+    },
+    "cap_grasp": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.0915
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "width_m": 0.058,
+     "franka_ok": true,
+     "yaw_free": true,
+     "note_zh": "盖中心高度；夹住后绕 +Z 正向转动 = 拧松"
+    },
+    "cap_grasp_local": {
+     "link": "cap",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.0135
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ],
+     "note_zh": "同一抓取点，用盖自身坐标表示（盖已取下时）"
+    },
+    "cap_pre_grasp": {
+     "link": "base_link",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.185
+     ],
+     "rot_xyzw": [
+      1.0,
+      0.0,
+      0.0,
+      0.0
+     ]
+    },
+    "cap_seat": {
+     "link": "body",
+     "pos_m": [
+      0.0,
+      0.0,
+      0.078
+     ],
+     "rot_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "note_zh": "盖 link 原点（盖底中心）拧紧时在瓶身坐标中的位姿；重新盖上 = 盖原点对准此位姿后反向转动"
+    },
+    "pour_lip": {
+     "link": "body",
+     "pos_m": [
+      0.0225,
+      0.0,
+      0.1
+     ],
+     "rot_xyzw": [
+      0.0,
+      0.0,
+      0.0,
+      1.0
+     ],
+     "note_zh": "+X 侧瓶口外缘；倾倒时最低点（Pour 原语按此计算越过目标杯沿的高度）"
+    }
+   },
+   "materials": {
+    "body": "borosilicate_3_3",
+    "cap": "pp"
+   },
+   "empty_mass_kg": 0.1566,
+   "mass_body_kg": 0.12931,
+   "mass_cap_kg": 0.02728,
+   "mass_evidence": "computed from modelled wall volume x material density (wall thickness assumed)",
+   "stands_upright": true,
+   "franka_grasp_ok": true,
+   "storage_note_zh": "试剂/缓冲液/标准溶液/溶剂"
+  }
+ }
+}

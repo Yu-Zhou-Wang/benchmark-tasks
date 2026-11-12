@@ -1,0 +1,10 @@
+{
+  "inspect-robots": "1.0.0",
+  "inspect-robots-dream": "0.1.0",
+  "isaaclab-arena": "0.3.0",
+  "isaaclab": "17.0.2",
+  "numpy": "2.5.4",
+  "imageio": "2.37.2",
+  "Pillow": "12.3.0",
+  "yam_arena_commit": "0059d02a1a91bc6834c1d0846022891df0c78730"
+}
