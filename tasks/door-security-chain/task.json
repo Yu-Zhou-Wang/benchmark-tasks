@@ -1,0 +1,20 @@
+{
+  "title": "Release a tensioned door security chain and open the door",
+  "category": "Societal relatability",
+  "keywords": [
+    "door chain",
+    "loaded restraint",
+    "slotted plate",
+    "bimanual",
+    "household hardware"
+  ],
+  "instruction": "Release the door security chain and open the door at least 50 degrees. Finish with the chain fitting free of the slotted plate and both grippers clear of the fitting. You may keep holding the door handle.",
+  "context": "Door chains are familiar household hardware that keep a door partly open. The challenge is the coupled mechanics: closing or supporting the loaded door provides chain length for the captive fitting to slide to its wide exit, and the retaining head must then physically leave the plate before the door can open farther.",
+  "setup": "Fixed YAM station layout, metres: x forward, y left, z above floor; table z=0.7475. Hinge at (0.420,0.180,0.7475). A 0.700 kg lightweight wooden panel, 360 mm wide, 310 mm tall and 18 mm thick, extends toward negative y, with its bottom 20 mm above the table. Fixed light-grey frame: 180 x 470 x 16 mm foot centered at hinge-relative (18,-180,8) mm; two 340 mm posts, 36 x 40 mm and 36 x 46 mm in section, centered at (14,20,180) and (14,-399,180) mm. Black steel door handle: 16 mm diameter vertical bar, 60 mm between end centres, at door-local (-55,-155,130) mm, with two 12 mm diameter standoffs. Brass latch housing: 105 mm along y, 38 mm tall, front 20 mm off the panel centre plane, at y=-345 to -240 mm and z=226 to 264 mm. Its narrow slot is 8 mm tall; its wide exit is 28 x 30 mm, centered at y=-260,z=245 mm. Retaining head 4 x 16 x 18 mm; neck 24 x 6 x 6 mm; thumb tab 14 x 22 x 22 mm; fitting mass 22 g. The head begins at (-13,-325,245) mm in the door frame. Twelve steel ring links of 3.2 mm wire form a 186.6 mm pin-to-pin chain, anchored to the fixed jamb at hinge-relative (-21,-393,245) mm and to the fitting. The chain initially follows the door free edge. The hinge is authored 21 degrees open and settles to about 22.31 degrees under a 0.60 Nm/rad opening spring with 35 degree rest angle; damping 0.16 Nms/rad. Brass mounting plate, anchor eye and screw heads are included. Both arms start READY with open grippers; no loose props.",
+  "scoring": "End-state scores: 0.25 if the captive head centre is within 6 mm along the slot and 5 mm vertically of the wide-exit centre, with normal coordinate -17 to -10 mm. 0.5 if the entire head is at least 4 mm outside the housing envelope. 1.0 when released, door opening >=50 degrees, door speed <=2 degrees/s, head speed <=60 mm/s, and each gripper TCP is >=55 mm from both head and tab centres, continuously for 1.5 s. The separate handle may be held. Chain endpoint gaps >=5 mm or fixture displacement >=2 mm invalidate all credit. Otherwise 0. The scorer uses measured geometry, not an unlock flag. Possible scores: 0, 0.25, 0.5, 1.0.",
+  "run_limit": "1,800 control actions (90 seconds at 20 Hz).",
+  "reset_notes": "Native reset restores READY arms, the 21 degree door pose and the captured fitting with the chain routed outside the free edge. Allow the standard 0.5 s settling period. No consumables; seed 0 and object_jitter=0 define the fixed layout.",
+  "fidelity": "Bench door with hand-sized fabricated latch. Solid slot lips retain a free fitting by contact. Twelve rigid ring links use permanent alternating pin joints; adjacent-ring contacts are filtered. Passive hinge spring, uniform dry friction, 6.28 rad/s joint limits and rigid materials are approximations. No weld/snap/teleport or goal forces. Full-size door inertia, metal deformation and forced-entry resistance are not modeled.",
+  "scores": "Local robot-only scripted demo: 1.0 in 866 actions (43.3 s); Dream-1 score/video: pending, credentials unavailable.",
+  "media": ""
+}
