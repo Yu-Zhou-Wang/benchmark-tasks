@@ -73,8 +73,13 @@ and drops a link onto a hook. This task starts with a loaded chain, a captive
 retaining head, and a moving door. Closing the door changes the available chain
 length; only the wide opening permits physical withdrawal. The public screen
 covered 2,341 PR titles, bodies, labels and states on 2026-11-16, with focused
-source inspection of these two comparisons. The private task board required
-sign-in and was not independently checked.
+source inspection of these two comparisons. A signed-in board check at
+2026-11-17 04:06 UTC covered all 587 current active/planned entries: 207 accepted,
+125 pending, 165 within their revision window and 90 planned. No direct match
+was identified. A held door-deadbolt task presses a door shut and rotates a bolt
+into its strike; this task releases a loaded chain through a slotted fitting.
+The accepted cylinder-chain task hangs a link on a hook. Details and board links
+are recorded in OVERLAP_REVIEW.json.
 
 Dream-1 beta completed one scored 1,800-action trial with task_score 0.0,
 max_steps termination and zero errored trials. The three-camera H.264 model
@@ -82,7 +87,7 @@ recording is complete. An earlier model attempt was externally interrupted by
 SIGTERM before scoring; its 1,230 frames per camera are preserved separately.
 The replacement trial was authorized and used the unchanged reviewed runtime.
 See DREAM_EVALUATION.json for the measured result, source hashes and video hash.
-Task-board overlap verification, media ID and PR submission remain pending.
+Media upload, media ID and PR submission remain pending.
 
 The physics timestep is 1/240 s; control is 20 Hz. The declared limit is 1,800
 actions (90 simulated seconds). A preliminary full demo reached 1.0 in 866
