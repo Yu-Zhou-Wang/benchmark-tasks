@@ -35,4 +35,6 @@ Task SHA-256: `9cc334be1b365bcc006dd07e356efd18787336543f653d5032dcba5ce28fa9e1`
 
 Ring asset SHA-256: `a6e4ddf15c50c887f20e4bd0bef261e7b88e608a196270dc2e2887fbb89901c9`
 
-Dream-1 score/model video, authenticated task-board review and a real media ID are pending. No submission, upload, remote push or PR operation was performed.
+Dream-1 beta completed all 2,400 actions (120 simulated seconds) with native task_score 0.0, max_steps termination and zero errored trials. Wall time was 2189.8 seconds (36.50 minutes). The client recovered from 49 session-expiration messages and 3 hosted pool-full messages within this single trial. Runtime Python and USD hashes match the reviewed demonstration and physical controls. The model video contains all 2,401 frames from each of the three policy cameras, is H.264/yuv420p at 20 fps, and passes a complete decode check. Frames at 0, 40, 80 and 120 simulated seconds were inspected; no team identifiers were seen. DREAM_EVALUATION.json records the measured result and artifact hashes.
+
+The signed-in board check at 2026-11-17 04:06 UTC covered all 587 current active/planned entries. Its category counts match the board summary, and all 165 held revision entries were nonfinal and within 48 hours. No direct match was identified. OVERLAP_REVIEW.json compares the accepted circlip and O-ring tasks and the held key-cabinet task. The media ID is still empty; media upload, remote push and PR creation remain pending.
