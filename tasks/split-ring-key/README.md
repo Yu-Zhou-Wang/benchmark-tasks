@@ -38,7 +38,7 @@ inspect-robots run --embodiment yam_arena --policy dream \
   --store-frames --no-prompt --fail-on-error 1 --log-dir /tmp/split-ring-dream
 ```
 
-Dream credentials are required for reproduction. The recorded Dream-1 beta evaluation completed all 2,400 actions with native task_score 0.0, max_steps termination and zero errored trials. Its complete three-camera H.264 video is retained separately from the 1.0 scripted demonstration. DREAM_EVALUATION.json records the measured model result, reviewed runtime hashes and video hash. Media upload, media ID and PR submission remain pending.
+Dream credentials are required for reproduction. The recorded Dream-1 beta evaluation completed all 2,400 actions with native task_score 0.0, max_steps termination and zero errored trials. Its complete three-camera H.264 video is retained separately from the 1.0 scripted demonstration. DREAM_EVALUATION.json records the measured model result, reviewed runtime hashes and video hash. Task-board media `M-FNNFPU` contains the model recording, full-score scripted demonstration and setup screenshot; `task.json` records this uploaded media ID.
 
 ## Mechanics and observation boundary
 

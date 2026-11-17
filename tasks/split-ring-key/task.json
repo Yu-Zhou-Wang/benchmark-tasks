@@ -16,5 +16,5 @@
   "reset_notes": "Restore the complete native articulation and key root state. The key starts separate; splitter slides return to their spring rest positions and crank angle returns to zero. Nothing is consumed.",
   "fidelity": "Steel spiral: 20 curved links with permanent radial bending springs; torsion/yield simplified. Real collision hole and passive fixture contacts; no key attachment or callback forces. A visible unpowered rotary vise and retractable splitter aid handling. Resting turns have 0.3 mm surface clearance. Spring gains are approximate. Uniform 30 µm rest/80 µm contact offsets, 1 ms physics and numerical damping stabilize small contacts.",
   "scores": "Dream-1 beta: 0.0 in 2400 actions (max_steps); scripted native demo: 1.0 in 2302 actions. Partial-route control: 0.5; direct-placement and wrong-hole controls: 0 and 0.",
-  "media": ""
+  "media": "M-FNNFPU"
 }
