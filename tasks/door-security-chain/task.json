@@ -16,5 +16,5 @@
   "reset_notes": "Native reset restores READY arms, the 21 degree door pose and the captured fitting with the chain routed outside the free edge. Allow the standard 0.5 s settling period. No consumables; seed 0 and object_jitter=0 define the fixed layout.",
   "fidelity": "Bench door with hand-sized fabricated latch. Solid slot lips retain a free fitting by contact. Twelve rigid ring links use permanent alternating pin joints; adjacent-ring contacts are filtered. Passive hinge spring, uniform dry friction, 6.28 rad/s joint limits and rigid materials are approximations. No weld/snap/teleport or goal forces. Full-size door inertia, metal deformation and forced-entry resistance are not modeled.",
   "scores": "Dream-1 beta: 0.0 in 1800 actions (max_steps); scripted robot-only demo: 1.0 in 866 actions. One earlier model attempt was externally interrupted before scoring and is preserved separately.",
-  "media": ""
+  "media": "M-L9N4DW"
 }

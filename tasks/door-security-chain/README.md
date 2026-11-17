@@ -85,9 +85,10 @@ Dream-1 beta completed one scored 1,800-action trial with task_score 0.0,
 max_steps termination and zero errored trials. The three-camera H.264 model
 recording is complete. An earlier model attempt was externally interrupted by
 SIGTERM before scoring; its 1,230 frames per camera are preserved separately.
-The replacement trial was authorized and used the unchanged reviewed runtime.
+The replacement trial used the unchanged reviewed runtime.
 See DREAM_EVALUATION.json for the measured result, source hashes and video hash.
-Media upload, media ID and PR submission remain pending.
+Task-board media `M-L9N4DW` contains the model recording, full-score scripted
+demonstration and setup screenshot.
 
 The physics timestep is 1/240 s; control is 20 Hz. The declared limit is 1,800
 actions (90 simulated seconds). A preliminary full demo reached 1.0 in 866
@@ -108,9 +109,8 @@ inspect-robots run --embodiment yam_arena --policy dream \
   --no-prompt --log-dir runs/door-security-chain-dream-final
 ```
 
-`task.json` intentionally leaves `media` empty. Replace it with the real media
-ID only after an authorized upload. No model score, model video or media ID is
-inferred from the scripted result.
+`task.json` records the uploaded media ID `M-L9N4DW`. Model and scripted-demo
+scores are reported separately from their corresponding recorded trials.
 
 `chord_allowance_m` is chain length minus straight-line endpoint distance. It
 is a diagnostic, not a tension measurement: a taut chain wrapping the door edge
