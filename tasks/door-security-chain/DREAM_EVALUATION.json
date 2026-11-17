@@ -1,0 +1,72 @@
+{
+  "policy": "dreamlabs/dream-1-beta",
+  "evaluator_status": "success",
+  "task_score": 0.0,
+  "control_actions": 1800,
+  "action_limit": 1800,
+  "control_hz": 20.0,
+  "seed": 0,
+  "termination_reasons": [
+    "max_steps"
+  ],
+  "errored_trials": 0,
+  "wall_seconds": 550.6987872230093,
+  "started_utc": "2026-11-17T03:38:12.719784+00:00",
+  "completed_utc": "2026-11-17T03:47:23.418566+00:00",
+  "source_commit": "d51ca95b34621b4ccf45188e510273ec3e345ae0",
+  "runtime_sha256": {
+    "assets/latch.usda": "557b3dfa4f49f48241cafad32b8cb7626f626ada03a4bdd8c515e083bd833b53",
+    "build_assets.py": "f230988195196e5ea7adcb67facd111e7d5009f646b65e44abcc3fddc9a4ee11",
+    "demo.py": "d49a50d2d3dff4746510bca09a8f976a00ceb4a199db7c1fd0a16e84b105f290",
+    "geometry.py": "f3b4999b245dc14df2408cc57d3779836d1c41ab38015a3e8228cde6a8fd39c5",
+    "scenekit.py": "a7a56f522e9d16121ecb1e857883a6502dc37b4878cebcb9b68db50b8959c2d6",
+    "task.py": "08cb66eddf45ebaa2120b480bdea1083377abcb936bd908562cc445c2ce68845",
+    "test_scoring.py": "002bf0ae3427571dddd8e961d2d41403b2ab84534572d0ea65f8cb3f931d273c"
+  },
+  "session_expiration_messages": 12,
+  "evaluator_log": "adhoc_65bdc7ad.json",
+  "evaluator_log_sha256": "2c365a6e38e797563095d4710037aa012517e658e59296f8683f571b8083cdf4",
+  "model_video": {
+    "filename": "model_run.mp4",
+    "sha256": "58e71a885d7682bc9c2435117e0e64cd6dd84a0c5965c7820bd24625f1d870c2",
+    "bytes": 5989488,
+    "probe": {
+      "programs": [],
+      "streams": [
+        {
+          "codec_name": "h264",
+          "width": 640,
+          "height": 528,
+          "pix_fmt": "yuv420p",
+          "avg_frame_rate": "20/1",
+          "nb_frames": "1801"
+        }
+      ],
+      "format": {
+        "duration": "90.050000",
+        "size": "5989488"
+      }
+    },
+    "full_decode_passed": true
+  },
+  "service_pool_full_messages": 12,
+  "prior_attempt": {
+    "status": "interrupted_unscored",
+    "signal": "SIGTERM",
+    "saved_frames_per_camera": 1230,
+    "final_score": null,
+    "replacement_authorized_by_user": true,
+    "evidence_preserved": true
+  },
+  "visual_review": {
+    "sampled_video_times_seconds": [
+      0,
+      30,
+      60,
+      90
+    ],
+    "all_three_camera_streams_present": true,
+    "team_identifiers_seen": false,
+    "observed_outcome": "The fitting remains in the slotted plate in the inspected final recording."
+  }
+}

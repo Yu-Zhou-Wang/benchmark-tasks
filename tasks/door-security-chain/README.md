@@ -76,9 +76,13 @@ covered 2,341 PR titles, bodies, labels and states on 2026-11-16, with focused
 source inspection of these two comparisons. The private task board required
 sign-in and was not independently checked.
 
-Dream-1 evaluation, model video and task-board media ID are pending. No remote
-submission or media upload has been performed. The code and local evidence are
-preparation for review, not a claim of acceptance.
+Dream-1 beta completed one scored 1,800-action trial with task_score 0.0,
+max_steps termination and zero errored trials. The three-camera H.264 model
+recording is complete. An earlier model attempt was externally interrupted by
+SIGTERM before scoring; its 1,230 frames per camera are preserved separately.
+The replacement trial was authorized and used the unchanged reviewed runtime.
+See DREAM_EVALUATION.json for the measured result, source hashes and video hash.
+Task-board overlap verification, media ID and PR submission remain pending.
 
 The physics timestep is 1/240 s; control is 20 Hz. The declared limit is 1,800
 actions (90 simulated seconds). A preliminary full demo reached 1.0 in 866
@@ -87,8 +91,8 @@ recorded-run measurements and physical controls are summarized in
 `VALIDATION.md`. Rendering time is hardware dependent; the local unrecorded
 full run plus reset checks took about four minutes on an RTX 5090.
 
-Final Dream evaluation command, once credentials are available (not run during
-preparation; prefix with the approved GPU-0 launcher on the prepared machine):
+Recorded Dream evaluation command (prefix with the approved GPU-0 launcher
+on the prepared machine):
 
 ```bash
 inspect-robots run --embodiment yam_arena --policy dream \

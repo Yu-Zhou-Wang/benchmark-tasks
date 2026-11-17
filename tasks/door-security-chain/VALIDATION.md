@@ -23,4 +23,8 @@ The source asset rebuilds byte-for-byte from the included CPU generator. The pre
 
 Earlier failures remain in the evidence bundle: unstable chain-joint attempts, a straight initial chain incorrectly intersecting the door edge, a pushing-only handle orientation that released the fitting but stopped at 35°, and a subsequent grasp that missed the fitting because the door had not quite closed. They are not represented as successful trials.
 
-Dream-1 score and model video are pending because credentials were unavailable. The task-board media ID is empty, and the authenticated task board has not been independently checked. No upload, remote push, PR creation or other submission was performed. This package is ready for local review, not submission.
+Dream-1 beta completed 1,800 actions (90 simulated seconds) with native task_score 0.0, max_steps termination and zero errored trials. Wall time was 550.7 seconds. The client recovered from 12 session-expiration messages and 12 hosted pool-full messages within this single scored trial. The runtime Python and USD hashes match the reviewed demonstration and physical controls. The model video contains all 1,801 frames from each of the three policy cameras, is H.264/yuv420p at 20 fps, and passes a complete decode check. Sampled first, middle and final video frames were inspected; the fitting remains retained in the inspected final frame.
+
+An earlier model attempt ended externally with SIGTERM before the evaluator wrote a final score. Its 1,230 frames per camera, console log and incomplete live log are preserved as an unscored interruption. The user authorized the replacement trial reported above. No result is inferred for the interrupted attempt. DREAM_EVALUATION.json records the completed trial and its artifact hashes.
+
+The task-board media ID is still empty, and the authenticated task board has not yet been checked in this submission session. Media upload, remote push and PR creation remain pending.
