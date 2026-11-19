@@ -15,6 +15,6 @@
   "run_limit": "1,400 actions at 20 Hz (70 simulated seconds).",
   "reset_notes": "Seed 0. With adapter disconnected, restore the first cup lobe toward +x, wheel toward the door, tray lugs down, mug upright and door open. Leave Start released and reconnect the guarded fixture.",
   "fidelity": "The Insignia manual supplies the envelope, 254 mm retail glass tray diameter and coupling topology. The replica has an acrylic tray and a matching recessed three-lobed drive cup with three underside lugs on a three-wheel ring. The cup's fabrication dimensions are fixture-specific. Only the enclosed 12 V gearmotor drives the tray through contact. Roof and elevation windows and paint marks permit camera grading. Leave the retail microwave unplugged. For a real trial close the separate fixture guard and press its green Start key. Only the 12 V drive runs, with a visible pilot lamp. Opening the door or the 30 s timeout cuts power. Wait for the tray to stop before reaching in. The build guide includes printable parts, wiring and a 30 s door-interlocked cycle. Third-party I2RT YAM meshes and URDF are MIT-licensed. Pinned sources and license are in the README.",
-  "scores": "Scripted demo 1.00 in 1,262 of 1,400 actions. Dream-1 has not been run on this revision.",
+  "scores": "Dream-1 0.00 after 1,400 actions (step limit). Scripted demo 1.00 in 1,262 actions. Both runs used the revised fixture and seed 0.",
   "media": ""
 }

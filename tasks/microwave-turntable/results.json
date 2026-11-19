@@ -375,7 +375,15 @@
   },
   "dream": {
     "policy": "dreamlabs/dream-1-beta",
-    "status": "not_run_on_insignia_fixture"
+    "inspect_robots_version": "1.0.0",
+    "evaluation_id": "adhoc_96c7472f",
+    "task_score": 0.0,
+    "steps": 1400,
+    "simulation_seconds": 70.0,
+    "wall_seconds": 26.71190985199064,
+    "seed": 0,
+    "termination": "max_steps",
+    "errored_trials": 0
   },
   "previous_submission": {
     "dream_score": 0.0,

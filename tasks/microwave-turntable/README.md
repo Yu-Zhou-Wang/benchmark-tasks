@@ -82,8 +82,9 @@ The cabinet, face artwork, tray, ring, coupling, mug and drawing are original ta
 
 ## Measured results
 
-| Scripted trial, seed 0 | Score | Actions | Observable outcome |
+| Trial, seed 0 | Score | Actions | Observable outcome |
 |---|---:|---:|---|
+| Dream-1 (hosted) | 0.00 | 1,400 | The ring finishes outside its track. The tray and mug remain on the counter. |
 | Reset, hands parked | 0.00 | 20 | All three objects remain outside. |
 | Stop after ring | 0.25 | 280 | Ring center 8.3 mm from the axis. |
 | Stop after tray | 0.50 | 572 | Blue center dot 1.5 mm off axis. The mug remains on the counter. |
@@ -94,4 +95,4 @@ The cabinet, face artwork, tray, ring, coupling, mug and drawing are original ta
 
 A separate simulated cycle check pressed Start with the door open and the lamp stayed dark. With the door closed, a held Start key produced exactly 30.0 seconds of motor power. The next cycle began on a fresh press. This timer check ran beyond the benchmark action limit to observe shutoff.
 
-The full recording first shows power on frame 1,026. From the compressed video, the marks pass their respective quarter turns on frames 1,093, 1,150, 1,208 and 1,262. The stripe travels 360.54° and the mug dot 360.35°. The interrupted recording reaches 182.88° and 181.33° before the lamp goes dark. The recorded full run took about 20 seconds of wall time on the validation workstation. All reported trials used simulation. Physical commissioning and a Dream-1 run on this revision are pending. [Trial results](results.json)
+The full recording first shows power on frame 1,026. From the compressed video, the marks pass their respective quarter turns on frames 1,093, 1,150, 1,208 and 1,262. The stripe travels 360.54° and the mug dot 360.35°. The interrupted recording reaches 182.88° and 181.33° before the lamp goes dark. The recorded full run took about 20 seconds of wall time on the validation workstation. All reported trials used simulation. Physical construction and commissioning are pending. [Trial results](results.json)
