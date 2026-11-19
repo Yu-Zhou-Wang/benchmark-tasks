@@ -96,6 +96,10 @@ class Planner:
 
 def script(p, miss_hub=False, stop_after=None, interrupt=False):
     L, R = 0, 1
+    if stop_after == "reset":
+        for _ in range(HZ):
+            yield "inspect reset", p.q.ravel().copy()
+        return
 
     def series(label, gen):
         for row in gen:
@@ -126,12 +130,13 @@ def script(p, miss_hub=False, stop_after=None, interrupt=False):
         )
         yield from move("position at " + name, arm, pick, z0, level, span, 22)
         yield from move("grasp " + name, arm, pick, z0, level, 0.0, 16)
-        yield from move("lift " + name, arm, pick, S.FLOOR + 0.073, level, 0.0, 27)
+        carry_z = S.FLOOR + (0.110 if name == "tray" else 0.073)
+        yield from move("lift " + name, arm, pick, carry_z, level, 0.0, 27)
         if name == "tray":
             yield from move(
-                "line up with opening", arm, [pick[0], dest[1]], S.FLOOR + 0.073, level, 0.0, 32
+                "line up with opening", arm, [pick[0], dest[1]], carry_z, level, 0.0, 32
             )
-        yield from move("carry " + name, arm, dest, S.FLOOR + 0.073, level, 0.0, 45)
+        yield from move("carry " + name, arm, dest, carry_z, level, 0.0, 45)
         yield from move("seat " + name, arm, dest, z1, level, 0.0, 29)
         yield from move("release " + name, arm, dest, z1, level, 0.56, 18)
         yield from move("withdraw " + name, arm, dest - 0.19 * direction, z1 + 0.015, level, 0.56, 32)
@@ -181,12 +186,12 @@ def script(p, miss_hub=False, stop_after=None, interrupt=False):
     if interrupt:
         for _ in range(35):
             yield "wait during loaded turn", p.q.ravel().copy()
-        handle = S.HINGE + [-0.035, -0.290]
+        handle = S.HINGE + [-0.035, -S.HANDLE_RADIUS]
         yield from move("approach handle", R, handle + [-0.06, 0], S.FLOOR + 0.112, push, 1.0, 18)
         yield from move("reach handle", R, handle, S.FLOOR + 0.112, push, 1.0, 15)
         yield from move("grasp handle", R, handle, S.FLOOR + 0.112, push, 0.02, 12)
         for a in np.linspace(0, -0.42, 30):
-            xy = S.HINGE + Rotation.from_euler("z", a).as_matrix()[:2, :2] @ [-0.035, -0.290]
+            xy = S.HINGE + Rotation.from_euler("z", a).as_matrix()[:2, :2] @ [-0.035, -S.HANDLE_RADIUS]
             yield from move("open door during turn", R, xy, S.FLOOR + 0.112, push, 0.02, 1)
         yield from move("release handle", R, xy, S.FLOOR + 0.112, push, 1.0, 12)
         yield from series("park after interruption", p.park(R, 24))
@@ -292,7 +297,7 @@ def run(args):
     if args.interrupt:
         return int(not (result["score"] == 0.75 and 0 < result["best_loaded_turn_deg"] < 360
                         and result["turn_deg"] == 0 and not result["motor_on"] and door_cut_step is not None))
-    expected = 0.25 if args.miss_hub else {"ring": 0.25, "tray": 0.5, "mug": 0.75, None: 1.0}[args.stop_after]
+    expected = 0.25 if args.miss_hub else {"reset": 0.0, "ring": 0.25, "tray": 0.5, "mug": 0.75, None: 1.0}[args.stop_after]
     return int(result["score"] != expected)
 
 
@@ -301,7 +306,7 @@ if __name__ == "__main__":
     parser.add_argument("--out", required=True)
     parser.add_argument("--record", action="store_true")
     controls = parser.add_mutually_exclusive_group()
-    controls.add_argument("--stop-after", choices=("ring", "tray", "mug"))
+    controls.add_argument("--stop-after", choices=("reset", "ring", "tray", "mug"))
     controls.add_argument("--interrupt", action="store_true", help="Pull the door open during a loaded turn")
     controls.add_argument(
         "--miss-hub", action="store_true", help="Place the tray 18 mm sideways as a scoring control"

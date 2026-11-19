@@ -28,6 +28,7 @@ class LoadedTurn:
 
     def sample(self, tray_deg, mug_deg, eligible):
         bearings = np.array([tray_deg, mug_deg])
+        eligible = eligible and np.isfinite(bearings).all()
         if not eligible or self.previous is None:
             if self.previous is not None:
                 self.resets += 1

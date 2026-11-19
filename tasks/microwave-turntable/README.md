@@ -1,78 +1,97 @@
 # Reinstall a microwave turntable after cleaning
 
-Center the roller ring, seat the clear tray on the three drive pins, and put the orange mug off center. Close the door and press the green Start button. The installation passes when the marked tray and mug ride one uninterrupted revolution together. The standalone fixture reproduces the installation order of a household microwave and powers only the turntable. [Whirlpool installation guide](https://producthelp.whirlpool.com/Cooking/Wall_Ovens_and_Ranges/Wall_Ovens_new/Cleaning_and_Maintenance/Microwave/Cleaning_the_Turntable_-_Wall_Oven)
+Seat the roller ring, fit the tray's three underside lugs into the three-lobed drive cup, and set the mug off center. Withdraw the grippers, close the door and press the green Start key. A blue stripe on the tray and a yellow dot in the mug show whether the drive carries both through one uninterrupted turn.
 
-![Fixed starting layout with the three loose parts, two arms and open guard](setup.png)
+The retail reference is the **Insignia NS-MW7BK5**, a 0.7 cu. ft. black countertop microwave. Best Buy listed SKU **6568217** for **$59.99 on November 19, 2026**. The matching 254 mm glass tray, three-wheel roller ring and drive cup are pictured together on pages 7 and 11 of the manual. The simulation follows the cabinet dimensions, windowed left-hinged door, vertical pull, right keypad and keyed assembly. [Retail model](https://www.bestbuy.com/product/insignia-7-cu-ft-compact-microwave-black/J2FPJKSY3Q/sku/6568217) · [Insignia user guide](https://files.bbystatic.com/ANTHtc8TH5kQ3VbXTyfvGw%3D%3D/User%2BGuide)
 
-The [mechanical drawing](fixture.svg) and [build instructions with parts, interlock and timer](FIXTURE.md) specify an approximately $153 bench fixture. It uses an 8 mm clear acrylic tray in place of glass so the roller ring remains visible. All verification reported below used simulation.
+**The scored physical trial uses a standalone 12 V replica.** Its clear acrylic tray and inspection windows make the roller ring and mug visible with ordinary cameras. Only the gearmotor receives power from Start. The door switch cuts power on opening, and the timer stops after 30 seconds. Keep any reference microwave unplugged. The manual describes the retail PL0 setting as fan-only. The fixture drawings, printable coupling, wiring, firmware and commissioning procedure are included. The estimated fixture materials cost is $160, independent of the retail oven. [Build guide](FIXTURE.md) · [Dimensioned drawing](fixture.svg)
 
-## Setup and reset
+![Fixed setup with the ring, tray and mug in front of the open replica](setup.png)
 
-Use a 1,100 × 1,100 mm counter. Measure from the midpoint between the two arm bases, with x forward, y left and height above the counter. The bases are 610 mm apart. Set the fixture floor 115 mm high and the drive axis at (525, 0) mm. Open the left-hinged door to 170°, release the Start button and clear the timer. Place the loose parts as follows. Seed 0 restores this fixed layout.
+## Set up and reset
 
-| Object | Center (x, y) mm | Placement |
-|---|---|---|
-| Roller ring | (202, 136) | Ø140 pitch, three Ø20 × 10 wheels. Axle plane 87 mm high, one wheel toward the robot. Three Ø24 silicone-topped posts at radius 70, angles 0°, 110°, 250° from +x toward +y. |
-| Tray | (226, −85) | Ø230 × 8, about 400 g with the three sockets. Midplane 93 mm high, blue stripe along +x. Three Ø24 posts at radius 69, angles 0°, 125°, 235°. |
-| Empty mug | (365, −322) | Ø62 × 70, 190 g, upright on the counter. The handle points diagonally forward and to the robot's right (+x, −y). |
+Use a 1,100 × 1,100 mm counter centered at (300, 0) mm. Measure x away from the robot and y to its left, from the midpoint between the two YAM bases at (0, ±305). Heights in this section are above the counter. Center the spindle at **(565, 0)** with the cavity deck **115** high. The cabinet is 440 wide × 355 deep including the handle × 258 high above its feet. Its 350-wide door starts 170° open.
 
-## Score a trial from video
+| Loose object | Center (x, y), mm | Starting pose |
+|---|---:|---|
+| Three-wheel nylon roller ring, Ø158 pitch, Ø20 × 10 wheels | (202, 136) | Axles 87 high, one wheel toward the robot. Use three Ø24 silicone-topped posts on radius 79 at 0°, 110°, 250° from +x toward +y. |
+| Clear acrylic tray, Ø254 × 8, raised rim, about 480 g | (226, −85) | Mid-edge 93 high, lugs underneath, stripe and one lug toward +x. Three Ø24 posts on radius 69 at 0°, 125°, 235°. |
+| Empty orange ceramic mug, Ø62 × 70, 190 g | (365, −322) | Upright on the counter. Handle toward (+x, −y), about 48° right of +x. Yellow dot visible inside. |
 
-![Frame 1258 with the fixed references, both moving marks, motor lamp and height rulers](scoring-view.png)
+Use seed 0. For a physical reset, disconnect the fixture adapter, clear the cavity and restore the loose parts to their posts and mark orientations. Index one empty cup lobe toward +x. If indexing is needed, loosen the split clamp with power disconnected, align the spindle, retighten and close the motor bay. Open the door, release Start and reconnect the adapter. Both grippers start open with each arm's six joint angles at [0, 0.65, 1.20, −0.30, 0, 0] radians.
 
-Record the fixed overhead view through the roof, level views through the rear and left panels, and the operator view showing the door, lamp and hands. Synchronize the views at 20 fps. Square the cameras to their respective planes. For perspective cameras, calibrate with a ruler at each measured plane or use a long-lens view and verify the scale at both edges. The four overhead tick centers sit 129 mm from the axis. Adjacent minor ticks on the elevation rulers span 5 mm.
+## Run one real trial without heating
 
-Award the **highest cumulative placement still present on the final frame**. For each credited part, require a 5 mm visible gap to the robot. Trace the center of the magenta hoop and the tray's marked mid-edge. In plan, use the midpoint of opposite edges or fit the visible arc if the mug covers one side. The fixed 5 mm roof reticle and the floor circles show the centering limits.
+1. Keep the retail microwave unplugged. Use the enclosed 12 V replica after its door-cutoff and timeout checks have passed. Start the cameras with the guard open and the motor lamp dark.
+2. Seat the ring in the track and lower the marked tray until its three lugs nest in the drive cup. Place the empty mug off center and withdraw both grippers past the yellow sill.
+3. Close the guard until the blue latch dot is in the green circle. Release, then press the green **Start** key on the fixture. The lamp lights and the low-voltage motor turns the tray. Film the blue stripe and yellow mug dot crossing all four quarters together.
+4. Stop grading at the first complete turn or the 70-second trial limit. The fixture cuts motor power 30 seconds after Start. Opening the guard cuts power earlier. Wait until the lamp is dark and the tray has stopped before reaching in. Disconnect the adapter before resetting the spindle or making adjustments.
 
-| Score | What to check |
-|---|---|
-| 0 | The ring fails any of its checks. |
-| 0.25 | Released ring center within 12 mm of the axis. Its midline is 10 ± 3 mm above the floor and its tilt is at most 4°. Use the magenta height band and the radius-58 and radius-82 guides. |
-| 0.50 | Also require a released tray centered within 5 mm, with its mid-edge at 24 ± 2.5 mm and tilt at most 2°. The center of the blue dot lies inside the roof reticle and the mid-edge aligns with the blue height band. |
-| 0.75 | Also require a released mug with the yellow dot 35–78 mm from the fixed axis. Its axis is within 5° of vertical and its foot center is within 2 mm of the tray's top plane. |
-| 1.00 | All three placements persist through the complete powered turn below. |
+## Grade the observable placements
 
-For height, average the two opposite rim heights. For tilt, measure the slopes of the ring or tray center plane in both elevations. The total tilt is `atan(hypot(rear slope, left slope))`. Use the same calculation with the mug's centerline and vertical, using the foot and lip centers. The 5 mm elevation ticks span 7 pixels in the published video and the 5 mm overhead reticle radius spans about 7.6 pixels.
+Record an overhead view through the roof and one level elevation through an inspection window. The overhead view must cover the four deck ticks, door dot, motor lamp and both ends of the yellow sill. A wider operator view can confirm that the grippers are withdrawn. Record at 20 fps or use every third frame from 60 fps. Tape a ruler at the height of each measured mark during camera setup. Square the views to the deck and elevation. Check the scale at both edges with the ruler. The overhead ticks are 278 mm apart across the diameter, and adjacent elevation ticks are 5 mm apart.
 
-**Loaded turn.** Begin on a frame with all three placements, a lit motor lamp, the blue door tab aligned within the fixed ±10 mm latch strip, and all four fingertip pads outside the guarded compartment. Use the fixed overhead ticks for orientation. Note the stripe and yellow dot's individual starting bearings. Follow each counterclockwise across 90°, 180°, 270° and 360° of travel from its own start. Both must reach 360° and be within 8° of their respective starts on the same frame.
+Read the final frame with the hands withdrawn. All four fingertip pad centers must be on the operator side of the yellow sill in plan. The two fixed yellow ticks extend this line when the door covers the sill. A fingertip on or beyond the line gives zero on that frame. For each tier, retain all checks in the preceding rows. The endpoints of the colored bands count.
 
-Loss of placement, power or door closure resets the count. A gripper entering the compartment also resets it. Apply these limits to the visible marks.
+| Score | Evidence a reviewer can check |
+|---:|---|
+| 0.00 | The ring check fails or the grippers have not withdrawn. |
+| 0.25 | The center of the magenta hoop is within the 12 mm roof circle. In elevation its centerline stays between 5 and 15 mm above the deck around the ring. Fit the circle through the visible arcs across the three wheel forks. |
+| 0.50 | The blue center dot on the tray is within the 6 mm roof circle. The full dark tray mid-edge is between 20 and 28 mm above the deck. |
+| 0.75 | The yellow mug dot is 35–78 mm from the axis. The centerlines of the mint lower band and cream lip are entirely within the 30–38 mm and 90–101 mm elevation bands, respectively. |
+| 1.00 | The three placements persist and the visible loaded turn below completes. |
 
-- Either mark advances less than 4° over any 10 frame intervals (0.50 s), or backs up more than 4° from its furthest bearing.
-- Their cumulative advances differ by more than 8°, or either mark skips a whole quadrant between recorded frames. A real-video gap that hides a mark also ends that interval.
+Use the midpoint of opposite edges for a center, and the highest and lowest points of each colored centerline for its height range. An ordinary video player can pause on these frames. If the evidence for a tier is obscured, credit the highest tier the views still establish. The examples below are the final frames of three separate placement-only runs.
 
-The loaded demo averaged about 31°/s, or 5.2 rpm, including take-up after Start. A half-second normally shows about 16° of travel. The scorer reads the geometry of these visible marks, the hand-to-part gaps, and the lamp and latch. Only the independent spindle is actuated. The three loose parts move through contact. The door switch cuts power on opening and a fresh Start press with the door closed starts a 30-second cycle.
+![Overhead and rear photographs from the three partial-credit runs](placements.png)
 
-## Run and reproduce
+## Grade the loaded turn
 
-Use the configured YAM environment (Python 3.12, MuJoCo 3.11, Inspect Robots 1.0, YAM Arena `0059d02`). From the RoboCurve workspace, run with a new output directory. On another installation the same Python entry points use the activated environment and EGL.
+![Terminal video frame with the stripe, mug dot, lamp, latch and elevation scales](scoring-view.png)
+
+Start counting on a frame with all placements, a lit green lamp, and the blue door dot inside or on its fixed green 10 mm circle. Use the center of the circle between the four deck ticks as the axis. Record the **separate starting bearings** of the blue tray stripe and the yellow mug dot. In plan, follow each mark counterclockwise through 90°, 180°, 270° and 360° from its own start. Both must have traveled at least 360° and be within 8° of their individual start bearings on the same frame.
+
+Count one continuous interval. Start again if a placement, hand clearance, lamp or latch check fails, or either mark becomes unreadable. Also restart if either mark advances less than 4° in ten frame intervals (0.50 s), retreats more than 4° from its furthest bearing, jumps 90° or more between frames, or if the two cumulative advances differ by more than 8°. After an interruption a new interval begins at the next eligible frame. End a scored trial at the first completed turn or after 1,400 actions. If time expires, award the highest partial placement present on the final frame.
+
+The simulator measures the positions of the painted exterior features for placement. During an eligible powered interval it reads the lamp and **both bearings from the overhead RGB image**. Disappearance of either colored mark breaks the count. The physical scorer and simulator use the same visible outcomes. The only actuated turntable part is the independent spindle. The ring, tray and mug move through contact.
+
+## Run and verify
+
+Use the pinned YAM Arena environment with Python 3.12, MuJoCo 3.11, Inspect Robots 1.0 and OpenCV. The adapter installer supplies the robot and cameras. Install MuJoCo 3.11, OpenCV, Pillow and imageio-ffmpeg in that environment if needed. From this task directory in the activated environment, run the following with a fresh output path. [Pinned environment setup](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730#quickstart)
 
 ```bash
-task_dir=worktrees/microwave-turntable/tasks/microwave-turntable
-./scripts/run_on_gpu.sh 0 python "$task_dir/demo.py" --record --out runs/microwave-full-new
+python demo.py --record --out /tmp/turntable-full
+python read_video.py /tmp/turntable-full/demo.mp4
 ```
 
-The command creates the synchronized H.264 recording, reset image, per-action trace and terminal result. Add one of `--miss-hub`, `--interrupt`, or `--stop-after ring|tray|mug` to reproduce a control. For an authorized hosted evaluation, use `dream_run.py --out <fresh-directory>` with the same launcher.
+The demo writes a reset image, 20 fps H.264 video, per-action trace and terminal result. Add `--stop-after reset|ring|tray|mug`, `--miss-hub` (18 mm lateral placement error), or `--interrupt` (pull the door open during rotation) to reproduce the controls. On the configured RoboCurve workstation, prefix the Python command with the workspace's `./scripts/run_on_gpu.sh <physical-index>` and supply the script's path relative to that workspace. A fresh hosted model evaluation uses `python dream_run.py --out <fresh-directory>`.
 
-Both policies issue 14 absolute joint and gripper targets at 20 Hz. The scripted policy uses fixed setup geometry and robot-only inverse kinematics. Dream-1 receives the two wrist cameras and top camera at 320 × 176, joint positions, gripper openings and the instruction. The inspection cameras and evaluator measurements are for grading. The physics timestep is 2 ms. A trial allows 1,400 actions or 70 simulated seconds.
+The video reader checks the lamp, stripe and dot from decoded pixels alone. For a rectified physical overhead video, pass the pixel centers of two opposite 139 mm ticks using `--ticks X1 Y1 X2 Y2` and the pilot lamp center using `--lamp X Y`. Use `--first` and `--last` to bound an interval after verifying the placements, hands and latch on video. The reader returns the first completed-turn frame and the quarter-turn crossings. The placement rows above supply the rest of the grade.
 
-## Asset sources
+Both policies issue 14 joint/gripper targets at 20 Hz. The physics step is 2 ms. The scripted demo uses fixed setup coordinates and robot-only inverse kinematics. Dream-1 receives two wrist images and a top image at 320 × 176, joint positions, gripper openings and the instruction. The grading cameras and evaluator measurements are independent of the policy.
 
-- The installed `yam_arm.urdf`, visual STLs under `assets/`, and collision meshes under `collision/` come through YAM-inspect-Isaac and the YAM Arena adapter. The adapter records the I2RT Robotics model revision as `120c3c81400171174604e503943f8d1ebc891058` and identifies the model assets as MIT-licensed. Copyright © I2RT Robotics. [I2RT source](https://github.com/i2rt-robotics/i2rt/tree/120c3c81400171174604e503943f8d1ebc891058/i2rt/robot_models/arm/yam/v1) · [Pinned URDF and meshes](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam) · [MIT notice](LICENSE.i2rt)
-- The black and white STLs for links 2 and 3 are splits of I2RT geometry from the `dreamlabs` 1.0.23 wheel, directory `dream_examples/yam_mujoco/assets`. Its adapter manifest gives the four file hashes and the same I2RT MIT notice. [Split-mesh manifest](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/dream/SOURCE)
-- The task imports the station geometry, robot frames and calibration from adapter revision `0059d02a1a91bc6834c1d0846022891df0c78730`. That revision lists its repository-wide license as pending. The task loads the arm files from the installed dependency. The fixture geometry and markings are generated by this task. [Adapter license statement](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/README.md#license)
+## Asset sources and licenses
 
-## Recorded results
+| Asset used by this task | Source and license |
+|---|---|
+| YAM arm URDF, link and finger visual STLs, wrist/palm convex collision meshes | **MIT, © I2RT Robotics.** I2RT revision `120c3c81400171174604e503943f8d1ebc891058`. The installed `yam_arm.urdf`, `assets/` and `collision/` are the YAM-inspect-Isaac version supplied by the pinned Arena adapter. [I2RT arm model](https://github.com/i2rt-robotics/i2rt/tree/120c3c81400171174604e503943f8d1ebc891058/i2rt/robot_models/arm/yam/v1) · [Upstream MIT license](https://github.com/i2rt-robotics/i2rt/blob/120c3c81400171174604e503943f8d1ebc891058/LICENSE) · [Exact adapter assets](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam) · [Included license](LICENSE.i2rt) |
+| Black/white visual STL splits for links 2 and 3 | **MIT, © I2RT Robotics**, per the adapter's asset manifest. The four files come from `dreamlabs` 1.0.23, `dream_examples/yam_mujoco/assets`. The manifest records each SHA-256. [Source manifest](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/dream/SOURCE) |
+| Station frames, camera calibration and URDF parser | Runtime imports from YAM Arena revision `0059d02a1a91bc6834c1d0846022891df0c78730`, ported from YAM-inspect-Isaac. The adapter identifies its repository-wide license as pending and gives the model assets the separate MIT notice above. [Adapter license statement](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/README.md#license) · [YAM-inspect-Isaac](https://github.com/ttpierson/YAM-inspect-Isaac) |
 
-| Scripted trial, seed 0 | Score | Actions | Visible outcome |
+The cabinet, face artwork, tray, ring, coupling, mug and drawing are original task geometry. The retail photograph and manual are linked references.
+
+## Measured results
+
+| Scripted trial, seed 0 | Score | Actions | Observable outcome |
 |---|---:|---:|---|
-| Complete installation | 1.00 | 1,258 | The lamp stays on and both marks complete the turn. |
-| Stop after ring | 0.25 | 280 | The ring is released and the tray is on its posts. |
-| Stop after tray | 0.50 | 572 | The ring and tray are seated. The mug remains on the counter. |
-| Stop after mug | 0.75 | 817 | All three placements are visible. The motor lamp is dark. |
-| 18 mm missed-hub control | 0.25 | 1,400 | The tray finishes 52.3 mm off axis. Common loaded travel is 0.0°. |
-| Door opened during rotation | 0.75 | 1,400 | The door cuts power on frame 1,151 after 189.6° of common travel. The count returns to zero. |
+| Reset, hands parked | 0.00 | 20 | All three objects remain outside. |
+| Stop after ring | 0.25 | 280 | Ring center 8.3 mm from the axis. |
+| Stop after tray | 0.50 | 572 | Blue center dot 1.5 mm off axis. The mug remains on the counter. |
+| Stop after mug | 0.75 | 817 | Yellow dot 63.4 mm off axis. The lamp is dark. |
+| Complete installation | 1.00 | 1,262 | Both marks complete a turn in 63.1 simulated seconds from reset. |
+| Place tray 18 mm off target | 0.25 | 1,400 | The lamp lights, but the tray center finishes 16.9 mm off axis. |
+| Open door during turn | 0.75 | 1,400 | The lamp goes dark on frame 1,151 and the count resets. |
 
-An independent color readback of the exported MP4 uses the four fixed ticks, blue stripe and yellow dot. The lamp lights on frame 1,026. Both marks first pass their successive quarter turns on frames 1,088, 1,144, 1,202 and 1,258. The video gives 361.8° for the tray and 361.1° for the mug, with at most 1.2° relative slip. The full recorded trial took 62.9 simulated seconds and about 15 seconds of wall time. [Measured trial results](results.json)
+A separate simulated cycle check pressed Start with the door open and the lamp stayed dark. With the door closed, a held Start key produced exactly 30.0 seconds of motor power. The next cycle began on a fresh press. This timer check ran beyond the benchmark action limit to observe shutoff.
 
-The prior Dream-1 trial scored 0.00 on the original fixture. A model evaluation and task-board media ID for the revised camera images are pending.
+The full recording first shows power on frame 1,026. From the compressed video, the marks pass their respective quarter turns on frames 1,093, 1,150, 1,208 and 1,262. The stripe travels 360.54° and the mug dot 360.35°. The interrupted recording reaches 182.88° and 181.33° before the lamp goes dark. The recorded full run took about 20 seconds of wall time on the validation workstation. All reported trials used simulation. Physical commissioning and a Dream-1 run on this revision are pending. [Trial results](results.json)

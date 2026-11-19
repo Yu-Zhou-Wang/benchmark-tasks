@@ -1,28 +1,32 @@
 """Unheated turntable fixture, roller ring, transparent tray and mug. Dimensions in metres."""
 
 import math
+from pathlib import Path
 import xml.etree.ElementTree as ET
 
 import numpy as np
 from yam_arena import station
 from station_model import add_arms, numbers
+import coupling
 
 TABLE = station.TABLE_TOP
-HUB = np.array([0.525, 0.0])
-FRONT = 0.359
+HUB = np.array([0.565, 0.0])
+FRONT = HUB[0] - 0.161  # closed door / yellow withdrawal line
 FLOOR = TABLE + 0.115
-HINGE = np.array([0.340, 0.161])
+HINGE = np.array([FRONT, 0.172])
+LATCH_RADIUS = 0.344
+HANDLE_RADIUS = 0.332
 OPEN = math.radians(-170)
 RING_START = np.array([0.202, 0.136])
 TRAY_START = np.array([0.226, -0.085])
 MUG_START = np.array([0.365, -0.322])
-RING_R = 0.070
-TRAY_R = 0.115
+RING_R = 0.079
+TRAY_R = 0.127
 RING_PICK_Z = TABLE + 0.087
 TRAY_PICK_Z = TABLE + 0.093
 MUG_R = 0.031
 MOTOR_SPEED = math.tau / 10
-BUTTON = np.array([FRONT - 0.009, -0.205, FLOOR + 0.059])
+BUTTON = np.array([HUB[0] - 0.174, -0.244, FLOOR + 0.039])
 OFFSET = np.array([-0.063, -0.016])
 
 
@@ -50,64 +54,99 @@ def circ(parent, name, radius, z, tube, mat, segments=32, visual=False):
         make(parent, f"{name}_{i}", "capsule", (0, 0, 0), (tube,), mat, fromto=numbers(ends))
 
 
-def cabinet(w, drives):
-    steel = ET.SubElement(w, "body", name="cabinet", pos=numbers((*HUB, FLOOR)))
-    # The clear polycarbonate guard encloses an independent low-voltage drive.
-    geom(steel, "oven_floor", "box", (0, -0.026, -0.014), (0.166, 0.196, 0.014), "enamel")
-    for label, radius in (("inner_track", 0.057), ("outer_track", 0.084)):
-        circ(steel, label, radius, 0, 0.0038, "enamel", 48)
-    geom(steel, "roof_window", "box", (0, -0.026, 0.222), (0.166, 0.196, 0.002), "clear")
-    geom(steel, "back_window", "box", (0.159, -0.026, 0.108), (0.002, 0.196, 0.108), "clear")
-    geom(steel, "side_window", "box", (0, 0.156, 0.108), (0.163, 0.002, 0.108), "clear")
-    geom(steel, "right_guard", "box", (0, -0.154, 0.108), (0.163, 0.007, 0.108), "enamel")
-    geom(steel, "control_housing", "box", (0.001, -0.19, 0.108), (0.165, 0.036, 0.108), "metal")
-    geom(steel, "fascia", "box", (-0.162, -0.19, 0.108), (0.006, 0.036, 0.111), "graphite")
-    geom(steel, "counter_riser", "box", (0, -0.026, -0.077), (0.164, 0.191, 0.038), "counter")
-    for dx in (-0.157, 0.157):
-        for dy in (-0.151, 0.154):
-            geom(steel, f"post_{dx}_{dy}", "box", (dx, dy, 0.110), (0.003, 0.003, 0.110), "metal")
-    for dx in (-0.125, 0.125):
-        for dy in (-0.178, 0.124):
-            geom(steel, f"foot_{dx}_{dy}", "cylinder", (dx, dy, -0.033), (0.014, 0.006), "rubber")
+def fit_fascia(assets, case):
+    # A planar UV mesh keeps the original printable keypad artwork at its physical size.
+    ET.SubElement(assets, "texture", name="keys", type="2d", file=str(Path(__file__).with_name("fascia.png")))
+    ET.SubElement(assets, "material", name="keypad", texture="keys", specular=".22", shininess=".28")
+    ET.SubElement(assets, "mesh", name="key_face", vertex="0 .040 -.111  0 -.040 -.111  0 -.040 .111  0 .040 .111  .0005 0 0",
+                  texcoord="0 1  1 1  1 0  0 0  .5 .5", face="0 1 2  0 2 3  1 0 4  2 1 4  3 2 4  0 3 4")
+    ET.SubElement(case, "geom", name="keypad_print", type="mesh", mesh="key_face", pos="-.168 -.220 .112",
+                  material="keypad", contype="0", conaffinity="0", mass="0")
 
-    # Printed floor template and roof reticle share the drive axis in the plan view.
-    for radius, ink in ((58, "ring_limit"), (82, "ring_limit"), (107, "navy"), (117, "navy"),
-                        (35, "load_ink"), (78, "load_ink")):
-        z = 0.004 if radius in (58, 82) else 0.0004
-        circ(steel, f"template_{radius}", radius / 1000, z, 0.00065, ink, 64, visual=True)
-    circ(steel, "center_target", 0.005, 0.2243, 0.00055, "navy", 24, visual=True)
+
+def cabinet(w, drives, assets):
+    steel = ET.SubElement(w, "body", name="cabinet", pos=numbers((*HUB, FLOOR)))
+    # 440 W x 355 D (including closed handle) x 258 H, on a separate motor plinth.
+    geom(steel, "oven_floor", "box", (0, -.040, -.006), (.150, .220, .006), "enamel")
+    geom(steel, "base_pan", "box", (0, -.040, -.018), (.150, .220, .006), "case")
+    geom(steel, "counter_riser", "box", (0, -.040, -.0745), (.143, .205, .0405), "plinth")
+    for dx in (-.121, .121):
+        for dy in (-.220, .143):
+            geom(steel, f"foot_{dx}_{dy}", "cylinder", (dx, dy, -.029), (.013, .005), "rubber")
+    for name, radius in (("inner_track", RING_R-.013), ("outer_track", RING_R+.013)):
+        circ(steel, name, radius, 0, .0025, "enamel", 48)
+    # Light cavity liner and black skin with three glazed inspection apertures.
+    geom(steel, "roof_window", "box", (0, 0, .222), (.146, .148, .002), "clear")
+    geom(steel, "rear_window", "box", (.148, 0, .053), (.002, .156, .053), "clear")
+    geom(steel, "left_window", "box", (0, .178, .053), (.148, .002, .053), "clear")
+    for name, pos, size, material in (
+        ("roof_front", (-.1485, -.040, .222), (.0025, .220, .002), "case"),
+        ("roof_rear", (.148, -.040, .222), (.002, .220, .002), "case"),
+        ("roof_left", (0, .164, .222), (.146, .016, .002), "case"),
+        ("roof_right", (0, -.204, .222), (.146, .056, .002), "case"),
+        ("rear_wall", (.147, -.040, .163), (.003, .220, .057), "enamel"),
+        ("rear_skin", (.149, -.040, .163), (.001, .220, .057), "case"),
+        ("left_wall", (0, .176, .163), (.150, .004, .057), "enamel"),
+        ("left_skin", (0, .179, .163), (.150, .001, .057), "case"),
+        ("rear_left_jamb", (.147, .168, .053), (.003, .012, .053), "case"),
+        ("left_front_jamb", (-.146, .178, .053), (.004, .002, .053), "case"),
+        ("control_housing", (-.0085, -.220, .110), (.1585, .040, .110), "case"),
+        ("oven_right_wall", (0, -.177, .110), (.150, .003, .110), "enamel"),
+        ("upper_lintel", (-.148, 0, .212), (.002, .178, .008), "case"),
+        ("threshold", (-.156, .001, -.021), (.006, .178, .003), "case"),
+    ):
+        geom(steel, name, "box", pos, size, material)
+    decor(steel, "withdrawal_line", "box", (-.161, .001, -.0176), (.001, .178, .0003), "amber")
+    for i, y in enumerate((.172, -.194)):
+        decor(steel, f"sill_tab_{i}", "box", (-.156, y, .2244), (.007, .004, .0004), "clear")
+        decor(steel, f"sill_tick_{i}", "box", (-.161, y, .225), (.001, .004, .0005), "amber")
+    fit_fascia(assets, steel)
+    for i in range(9):
+        decor(steel, f"vent_{i}", "box", (.052+i*.008, -.218, .2243), (.0016, .024, .0003), "vent")
+    # Flat paint under the clear tray and reticles at the inspection roof.
+    for radius, ink in ((67, "ring_limit"), (91, "ring_limit"), (35, "load_ink"), (78, "load_ink")):
+        z = .0028 if radius in (67, 91) else .0005
+        circ(steel, f"template_{radius}", radius/1000, z, .00065, ink, 60, visual=True)
+    for radius, ink in ((.006, "navy"), (.012, "ring_limit")):
+        circ(steel, f"center_target_{radius}", radius, .2243, .00055, ink, 36, visual=True)
     for i in range(4):
         a = i * math.pi / 2
         c, s = math.cos(a), math.sin(a)
-        decor(steel, f"quadrant_{i}", "box", (0.129*c, 0.129*s, 0.0006),
-              (0.009, 0.0020, 0.0005), "navy", euler=numbers((0, 0, a)))
-    # Identical vertical rulers in the back and left elevations. Bars show the
-    # entire allowed height interval. Minor ticks are spaced 5 mm apart.
+        decor(steel, f"quadrant_{i}", "box", (.139*c, .139*s, .0006),
+              (.005, .002, .0005), "navy", euler=numbers((0, 0, a)))
     for side in ("back", "left"):
-        ruler_pos = (0.147, -0.125) if side == "back" else (-0.125, 0.146)
-        ruler_size = (0.0004, 0.016, 0.052) if side == "back" else (0.016, 0.0004, 0.052)
-        decor(steel, f"{side}_ruler", "box", (*ruler_pos, 0.050), ruler_size, "enamel")
+        # Scales sit to one side of the visible disks.
+        back = side == "back"
+        xy = (.142, -.141) if back else (-.139, .151)
+        size = (.0004, .012, .052) if back else (.012, .0004, .052)
+        decor(steel, side+"_ruler", "box", (*xy, .052), size, "enamel")
+        xy = (xy[0]+.001, xy[1]) if back else (xy[0], xy[1]+.001)
         def bar(name, z, width, height, ink):
-            xy = (0.148, -0.125) if side == "back" else (-0.125, 0.147)
-            size = (0.0005, width/2, height/2) if side == "back" else (width/2, 0.0005, height/2)
+            size = (.0005, width/2, height/2) if back else (width/2, .0005, height/2)
             decor(steel, f"{side}_{name}", "box", (*xy, z), size, ink)
-        for mm in range(0, 101, 5):
-            bar(f"tick_{mm}", mm/1000, 0.028 if mm % 10 == 0 else 0.020, 0.00065, "navy")
-        bar("axle_band", 0.010, 0.014, 0.006, "ring_ink")
-        bar("tray_band", 0.024, 0.014, 0.005, "stripe")
-    # Two faces of the same motor lamp let the plan and operator see power.
+        for mm in range(0, 106, 5):
+            bar(f"tick_{mm}", mm/1000, .024 if mm % 10 == 0 else .018, .0007, "navy")
+        for name, lo, hi, ink in (("ring", 5, 15, "ring_ink"), ("tray", 20, 28, "stripe"),
+                                  ("foot", 30, 38, "load_ink"), ("lip", 90, 101, "load_ink")):
+            # Side-by-side ink columns keep the tray and foot bands distinct.
+            offset = -.005 if ink == "load_ink" else .005
+            loc = (xy[0]+.001, xy[1]+offset) if back else (xy[0]+offset, xy[1]+.001)
+            dims = (.0005, .003, (hi-lo)/2000) if back else (.003, .0005, (hi-lo)/2000)
+            decor(steel, f"{side}_{name}_band", "box", (*loc, (hi+lo)/2000), dims, ink)
+    # Views of one pilot lamp, wired across the motor.
     for name, pos, size in (
-        ("lamp_face", (-0.169, -0.184, 0.112), (0.001, 0.012, 0.007)),
-        ("lamp_plan", (-0.131, -0.169, 0.218), (0.010, 0.010, 0.001)),
+        ("lamp_face", (-.169, -.220, .168), (.001, .009, .003)),
+        ("lamp_plan", (-.132, -.191, .225), (.008, .008, .001)),
     ):
-        decor(steel, name + "_bezel", "box", pos, size, "graphite")
-        loc = np.array(pos) + ([-0.0015, 0, 0] if name == "lamp_face" else [0, 0, 0.0015])
-        lens = np.array(size) * 0.74
-        ET.SubElement(steel, "geom", name=name, type="box", pos=numbers(loc), size=numbers(lens),
+        decor(steel, name+"_bezel", "box", pos, size, "graphite")
+        loc = np.array(pos) + ([-.0015, 0, 0] if name == "lamp_face" else [0, 0, .0015])
+        ET.SubElement(steel, "geom", name=name, type="box", pos=numbers(loc), size=numbers(np.array(size)*.8),
                       rgba=".12 .15 .13 1", contype="0", conaffinity="0", mass="0")
-    # Latch end crosses this 10 mm witness strip at door closure.
-    decor(steel, "latch_bracket", "box", (-0.178, -0.167, 0.219), (0.022, 0.015, 0.002), "graphite")
-    decor(steel, "latch_target", "box", (-0.185, -0.159, 0.222), (0.010, 0.006, 0.0006), "load_ink")
+    # The fixed hoop frames the dot on the door below it when the door is shut.
+    target = ET.SubElement(steel, "body", name="latch_target",
+                           pos=numbers((FRONT - HUB[0], HINGE[1] - LATCH_RADIUS, .224)))
+    circ(target, "latch_witness", .010, 0, .0012, "load_ink", 32, visual=True)
+    decor(steel, "witness_holder", "box", (-.161, -.187, .224), (.002, .006, .001), "load_ink")
     panel = ET.SubElement(w, "body", name="start_button", pos=numbers(BUTTON))
     ET.SubElement(
         panel,
@@ -120,7 +159,7 @@ def cabinet(w, drives):
         damping="1.0",
         armature=".002",
     )
-    geom(panel, "start", "box", (0, 0, 0), (0.004, 0.018, 0.010), "teal", mass=".012")
+    geom(panel, "start", "box", (0, 0, 0), (0.004, 0.010, 0.006), "teal", mass=".012")
     decor(panel, "start_mark", "ellipsoid", (-0.0041, 0, 0), (0.0004, 0.004, 0.003), "enamel")
     door = ET.SubElement(w, "body", name="door", pos=numbers((*HINGE, FLOOR)))
     ET.SubElement(
@@ -134,42 +173,47 @@ def cabinet(w, drives):
         frictionloss=".095",
         armature=".003",
     )
-    ET.SubElement(door, "inertial", mass=".68", pos="0 -.155 .105", diaginertia=".0082 .0028 .0055")
-    geom(door, "window", "box", (0, -0.154, 0.109), (0.002, 0.130, 0.079), "clear")
+    ET.SubElement(door, "inertial", mass=".70", pos="0 -.176 .105", diaginertia=".0105 .0032 .0077")
+    geom(door, "window", "box", (0, -.157, .105), (.002, .123, .064), "smoked")
     for name, pos, size in (
-        ("sill", (0, -0.154, 0.016), (0.010, 0.155, 0.016)),
-        ("top", (0, -0.154, 0.204), (0.010, 0.155, 0.017)),
-        ("hinge_edge", (0, -0.011, 0.111), (0.010, 0.012, 0.081)),
-        ("door_edge", (0, -0.298, 0.111), (0.010, 0.012, 0.081)),
+        ("sill", (0, -.175, .012), (.009, .175, .029)),
+        ("top", (0, -.175, .195), (.009, .175, .026)),
+        ("hinge_edge", (0, -.017, .105), (.009, .017, .064)),
+        ("door_edge", (0, -.315, .105), (.009, .035, .064)),
     ):
         geom(door, name, "box", pos, size, "graphite")
-    decor(door, "latch_mark", "box", (0, -0.300, 0.222), (0.002, 0.006, 0.0006), "stripe")
-    for z in (0.050, 0.168):
-        geom(
-            door,
-            f"handle_mount_{z}",
-            "capsule",
-            (0, 0, 0),
-            (0.007,),
-            "metal",
-            fromto=numbers((-0.010, -0.290, z, -0.035, -0.290, z)),
-        )
-    geom(door, "handle", "capsule", (0, 0, 0), (0.009,), "metal", fromto="-.035 -.29 .05 -.035 -.29 .168")
+    decor(door, "latch_mark", "cylinder", (0, -LATCH_RADIUS, .222), (.0035, .0006), "stripe")
+    # Tall squared pull and its two stand-offs, as on the reference front.
+    for z in (.015, .185):
+        geom(door, f"handle_mount_{z}", "box", (-.023, -HANDLE_RADIUS, z), (.014, .008, .007), "graphite")
+    geom(door, "handle", "box", (-.035, -HANDLE_RADIUS, .100), (.009, .010, .092), "pull")
     shaft = ET.SubElement(w, "body", name="spindle", pos=numbers((*HUB, FLOOR)))
-    ET.SubElement(
-        shaft, "joint", name="shaft", type="hinge", axis="0 0 1", damping=".002", armature=".0005"
-    )
-    geom(shaft, "hub_base", "cylinder", (0, 0, 0.0025), (0.023, 0.0025), "coupler")
-    for i in range(3):
-        a = i * math.tau / 3
-        geom(
-            shaft,
-            f"drive_pin_{i}",
-            "cylinder",
-            (0.016 * math.cos(a), 0.016 * math.sin(a), 0.010),
-            (0.004, 0.006),
-            "coupler",
-        )
+    ET.SubElement(shaft, "joint", name="shaft", type="hinge", axis="0 0 1", damping=".002", armature=".0005")
+    # Rendering and the printable part share one surface. Convex collision pieces
+    # preserve the recessed, three-lobed opening in MuJoCo.
+    def mesh(name, vertices, faces=None):
+        attrs = dict(name=name, vertex=numbers(np.ravel(vertices)/1000))
+        if faces is not None:
+            attrs["face"] = " ".join(map(str, faces.ravel()))
+        ET.SubElement(assets, "mesh", **attrs)
+    mesh("drive_cup", *coupling.cup())
+    mesh("tray_lug", *coupling.lug())
+    ET.SubElement(shaft, "geom", name="cup_surface", type="mesh", mesh="drive_cup",
+                  material="coupler", contype="0", conaffinity="0", mass="0")
+    base_angle = math.tau/3
+    # Twenty sectors span one lobe. The other two are exact 120-degree copies.
+    for j in range(coupling.COUNT//3):
+        outer = coupling.OUTER[j:j+2]
+        inner = coupling.INNER[j:j+2]
+        floor_xy = np.vstack(([0, 0], outer))
+        wall_xy = np.vstack((outer, inner[::-1]))
+        for label, xy, low, high in (("floor", floor_xy, 2, coupling.POCKET_FLOOR),
+                                      ("wall", wall_xy, coupling.POCKET_FLOOR, coupling.CUP_TOP)):
+            name = f"cup_{label}_{j}"
+            mesh(name, np.vstack((coupling.level(xy, low), coupling.level(xy, high))))
+            for k in range(3):
+                ET.SubElement(shaft, "geom", name=f"{name}_{k}", type="mesh", mesh=name, group="3",
+                              material="coupler", euler=numbers((0, 0, k*base_angle)))
     ET.SubElement(
         drives, "velocity", joint="shaft", name="turntable_motor", kv=".23", forcerange="-.20 .20"
     )
@@ -224,11 +268,27 @@ def loose_parts(w):
     ring = ET.SubElement(w, "body", name="roller_ring", pos=numbers((*RING_START, RING_PICK_Z)))
     ET.SubElement(ring, "freejoint", name="ring_pose")
     ET.SubElement(ring, "inertial", pos="0 0 0", mass=".044", diaginertia=".00012 .00012 .00022")
-    circ(ring, "guide", RING_R, 0, 0.0034, "roller", 30)
-    circ(ring, "axle_line", RING_R, 0, 0.0035, "ring_ink", 30, visual=True)
+    # Three open axle forks leave the nylon wheels free to roll. Keep the painted
+    # centerline on the hoop ends visible in both plan and elevation.
+    for j in range(60):
+        a, b = np.array([j, j+1]) * math.tau/60
+        from_wheel = abs(((a+b)/2 - math.pi + math.pi/3) % (math.tau/3) - math.pi/3)
+        if from_wheel < math.radians(9):
+            continue
+        ends = numbers((RING_R*math.cos(a), RING_R*math.sin(a), 0,
+                        RING_R*math.cos(b), RING_R*math.sin(b), 0))
+        geom(ring, f"guide_{j}", "capsule", (0, 0, 0), (.0034,), "roller", fromto=ends)
+        decor(ring, f"axle_line_{j}", "capsule", (0, 0, 0), (.0035,), "ring_ink", fromto=ends)
     for i in range(3):
         a = math.pi + i * math.tau / 3
         axis = np.array([math.cos(a), math.sin(a), 0.0])
+        for side in (-1, 1):
+            geom(ring, f"fork_{i}_{side}", "box", axis*(RING_R+side*.0065),
+                 (.001, .016, .0035), "roller", euler=numbers((0, 0, a)))
+        for side in (-1, 1):
+            mid = axis*(RING_R-.0016) + np.array([-axis[1], axis[0], 0])*side*.014
+            geom(ring, f"fork_bridge_{i}_{side}", "box", mid, (.0085, .002, .0034), "roller",
+                 euler=numbers((0, 0, a)))
         wheel = ET.SubElement(ring, "body", name=f"wheel_{i}", pos=numbers(axis * RING_R))
         ET.SubElement(wheel, "joint", name=f"axle_{i}", type="hinge", axis=numbers(axis), damping=".000004")
         geom(
@@ -244,36 +304,16 @@ def loose_parts(w):
         )
     tray = ET.SubElement(w, "body", name="tray", pos=numbers((*TRAY_START, TRAY_PICK_Z)))
     ET.SubElement(tray, "freejoint", name="tray_pose")
-    ET.SubElement(tray, "inertial", pos="0 0 0", mass=".400", diaginertia=".00133 .00133 .00265")
-    geom(tray, "glass_disk", "cylinder", (0, 0, 0), (TRAY_R, 0.004), "glass", friction=".55 .003 .0001")
-    circ(tray, "tray_edge_mark", TRAY_R, 0, 0.0009, "navy", 72, visual=True)
-    decor(tray, "tray_center", "cylinder", (0, 0, 0.0043), (0.0021, 0.00025), "stripe")
-    decor(tray, "tray_stripe", "box", (0.105, 0, 0.0045), (0.010, 0.004, 0.0004), "stripe")
-    decor(tray, "stripe_edge", "box", (0.1145, 0, 0), (0.0005, 0.004, 0.004), "stripe")
-    # Recesses beneath the glass enclose each spindle pin on all four sides.
+    ET.SubElement(tray, "inertial", pos="0 0 0", mass=".480", diaginertia=".00194 .00194 .00387")
+    geom(tray, "glass_disk", "cylinder", (0, 0, 0), (TRAY_R, .004), "glass", friction=".55 .003 .0001")
+    circ(tray, "raised_lip", TRAY_R-.0025, .004, .0025, "glass", 72)
+    circ(tray, "tray_edge_mark", TRAY_R, 0, .0009, "navy", 72, visual=True)
+    decor(tray, "tray_center", "cylinder", (0, 0, .0043), (.0021, .00025), "stripe")
+    decor(tray, "tray_stripe", "box", (TRAY_R-.012, 0, .0048), (.012, .004, .0005), "stripe")
+    decor(tray, "stripe_edge", "box", (TRAY_R, 0, 0), (.0006, .004, .004), "stripe")
     for i in range(3):
-        a = i * math.tau / 3
-        tangent = np.array([-math.sin(a), math.cos(a)])
-        radial = np.array([math.cos(a), math.sin(a)])
-        for j, (dr, dt, sr, st) in enumerate(
-            (
-                (0, 0.009, 0.009, 0.002),
-                (0, -0.009, 0.009, 0.002),
-                (0.009, 0, 0.002, 0.008),
-                (-0.009, 0, 0.002, 0.008),
-            )
-        ):
-            p = (0.016 + dr) * radial + dt * tangent
-            geom(
-                tray,
-                f"socket_{i}_{j}",
-                "box",
-                (*p, -0.008),
-                (sr, st, 0.005),
-                "edge",
-                euler=numbers((0, 0, a)),
-                friction=".45 .002 .0001",
-            )
+        ET.SubElement(tray, "geom", name=f"tray_lug_{i}", type="mesh", mesh="tray_lug",
+                      pos="0 0 -.013", euler=numbers((0, 0, i*math.tau/3)), material="edge")
     mug = ET.SubElement(w, "body", name="mug", pos=numbers((*MUG_START, TABLE)))
     ET.SubElement(mug, "freejoint", name="mug_pose")
     ET.SubElement(mug, "inertial", pos="0 0 .032", mass=".19", diaginertia=".00015 .00016 .00010")
@@ -303,7 +343,7 @@ def loose_parts(w):
     )
     circ(mug, "cup_lip", 0.028, 0.067, 0.0031, "cream", 32, visual=True)
     decor(mug, "mug_dot", "cylinder", (0, 0, 0.007), (0.005, 0.00035), "yellow")
-    circ(mug, "mug_foot", 0.026, 0.0006, 0.00075, "cream", 40, visual=True)
+    circ(mug, "mug_foot_band", .031, .006, .0013, "mint", 48, visual=True)
     # The open loop faces the back of the oven when the mug is set down.
     for i in range(10):
         a, b = np.array([i, i + 1]) * math.pi / 10
@@ -333,7 +373,13 @@ def build():
     colors = {
         "enamel": " .83 .84 .81 1",
         "metal": ".56 .60 .62 1",
-        "graphite": ".105 .116 .13 1",
+        "graphite": ".081 .086 .097 1",
+        "case": ".112 .119 .132 1",
+        "pull": ".125 .134 .146 1",
+        "plinth": ".27 .29 .30 1",
+        "vent": ".027 .032 .039 1",
+        "smoked": ".19 .23 .25 .44",
+        "amber": ".97 .66 .14 1",
         "clear": ".77 .90 .94 .045",
         "navy": ".065 .105 .16 1",
         "stripe": ".02 .16 .93 1",
@@ -345,9 +391,10 @@ def build():
         "teal": ".09 .43 .38 1",
         "glaze": ".88 .30 .13 1",
         "cream": ".97 .85 .71 1",
-        "glass": ".64 .85 .88 .13",
-        "edge": ".49 .68 .68 1",
-        "coupler": ".42 .31 .22 1",
+        "mint": ".23 .93 .66 1",
+        "glass": ".64 .85 .88 .17",
+        "edge": ".60 .75 .74 .78",
+        "coupler": ".67 .57 .45 1",
         "roller": ".40 .37 .33 1",
         "wheel": ".83 .74 .54 1",
         "counter": ".68 .63 .55 1",
@@ -430,7 +477,7 @@ def build():
         ET.SubElement(w, "camera", name=name, pos=numbers(eye), xyaxes=axes,
                       projection="orthographic", fovy=str(height))
     cup_surface(assets)
-    cabinet(w, drives)
+    cabinet(w, drives, assets)
     loose_parts(w)
     add_arms(root)
     return ET.tostring(root, encoding="unicode")
