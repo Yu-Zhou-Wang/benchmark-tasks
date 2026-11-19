@@ -1,0 +1,71 @@
+{
+  "scripted": {
+    "policy": "scripted",
+    "task_score": 1.0,
+    "steps": 1347,
+    "simulation_seconds": 67.35,
+    "wall_seconds": 6.408179411024321,
+    "seed": 0,
+    "termination": "success",
+    "score": 1.0,
+    "turn_deg": 361.1588575057758,
+    "shaft_tray_mug_deg": [
+      361.9837318091362,
+      361.25547631042707,
+      361.1588575057758
+    ],
+    "ring_error_mm": 3.257361838527472,
+    "tray_error_mm": 0.07418447804412934,
+    "ring_seated": true,
+    "tray_seated": true,
+    "mug_loaded": true,
+    "wheel_contacts": 3,
+    "key_phase_deg": 10.72348596083381,
+    "key_contact_N": 0.738195997327265,
+    "mug_radius_mm": 65.22249285162933,
+    "mug_tilt_deg": 0.04887475284190165,
+    "door_deg": 0.5156620157381498,
+    "button_mm": 3.8258202913546056e-290,
+    "motor_on": true
+  },
+  "dream": {
+    "policy": "dreamlabs/dream-1-beta",
+    "task_score": 0.0,
+    "steps": 1400,
+    "termination": "max_steps",
+    "errored_trials": 0,
+    "seed": 0,
+    "requests": 29,
+    "wall_seconds": 22.38114333397243
+  },
+  "missed_hub": {
+    "policy": "scripted",
+    "miss_hub": true,
+    "task_score": 0.25,
+    "steps": 1400,
+    "simulation_seconds": 70.0,
+    "wall_seconds": 4.599983797990717,
+    "seed": 0,
+    "termination": "max_steps",
+    "score": 0.25,
+    "turn_deg": 0.0,
+    "shaft_tray_mug_deg": [
+      0.0,
+      0.0,
+      0.0
+    ],
+    "ring_error_mm": 5.179809097743899,
+    "tray_error_mm": 46.98856946831563,
+    "ring_seated": true,
+    "tray_seated": false,
+    "mug_loaded": false,
+    "wheel_contacts": 3,
+    "key_phase_deg": 55.177046638898894,
+    "key_contact_N": 13.994927373449045,
+    "mug_radius_mm": 118.7939826864254,
+    "mug_tilt_deg": 0.0012061612967575906,
+    "door_deg": 0.5156620153954166,
+    "button_mm": 0.0,
+    "motor_on": true
+  }
+}

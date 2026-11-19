@@ -1,0 +1,20 @@
+{
+  "title": "Reinstall a microwave turntable after cleaning",
+  "category": "Societal relevance",
+  "keywords": [
+    "household maintenance",
+    "microwave",
+    "turntable",
+    "hidden coupling",
+    "loaded rotation"
+  ],
+  "instruction": "Reinstall the microwave turntable after cleaning. Center the loose roller ring in the oven, seat the glass tray on the drive hub, and put the orange mug off center on the tray. Close the door, press the green start button, and let the mug ride one smooth full turn.",
+  "context": "A cleaned tray can sit flat on the rollers while missing the drive. An off-center mug reveals whether the motor actually carries the load through a whole turn.",
+  "setup": "Coordinates in cm from the midpoint of the YAM bases, x forward and y left. A 110 × 110 cm counter supports a fixed 39.2 cm wide, 33.2 cm deep, 27.2 cm tall metal microwave on a 7.6 cm riser. The oven floor is 11.5 cm above the counter. Its three-pin hub is at (52.5, 0). The 31 cm door opens 170° on its left hinge. The green start key is at the lower right. A loose nylon ring with a 14 cm pitch diameter and three 20 × 10 mm wheels starts at (20.2, 13.6), axle height 8.7 cm. A loose 23 cm diameter, 8 mm thick, 370 g glass tray starts at (22.6, −8.5), center height 9.3 cm. Each part rests on three silicone drying posts. A 62 mm diameter, 70 mm tall, 190 g handled ceramic mug stands at (36.5, −32.2). The two parallel-gripper arms begin raised and open, 61 cm apart.",
+  "scoring": "End-state credit is cumulative. 0.25 for a released ring centered within 12 mm, axle height 10 ± 3 mm and tilt ≤4°. 0.50 adds a released tray centered within 5 mm, height 24 ± 2.5 mm, tilt ≤2°, socket phase within 22° and at least two roller contacts. 0.75 adds a released mug touching the tray, base 4 ± 3 mm above its center plane, 35–78 mm off axis and tilt ≤5°. 1.00 requires all of these conditions continuously through ≥360° each for the powered shaft, tray and mug orbit. Every 50 ms sample must stay within 3.3–8.7 rpm with the door closed within 2° and at least 0.02 N of key contact. An interruption resets the turn. Otherwise score the highest satisfied tier or 0.",
+  "run_limit": "1,400 actions at 20 Hz (70 simulated seconds).",
+  "reset_notes": "Seed 0, fixed layout. Restore the three loose parts to their listed starting coordinates, open the door and reset the timer.",
+  "fidelity": "Original compact countertop microwave with colliding enclosure and door, spring-loaded switch, three-pin drive, free wheeled carrier, rigid frosted-glass tray with keyed underside and a freely moving hollow mug. The interlock controls a motor-only test cycle. Rigid contact approximates the materials. Heating, liquid and fracture are outside the model.",
+  "scores": "Dream-1 beta: 0.00. Scripted demo: 1.00.",
+  "media": null
+}
