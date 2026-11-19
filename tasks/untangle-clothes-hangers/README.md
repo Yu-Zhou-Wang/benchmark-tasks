@@ -50,6 +50,21 @@ After 0.75 s of settling, perform each lift from the same starting arrangement. 
 | [Blue](evidence/lift-b.png) | 14.74 mm | 2.69 mm |
 | [Purple](evidence/lift-c.png) | 14.82 mm | 2.69 mm |
 
+## External assets and licenses
+
+Both arms load the same YAM model from the installed YAM Arena revision `0059d02`. Robot file paths below are relative to `yam_arena/assets/yam/`.
+
+| Asset used by the task | Source and applicable license |
+|---|---|
+| Arm and gripper kinematics, joint limits and inertias in `yam_arm.urdf`, plus the nine STL meshes in `assets/` for the base, links 1–5, gripper and two fingertips | **MIT, © I2RT Robotics.** YAM Arena sources the I2RT model (revision `120c3c8`) through YAM-inspect-Isaac. [I2RT model](https://github.com/i2rt-robotics/i2rt/tree/120c3c81400171174604e503943f8d1ebc891058/i2rt/robot_models/arm/yam/v1) · [Packaged URDF](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/yam_arm.urdf) · [Model license](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/LICENSE.i2rt) |
+| Convex collision meshes for link 4 (12 STL parts in `collision/link4/`) and the gripper (44 in `collision/gripper/`) | **MIT, © I2RT Robotics.** These parts belong to the packaged YAM model. [Collision meshes](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/collision) · [Model license](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/LICENSE.i2rt) |
+| Black and white visual meshes for links 2 and 3 (four STL files in `dream/`) | **MIT, © I2RT Robotics.** The `dreamlabs` 1.0.23 wheel supplies the color-separated versions of the I2RT meshes. [File names, hashes and license attribution](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/assets/yam/dream/SOURCE) |
+| Arm-base mounts and the intrinsics and poses of the top, left-wrist and right-wrist cameras | **MIT, © 2026 Tianyuan Dai.** The physical calibration comes from ARISE Initiative's YAMLab revision `ec0455d2`. [Calibration file](https://github.com/ARISE-Initiative/yamlab/blob/ec0455d2b4ce35f21fc126418ea5e74ac567133d/yamlab/configs/robot/yam.yaml) · [License](https://github.com/ARISE-Initiative/yamlab/blob/ec0455d2b4ce35f21fc126418ea5e74ac567133d/LICENSE) |
+| Reference station coordinates, tabletop and floor elevations, and black and white arm colors | **Apache-2.0, © 2026 Dream Labs**, for Dream Labs' own MuJoCo example in `dreamlabs` 1.0.23. YAM Arena adapts those settings to its station frame. [Dream Labs release and license](https://pypi.org/project/dreamlabs/1.0.23/) · [Station definitions and provenance](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/yam_arena/station.py) |
+| YAM Arena adapter used at runtime for station transforms, camera definitions, URDF parsing and robot kinematics | **No repository-wide license is declared** at revision `0059d02`. The maintainers explicitly identify the YAM model's separate MIT license. [Adapter licensing statement](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02a1a91bc6834c1d0846022891df0c78730/README.md#license) |
+
+The task generates the hanger meshes, tape bands, rail, uprights, worktop, floor and sky locally. The IKEA photographs are shape references. [Scene geometry](scene.py)
+
 ## Run locally
 
 Activate the Python 3.12 YAM environment from the program walkthrough. The recorded trials used YAM Arena revision `0059d02`, Inspect Robots 1.0.0, its YAM plugin 0.38.0 and Dream plugin revision `b5e936a`. The station and arm meshes load from YAM Arena. Run the commands from the benchmark repository root, using a fresh output directory for each trial. The model command requires a Dream account with access to Dream-1. [Program walkthrough](https://tasks.robocurve.org/walkthrough) · [YAM station and assets](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730) · [Dream policy plugin](https://github.com/kairosiann/inspect-robots-dream/tree/b5e936a201cec66c54c297e522c920d98445e339)
