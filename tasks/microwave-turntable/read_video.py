@@ -2,20 +2,21 @@
 
 import argparse
 import json
+from itertools import islice
 from pathlib import Path
 
-import cv2
+import imageio.v2 as imageio
 
 from markers import PlanMarks, lamp_lit
 from scoring import HZ, LoadedTurn
 
 
 def read(path, ticks, lamp, first, last):
-    cap = cv2.VideoCapture(str(path))
-    try:
-        if not cap.isOpened() or abs(cap.get(cv2.CAP_PROP_FPS) - HZ) > .05:
+    with imageio.get_reader(str(path), format="FFMPEG") as recording:
+        metadata = recording.get_meta_data()
+        if abs(metadata["fps"] - HZ) > .05:
             raise ValueError("Use a readable, constant 20 fps recording.")
-        height, width = (int(cap.get(k)) for k in (cv2.CAP_PROP_FRAME_HEIGHT, cv2.CAP_PROP_FRAME_WIDTH))
+        width, height = metadata["size"]
         if not (2 <= lamp[0] < width-2 and 2 <= lamp[1] < height-2):
             raise ValueError("Lamp patch falls outside the recording.")
         marks = PlanMarks(width, height, ticks)
@@ -23,18 +24,15 @@ def read(path, ticks, lamp, first, last):
         crossings = [None]*4
         best = None
         first_full = first_lit = last_lit = None
-        cap.set(cv2.CAP_PROP_POS_FRAMES, first)
-        frame = first
-        while last is None or frame <= last:
-            ok, im = cap.read()
-            if not ok:
-                break
+        stop = last + 1 if last is not None else None
+        frame = None
+        for frame, im in enumerate(islice(recording, first, stop), start=first):
             bearings = None
             if lamp_lit(im, lamp):
                 if first_lit is None:
                     first_lit = frame
                 last_lit = frame
-                bearings = marks.bearings(im, bgr=True)
+                bearings = marks.bearings(im)
             visible = bearings is not None
             resets_before = turn.resets
             starting = turn.previous is None
@@ -51,15 +49,12 @@ def read(path, ticks, lamp, first, last):
                                 both_past_quarter_frame=crossings.copy())
                 if complete and first_full is None:
                     first_full = frame
-            frame += 1
-        if frame == first:
+        if frame is None:
             raise ValueError("No frames in the selected interval.")
         if best:
             best["travel_deg"] = [round(a, 2) for a in best["travel_deg"]]
         return dict(first_lit_frame=first_lit, last_lit_frame=last_lit, first_complete_turn_frame=first_full,
                     longest_visible_turn=best)
-    finally:
-        cap.release()
 
 
 if __name__ == "__main__":

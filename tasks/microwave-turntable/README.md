@@ -57,7 +57,7 @@ The simulator measures the positions of the painted exterior features for placem
 
 ## Run and verify
 
-Use the pinned YAM Arena environment with Python 3.12, MuJoCo 3.11, Inspect Robots 1.0 and OpenCV. The adapter installer supplies the robot and cameras. Install MuJoCo 3.11, OpenCV, Pillow and imageio-ffmpeg in that environment if needed. From this task directory in the activated environment, run the following with a fresh output path. [Pinned environment setup](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730#quickstart)
+Use the pinned YAM Arena environment with Python 3.12, MuJoCo 3.11, Inspect Robots 1.0 and OpenCV. The adapter installer supplies the robot and cameras. Install MuJoCo 3.11, OpenCV, Pillow, imageio and imageio-ffmpeg in that environment if needed. From this task directory in the activated environment, run the following with a fresh output path. [Pinned environment setup](https://github.com/kairosiann/yam-isaac-lab-arena/tree/0059d02a1a91bc6834c1d0846022891df0c78730#quickstart)
 
 ```bash
 python demo.py --record --out /tmp/turntable-full
@@ -95,4 +95,4 @@ The cabinet, face artwork, tray, ring, coupling, mug and drawing are original ta
 
 A separate simulated cycle check pressed Start with the door open and the lamp stayed dark. With the door closed, a held Start key produced exactly 30.0 seconds of motor power. The next cycle began on a fresh press. This timer check ran beyond the benchmark action limit to observe shutoff.
 
-The full recording first shows power on frame 1,026. From the compressed video, the marks pass their respective quarter turns on frames 1,093, 1,150, 1,208 and 1,262. The stripe travels 360.54° and the mug dot 360.35°. The interrupted recording reaches 182.88° and 181.33° before the lamp goes dark. The recorded full run took about 20 seconds of wall time on the validation workstation. All reported trials used simulation. Physical construction and commissioning are pending. [Trial results](results.json)
+The full recording first shows power on frame 1,026. From the compressed video, the marks pass their respective quarter turns on frames 1,093, 1,150, 1,207 and 1,262. The stripe travels 360.54° and the mug dot 360.35°. The interrupted recording reaches 182.91° and 181.21° before the lamp goes dark. The recorded full run took about 20 seconds of wall time on the validation workstation. All reported trials used simulation. Physical construction and commissioning are pending. [Trial results](results.json)
