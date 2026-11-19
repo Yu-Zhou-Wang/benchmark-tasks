@@ -1,71 +1,302 @@
 {
   "scripted": {
     "policy": "scripted",
+    "miss_hub": false,
+    "interrupted": false,
+    "stop_after": null,
+    "door_cut_step": null,
     "task_score": 1.0,
-    "steps": 1347,
-    "simulation_seconds": 67.35,
-    "wall_seconds": 6.408179411024321,
+    "steps": 1258,
+    "simulation_seconds": 62.9,
+    "wall_seconds": 15.326107390981633,
     "seed": 0,
     "termination": "success",
     "score": 1.0,
-    "turn_deg": 361.1588575057758,
-    "shaft_tray_mug_deg": [
-      361.9837318091362,
-      361.25547631042707,
-      361.1588575057758
+    "turn_deg": 361.0224567368273,
+    "tray_mug_travel_deg": [
+      361.84215592586736,
+      361.0224567368273
     ],
-    "ring_error_mm": 3.257361838527472,
-    "tray_error_mm": 0.07418447804412934,
+    "tray_mug_bearing_deg": [
+      -4.262813774392745,
+      -170.78597107703405
+    ],
+    "best_loaded_turn_deg": 361.0224567368273,
+    "turn_resets": 0,
     "ring_seated": true,
+    "ring_error_mm": 4.909609649092258,
+    "ring_height_mm": 9.965298160528269,
+    "ring_tilt_deg": 0.014737667167052238,
     "tray_seated": true,
+    "tray_error_mm": 0.8068883633747983,
+    "tray_height_mm": 23.925883725601338,
+    "tray_tilt_deg": 0.036351203491470405,
     "mug_loaded": true,
-    "wheel_contacts": 3,
-    "key_phase_deg": 10.72348596083381,
-    "key_contact_N": 0.738195997327265,
-    "mug_radius_mm": 65.22249285162933,
-    "mug_tilt_deg": 0.04887475284190165,
-    "door_deg": 0.5156620157381498,
-    "button_mm": 3.8258202913546056e-290,
-    "motor_on": true
+    "mug_radius_mm": 64.40981032008104,
+    "mug_tilt_deg": 0.03758052034707202,
+    "mug_foot_gap_mm": -0.006992987291049198,
+    "latch_gap_mm": 2.699990888147624,
+    "grippers_clear": true,
+    "start_button_mm": 9.89810680478834e-207,
+    "motor_on": true,
+    "video_readback": {
+      "frames": [
+        1026,
+        1258
+      ],
+      "travel_deg": [
+        361.8,
+        361.1
+      ],
+      "both_past_quarter_frame": [
+        1088,
+        1144,
+        1202,
+        1258
+      ],
+      "max_slip_deg": 1.2,
+      "min_half_second_deg": [
+        10.3,
+        10.9
+      ]
+    }
   },
-  "dream": {
-    "policy": "dreamlabs/dream-1-beta",
-    "task_score": 0.0,
-    "steps": 1400,
-    "termination": "max_steps",
-    "errored_trials": 0,
+  "ring_only": {
+    "policy": "scripted",
+    "miss_hub": false,
+    "interrupted": false,
+    "stop_after": "ring",
+    "door_cut_step": null,
+    "task_score": 0.25,
+    "steps": 280,
+    "simulation_seconds": 14.0,
+    "wall_seconds": 3.3182026839931495,
     "seed": 0,
-    "requests": 29,
-    "wall_seconds": 22.38114333397243
+    "termination": "placement_stop",
+    "score": 0.25,
+    "turn_deg": 0.0,
+    "tray_mug_travel_deg": [
+      0.0,
+      0.0
+    ],
+    "tray_mug_bearing_deg": [
+      -156.33964137396546,
+      -116.42253038472911
+    ],
+    "best_loaded_turn_deg": 0.0,
+    "turn_resets": 0,
+    "ring_seated": true,
+    "ring_error_mm": 7.839364121451918,
+    "ring_height_mm": 11.23718724759415,
+    "ring_tilt_deg": 1.8989849463197193,
+    "tray_seated": false,
+    "tray_error_mm": 310.8472161608655,
+    "tray_height_mm": -22.001573779740102,
+    "tray_tilt_deg": 0.00012839007101141402,
+    "mug_loaded": false,
+    "mug_radius_mm": 359.5609861812872,
+    "mug_tilt_deg": 0.0012065401573559697,
+    "mug_foot_gap_mm": -97.00287120924159,
+    "latch_gap_mm": 597.7175691535749,
+    "grippers_clear": true,
+    "start_button_mm": 0.0,
+    "motor_on": false
+  },
+  "tray_only": {
+    "policy": "scripted",
+    "miss_hub": false,
+    "interrupted": false,
+    "stop_after": "tray",
+    "door_cut_step": null,
+    "task_score": 0.5,
+    "steps": 572,
+    "simulation_seconds": 28.6,
+    "wall_seconds": 6.577061438001692,
+    "seed": 0,
+    "termination": "placement_stop",
+    "score": 0.5,
+    "turn_deg": 0.0,
+    "tray_mug_travel_deg": [
+      0.0,
+      0.0
+    ],
+    "tray_mug_bearing_deg": [
+      -1.496684558505794,
+      -116.42252843702448
+    ],
+    "best_loaded_turn_deg": 0.0,
+    "turn_resets": 0,
+    "ring_seated": true,
+    "ring_error_mm": 5.06777956707416,
+    "ring_height_mm": 9.975384564544276,
+    "ring_tilt_deg": 0.0030337777034722888,
+    "tray_seated": true,
+    "tray_error_mm": 1.6854006402853512,
+    "tray_height_mm": 23.95148771032396,
+    "tray_tilt_deg": 0.006495344713467852,
+    "mug_loaded": false,
+    "mug_radius_mm": 359.5609776071463,
+    "mug_tilt_deg": 0.0010972041080437196,
+    "mug_foot_gap_mm": -142.9486854653839,
+    "latch_gap_mm": 598.2098589950255,
+    "grippers_clear": true,
+    "start_button_mm": 0.0,
+    "motor_on": false
+  },
+  "mug_only": {
+    "policy": "scripted",
+    "miss_hub": false,
+    "interrupted": false,
+    "stop_after": "mug",
+    "door_cut_step": null,
+    "task_score": 0.75,
+    "steps": 817,
+    "simulation_seconds": 40.85,
+    "wall_seconds": 9.82755648798775,
+    "seed": 0,
+    "termination": "placement_stop",
+    "score": 0.75,
+    "turn_deg": 0.0,
+    "tray_mug_travel_deg": [
+      0.0,
+      0.0
+    ],
+    "tray_mug_bearing_deg": [
+      -3.4070857858447905,
+      -168.7623438837912
+    ],
+    "best_loaded_turn_deg": 0.0,
+    "turn_resets": 0,
+    "ring_seated": true,
+    "ring_error_mm": 5.1984342359537274,
+    "ring_height_mm": 9.963590092310959,
+    "ring_tilt_deg": 0.01802151986636427,
+    "tray_seated": true,
+    "tray_error_mm": 0.6489352218872815,
+    "tray_height_mm": 23.926070178392877,
+    "tray_tilt_deg": 0.03743415324341498,
+    "mug_loaded": true,
+    "mug_radius_mm": 64.80073274492901,
+    "mug_tilt_deg": 0.03846750773341695,
+    "mug_foot_gap_mm": -0.007050241917373051,
+    "latch_gap_mm": 598.2098589943967,
+    "grippers_clear": true,
+    "start_button_mm": 7.741664101559762e-148,
+    "motor_on": false
   },
   "missed_hub": {
     "policy": "scripted",
     "miss_hub": true,
+    "interrupted": false,
+    "stop_after": null,
+    "door_cut_step": null,
     "task_score": 0.25,
     "steps": 1400,
     "simulation_seconds": 70.0,
-    "wall_seconds": 4.599983797990717,
+    "wall_seconds": 16.44128539803205,
     "seed": 0,
     "termination": "max_steps",
     "score": 0.25,
     "turn_deg": 0.0,
-    "shaft_tray_mug_deg": [
-      0.0,
+    "tray_mug_travel_deg": [
       0.0,
       0.0
     ],
-    "ring_error_mm": 5.179809097743899,
-    "tray_error_mm": 46.98856946831563,
+    "tray_mug_bearing_deg": [
+      7.316783177399621,
+      -166.11318015073857
+    ],
+    "best_loaded_turn_deg": 0.0,
+    "turn_resets": 0,
     "ring_seated": true,
+    "ring_error_mm": 7.551696214695352,
+    "ring_height_mm": 11.315803216615961,
+    "ring_tilt_deg": 2.1054894412418985,
     "tray_seated": false,
+    "tray_error_mm": 52.324195039371226,
+    "tray_height_mm": 25.551577214038556,
+    "tray_tilt_deg": 2.3165189512423625,
     "mug_loaded": false,
-    "wheel_contacts": 3,
-    "key_phase_deg": 55.177046638898894,
-    "key_contact_N": 13.994927373449045,
-    "mug_radius_mm": 118.7939826864254,
-    "mug_tilt_deg": 0.0012061612967575906,
-    "door_deg": 0.5156620153954166,
-    "button_mm": 0.0,
+    "mug_radius_mm": 109.26607222977137,
+    "mug_tilt_deg": 3.904703188486622,
+    "mug_foot_gap_mm": -30.38633611664939,
+    "latch_gap_mm": 2.6999908863451774,
+    "grippers_clear": true,
+    "start_button_mm": -4.94e-321,
     "motor_on": true
+  },
+  "interrupted": {
+    "policy": "scripted",
+    "miss_hub": false,
+    "interrupted": true,
+    "stop_after": null,
+    "door_cut_step": 1151,
+    "task_score": 0.75,
+    "steps": 1400,
+    "simulation_seconds": 70.0,
+    "wall_seconds": 16.671314244973473,
+    "seed": 0,
+    "termination": "max_steps",
+    "score": 0.75,
+    "turn_deg": 0.0,
+    "tray_mug_travel_deg": [
+      0.0,
+      0.0
+    ],
+    "tray_mug_bearing_deg": [
+      -173.6929610128419,
+      21.098164992939587
+    ],
+    "best_loaded_turn_deg": 189.61172625479804,
+    "turn_resets": 1,
+    "ring_seated": true,
+    "ring_error_mm": 5.04123012907484,
+    "ring_height_mm": 9.962612979117935,
+    "ring_tilt_deg": 0.010910631495123913,
+    "tray_seated": true,
+    "tray_error_mm": 0.7058020771030156,
+    "tray_height_mm": 23.928261109906757,
+    "tray_tilt_deg": 0.022743615032587476,
+    "mug_loaded": true,
+    "mug_radius_mm": 65.10229066388972,
+    "mug_tilt_deg": 0.02362467567001421,
+    "mug_foot_gap_mm": -0.00705392708662874,
+    "latch_gap_mm": 2.699990857312907,
+    "grippers_clear": true,
+    "start_button_mm": 9.88e-321,
+    "motor_on": false,
+    "video_readback": [
+      {
+        "frames": [
+          1026,
+          1150
+        ],
+        "travel_deg": [
+          189.5,
+          190.4
+        ],
+        "both_past_quarter_frame": [
+          1088,
+          1144,
+          null,
+          null
+        ],
+        "max_slip_deg": 1.2,
+        "min_half_second_deg": [
+          10.3,
+          10.9
+        ]
+      }
+    ]
+  },
+  "dream": {
+    "policy": "dreamlabs/dream-1-beta",
+    "status": "not_run_on_revised_fixture"
+  },
+  "previous_submission": {
+    "dream_score": 0.0,
+    "dream_steps": 1400,
+    "media": "M-3EUS7Y",
+    "fixture": "superseded opaque tray and original rubric"
   }
 }

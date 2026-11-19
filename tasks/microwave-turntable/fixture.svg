@@ -1,0 +1,84 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1060" height="640" viewBox="0 0 1060 640" role="img" aria-labelledby="title desc">
+<title id="title">Unheated turntable fixture assembly drawing</title>
+<desc id="desc">Plan, drive pin and socket pattern, section through the spindle and roller, and cabinet elevation. All dimensions are in millimetres and heights refer to the floor surface.</desc>
+<style>
+text{font:15px sans-serif;fill:#162936} .title{font:bold 27px sans-serif}.h{font:bold 18px sans-serif}.small{font:13px sans-serif}
+.edge{stroke:#233a49;stroke-width:2;fill:none}.thin{stroke:#506877;stroke-width:1.2;fill:none}.axis{stroke:#75868c;stroke-dasharray:5 4;fill:none}
+.deck{fill:#e0e7e8;stroke:#273f50}.tray{stroke:#2367a7;fill:#d5eef6;fill-opacity:.6}.ring{stroke:#a33e80;fill:none}.pin{fill:#b9771d;stroke:#704b1c}
+</style>
+<rect width="1060" height="640" fill="#fff"/>
+<text class="title" x="24" y="37">Motor-only turntable fixture</text>
+<text x="24" y="61">Dimensions in mm  ·  Sections show nominal seated positions  ·  Floor surface z = 0</text>
+<path d="M24 75H1036 M530 83V628 M24 362H1036" class="thin"/>
+<text class="h" x="24" y="104">Guard and roller ring · plan</text>
+<g transform="translate(218 227) scale(.62)">
+ <rect x="-170" y="-166" width="392" height="332" class="deck"/>
+ <rect x="154" y="-166" width="68" height="332" fill="#a9b9bd"/>
+ <rect x="-161" y="178" width="310" height="12" rx="3" fill="#304957"/>
+ <circle cx="-161" cy="185" r="6" fill="#a33e80"/>
+ <circle r="115" class="tray" stroke-width="2"/>
+ <circle r="70" class="ring" stroke-width="6"/>
+ <g fill="#eac78c" stroke="#674e2c">
+  <rect x="-5" y="60" width="10" height="20"/><rect transform="rotate(120)" x="-5" y="60" width="10" height="20"/><rect transform="rotate(240)" x="-5" y="60" width="10" height="20"/>
+ </g>
+ <path d="M-135 0H135M0-146V146" class="axis"/>
+ <path d="M-170-179H222M-170-184v10M222-184v10" class="edge"/>
+</g>
+<text x="221" y="113" class="small">392</text>
+<text x="27" y="158">332 deep</text><path d="M99 156l14-15" class="thin"/>
+<text x="365" y="186">Control bay</text><path d="M360 182h-18" class="thin"/>
+<text x="365" y="215">Ø230 tray</text><path d="M359 211h-64l-7 7" class="thin"/>
+<text x="365" y="244">Ø140 wheel pitch</text><path d="M358 240h-77l-21-7" class="thin"/>
+<text x="365" y="274">3 rollers, 120°</text>
+<text x="27" y="331">Left hinge</text><path d="M96 328l23 12" class="thin"/>
+<text x="326" y="344">310 door · opens 170°</text><path d="M320 339h-26" class="thin"/>
+<text class="h" x="550" y="104">Drive plate and underside socket plate · plan</text>
+<g transform="translate(682 202) scale(2.25)">
+ <circle r="23" class="deck"/><circle r="16" class="axis"/><circle r="3" class="thin"/>
+ <g class="pin"><circle cx="0" cy="-16" r="4"/><circle cx="13.8564" cy="8" r="4"/><circle cx="-13.8564" cy="8" r="4"/></g>
+</g>
+<g transform="translate(907 202) scale(2.25)">
+ <circle r="29" class="tray"/><circle r="16" class="axis"/>
+ <g fill="white" stroke="#2367a7" stroke-width=".8">
+  <rect x="-7" y="-23" width="14" height="14"/><rect transform="rotate(120)" x="-7" y="-23" width="14" height="14"/><rect transform="rotate(240)" x="-7" y="-23" width="14" height="14"/>
+ </g>
+</g>
+<text x="561" y="288">Ø46 hub · Ø6 shaft</text><text x="809" y="288">Ø58 × 9 socket plate</text>
+<text x="561" y="313">3 × Ø8 drive pins</text><text x="809" y="313">3 × 14 square through</text>
+<text x="561" y="340">Both patterns Ø32 pitch circle, 120° apart. One face radial.</text>
+<text class="h" x="24" y="392">Drive section · vertical stack</text>
+<g transform="translate(107 478) scale(1.55 -1.55)">
+ <rect x="-31" y="-6" width="24" height="6" class="deck"/><rect x="7" y="-6" width="82" height="6" class="deck"/>
+ <rect x="-21" y="-30" width="42" height="24" fill="#d1d7d9" stroke="#3f535a"/>
+ <path d="M-9.5-6h19v-6h-19zM-9.5-24h19v-6h-19z" fill="#7296a2"/>
+ <rect x="-3" y="-46" width="6" height="50" fill="#505e62"/>
+ <rect x="-23" y=".5" width="46" height="4.5" class="deck"/><rect x="12" y="5" width="8" height="11" class="pin"/>
+ <rect x="-27" y="20" width="125" height="8" class="tray"/>
+ <path d="M5 11h4v9H5zM23 11h4v9h-4z" fill="#68a9bf"/>
+ <circle cx="70" cy="10" r="10" fill="#eac78c" stroke="#674e2c"/><circle cx="70" cy="10" r="1.5" fill="#233a49"/>
+ <rect x="-7" y="-55" width="14" height="20" fill="#94a7ae" stroke="#354951"/>
+ <rect x="-3" y="-61" width="6" height="14" fill="#3e5157"/>
+ <rect x="-18" y="-86" width="77" height="25" rx="3" class="deck"/>
+</g>
+<text x="278" y="422">Tray z20–28 · midline z24</text>
+<text x="278" y="443">Socket mouth z11 · pin tip z16</text>
+<text x="278" y="464">Ø20 × 10 roller · axle z10</text>
+<text x="278" y="485">Floor z0 · Ø14 shaft clearance</text>
+<text x="278" y="511">2 × 626 bearings · 6 × 19 × 6</text>
+<text x="278" y="536">Ø6 shaft · 6-to-6 clamp coupler</text>
+<text x="278" y="563">Gearbox mounting face z−61</text>
+<text x="278" y="588">12 V motor in covered base</text>
+<text class="h" x="550" y="392">Guard and door · front elevation</text>
+<rect x="586" y="420" width="281" height="132" rx="2" fill="#eef6f7" stroke="#2c4754" stroke-width="2"/>
+<rect x="586" y="420" width="221" height="132" fill="none" stroke="#374e5a" stroke-width="6"/>
+<rect x="815" y="423" width="49" height="127" fill="#85979c"/>
+<rect x="822" y="482" width="19" height="8" fill="#4fd556"/><rect x="823" y="509" width="24" height="11" fill="#177966"/>
+<path d="M608 538h170" stroke="#2367a7" stroke-width="3"/>
+<path d="M632 546h119" stroke="#a33e80" stroke-width="3"/>
+<rect x="584" y="553" width="285" height="61" class="deck"/>
+<path d="M870 421h12m-6 0v131m-6 0h12 M870 614h12m-6-60v60" class="thin"/>
+<text x="891" y="438">Roof top z224</text><text x="891" y="484">Motor lamp</text>
+<text x="891" y="516">Start button</text><text x="891" y="559">Floor z0</text>
+<text x="891" y="610">Counter z−115</text>
+<text x="585" y="634" class="small">4 mm clear roof, rear and left panels · enclosed motor bay</text>
+</svg>

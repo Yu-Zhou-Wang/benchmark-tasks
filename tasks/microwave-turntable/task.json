@@ -3,18 +3,18 @@
   "category": "Societal relatability",
   "keywords": [
     "household maintenance",
-    "microwave",
-    "turntable",
-    "hidden coupling",
+    "turntable installation",
+    "roller ring",
+    "drive pins",
     "loaded rotation"
   ],
-  "instruction": "Reinstall the microwave turntable after cleaning. Center the loose roller ring in the oven, seat the glass tray on the drive hub, and put the orange mug off center on the tray. Close the door, press the green start button, and let the mug ride one smooth full turn.",
-  "context": "A cleaned tray can sit flat on the rollers while missing the drive. An off-center mug reveals whether the motor actually carries the load through a whole turn.",
-  "setup": "Coordinates in cm from the midpoint of the YAM bases, x forward and y left. A 110 × 110 cm counter supports a fixed 39.2 cm wide, 33.2 cm deep, 27.2 cm tall metal microwave on a 7.6 cm riser. The oven floor is 11.5 cm above the counter. Its three-pin hub is at (52.5, 0). The 31 cm door opens 170° on its left hinge. The green start key is at the lower right. A loose nylon ring with a 14 cm pitch diameter and three 20 × 10 mm wheels starts at (20.2, 13.6), axle height 8.7 cm. A loose 23 cm diameter, 8 mm thick, 370 g glass tray starts at (22.6, −8.5), center height 9.3 cm. Each part rests on three silicone drying posts. A 62 mm diameter, 70 mm tall, 190 g handled ceramic mug stands at (36.5, −32.2). The two parallel-gripper arms begin raised and open, 61 cm apart.",
-  "scoring": "End-state credit is cumulative. 0.25 for a released ring centered within 12 mm, axle height 10 ± 3 mm and tilt ≤4°. 0.50 adds a released tray centered within 5 mm, height 24 ± 2.5 mm, tilt ≤2°, socket phase within 22° and at least two roller contacts. 0.75 adds a released mug touching the tray, base 4 ± 3 mm above its center plane, 35–78 mm off axis and tilt ≤5°. 1.00 requires all of these conditions continuously through ≥360° each for the powered shaft, tray and mug orbit. Every 50 ms sample must stay within 3.3–8.7 rpm with the door closed within 2° and at least 0.02 N of key contact. An interruption resets the turn. Otherwise score the highest satisfied tier or 0.",
+  "instruction": "Reinstall the microwave turntable after cleaning. Center the roller ring in the unheated fixture, seat the clear tray on the three drive pins, and place the orange mug off center. Close the door, press the green Start button, and let the marked tray and mug ride one full turn together.",
+  "context": "A tray can rest on its rollers while missing the drive pins. The marked tray and off-center mug show whether the assembled drive carries its load.",
+  "setup": "Standalone 12 V motor-only fixture on a 110 × 110 cm counter, with a 33.2 × 39.2 cm deck, clear guard and 31 cm left-hinged door open 170°. Dimensions below in cm from the midpoint of two raised, open YAM arms 61 cm apart, x forward and y left. The axis is at (52.5, 0), floor height 11.5. Three Ø8 mm drive pins are 120° apart on a Ø32 mm pitch circle. The green Start button is on the right. The magenta Ø14 cm pitch roller ring starts at (20.2, 13.6), axles 8.7 high. The Ø23 cm × 8 mm clear acrylic tray, 400 g with underside sockets, starts at (22.6, −8.5), midplane 9.3 high, blue stripe forward. Each rests on three drying posts. The orange Ø6.2 × 7 cm, 190 g empty mug stands at (36.5, −32.2). The roof reticle, floor circles, two side rulers, blue stripe and yellow mug dot are visible in the scoring video.",
+  "scoring": "Highest cumulative final placement, with ≥5 mm robot clearance per credited part. 0 if the ring fails. 0.25 for ring center within 12 mm, axle plane 10 ± 3 mm high, tilt ≤4°. 0.50 adds a tray within 5 mm of center, mid-edge 24 ± 2.5 mm high, tilt ≤2°. 0.75 adds an upright mug (≤5°), yellow dot 35–78 mm off axis, foot within 2 mm of the tray surface. For 1.00 all placements persist with the motor lamp lit, latch within 10 mm and fingertips outside. Both visible marks pass four successive quarter turns CCW from their own starts, each reaching ≥360° and returning within 8° together. Reset on loss of any condition, <4° forward in 0.5 s, >4° backtracking, >8° relative angular slip, a skipped quadrant or an unreadable interval.",
   "run_limit": "1,400 actions at 20 Hz (70 simulated seconds).",
-  "reset_notes": "Seed 0, fixed layout. Restore the three loose parts to their listed starting coordinates, open the door and reset the timer.",
-  "fidelity": "Original compact countertop microwave with colliding enclosure and door, spring-loaded switch, three-pin drive, free wheeled carrier, rigid frosted-glass tray with keyed underside and a freely moving hollow mug. The interlock controls a motor-only test cycle. Rigid contact approximates the materials. Heating, liquid and fracture are outside the model.",
-  "scores": "Dream-1 beta: 0.00. Scripted demo: 1.00.",
-  "media": "M-3EUS7Y"
+  "reset_notes": "Seed 0. Restore parts and stripe orientation per setup, open the door, clear the motor timer and start with grippers open.",
+  "fidelity": "Unheated 12 V bench fixture with a guarded motor, 30-second timer, door interlock and green Start button. A clear acrylic tray substitutes for glass. A torque-limited simulated spindle engages three drive pins with underside sockets. Rigid contact approximates the materials and the ring fork junctions are simplified. The dimensioned build and electrical design await physical commissioning.",
+  "scores": "Revised scripted demo 1.00. Revised Dream-1 evaluation pending.",
+  "media": ""
 }
