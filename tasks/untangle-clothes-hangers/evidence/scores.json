@@ -1,0 +1,476 @@
+{
+  "action_limit": 800,
+  "demo": {
+    "policy": "scripted",
+    "seed": 0,
+    "steps": 755,
+    "action_limit": 800,
+    "recording_camera": "top_cam",
+    "hook_release": {
+      "step": 128,
+      "hook_inside_opening_mm": [],
+      "purple_rim_in_crook": []
+    },
+    "task_score": 1.0,
+    "simulated_seconds": 37.75,
+    "wall_seconds": 3.861,
+    "score": 1.0,
+    "released": true,
+    "separated": true,
+    "clear_plane": true,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.46114,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.46115,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.46126,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      }
+    },
+    "lifts": [
+      {
+        "lifted": "hanger_a",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.54,
+        "peer_motion_mm": {
+          "hanger_b": 2.54,
+          "hanger_c": 0.83
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.78,
+        "others_still_on_rail": true
+      },
+      {
+        "lifted": "hanger_b",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.69,
+        "peer_motion_mm": {
+          "hanger_a": 2.69,
+          "hanger_c": 0.83
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.74,
+        "others_still_on_rail": true
+      },
+      {
+        "lifted": "hanger_c",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.69,
+        "peer_motion_mm": {
+          "hanger_a": 2.69,
+          "hanger_b": 2.54
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.82,
+        "others_still_on_rail": true
+      }
+    ]
+  },
+  "replay": {
+    "policy": "scripted",
+    "seed": 0,
+    "steps": 755,
+    "action_limit": 800,
+    "recording_camera": null,
+    "hook_release": {
+      "step": 128,
+      "hook_inside_opening_mm": [],
+      "purple_rim_in_crook": []
+    },
+    "task_score": 1.0,
+    "simulated_seconds": 37.75,
+    "wall_seconds": 2.843,
+    "score": 1.0,
+    "released": true,
+    "separated": true,
+    "clear_plane": true,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.46114,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.46115,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.46126,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      }
+    },
+    "lifts": [
+      {
+        "lifted": "hanger_a",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.54,
+        "peer_motion_mm": {
+          "hanger_b": 2.54,
+          "hanger_c": 0.83
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.78,
+        "others_still_on_rail": true
+      },
+      {
+        "lifted": "hanger_b",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.69,
+        "peer_motion_mm": {
+          "hanger_a": 2.69,
+          "hanger_c": 0.83
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.74,
+        "others_still_on_rail": true
+      },
+      {
+        "lifted": "hanger_c",
+        "rise_mm": 47.13,
+        "other_motion_mm": 2.69,
+        "peer_motion_mm": {
+          "hanger_a": 2.69,
+          "hanger_b": 2.54
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.82,
+        "others_still_on_rail": true
+      }
+    ]
+  },
+  "reset": {
+    "case": "reset",
+    "robot_actions": 0,
+    "score": 0.0,
+    "released": true,
+    "separated": false,
+    "clear_plane": false,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": -0.30037,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.46107,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": -0.1607,
+        "robot_contact": false
+      }
+    },
+    "lifts": [
+      {
+        "lifted": "hanger_a",
+        "rise_mm": 70.43,
+        "other_motion_mm": 56.1,
+        "peer_motion_mm": {
+          "hanger_b": 56.1,
+          "hanger_c": 30.46
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 273.08,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_b",
+        "rise_mm": 58.32,
+        "other_motion_mm": 66.87,
+        "peer_motion_mm": {
+          "hanger_a": 66.87,
+          "hanger_c": 22.56
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 294.64,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_c",
+        "rise_mm": 50.69,
+        "other_motion_mm": 18.11,
+        "peer_motion_mm": {
+          "hanger_a": 18.11,
+          "hanger_b": 15.07
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 291.69,
+        "others_still_on_rail": false
+      }
+    ],
+    "middle_frame_crossings": {
+      "hanger_a": [
+        {
+          "part": "shoulder",
+          "inserted_span_mm": 51.16,
+          "inside_rim_mm": 25.48
+        },
+        {
+          "part": "trouser_bar",
+          "inserted_span_mm": 37.36,
+          "inside_rim_mm": 22.48
+        }
+      ],
+      "hanger_c": [
+        {
+          "part": "shoulder",
+          "inserted_span_mm": -167.58,
+          "inside_rim_mm": 16.76
+        },
+        {
+          "part": "trouser_bar",
+          "inserted_span_mm": -151.96,
+          "inside_rim_mm": 18.91
+        }
+      ]
+    },
+    "orange_purple": {
+      "hook_inside_opening_mm": [
+        10.83
+      ],
+      "purple_rim_in_crook": [
+        {
+          "part": "trouser_bar",
+          "inside_crook_mm": 3.72
+        }
+      ]
+    },
+    "orange_blue_angle_deg": 65.49,
+    "orange_above_blue_mm": 5.08,
+    "orange_blue_bar_contact_N": 0.4482,
+    "passed": true
+  },
+  "straight_pull": {
+    "case": "straight-pull",
+    "robot_actions": 119,
+    "score": 0.0,
+    "released": true,
+    "separated": false,
+    "clear_plane": false,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.07906,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.43001,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": -0.50907,
+        "robot_contact": false
+      }
+    },
+    "lifts": [
+      {
+        "lifted": "hanger_a",
+        "rise_mm": 69.24,
+        "other_motion_mm": 49.47,
+        "peer_motion_mm": {
+          "hanger_b": 49.47,
+          "hanger_c": 21.0
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 303.69,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_b",
+        "rise_mm": 60.07,
+        "other_motion_mm": 56.46,
+        "peer_motion_mm": {
+          "hanger_a": 56.46,
+          "hanger_c": 31.27
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 315.1,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_c",
+        "rise_mm": 51.7,
+        "other_motion_mm": 41.69,
+        "peer_motion_mm": {
+          "hanger_a": 41.69,
+          "hanger_b": 39.42
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 323.4,
+        "others_still_on_rail": false
+      }
+    ],
+    "orange_purple": {
+      "hook_inside_opening_mm": [
+        13.38
+      ],
+      "purple_rim_in_crook": [
+        {
+          "part": "shoulder",
+          "inside_crook_mm": 4.78
+        }
+      ]
+    },
+    "both_pads_on_each_bar": {
+      "grip outer bars": [
+        true,
+        true
+      ],
+      "opposed straight pull": [
+        true,
+        true
+      ]
+    },
+    "commanded_pull_mm_per_arm": 130,
+    "outward_gripper_travel_mm": [
+      51.77,
+      93.62
+    ],
+    "passed": true
+  },
+  "near_miss": {
+    "case": "near-miss",
+    "robot_actions": 0,
+    "score": 0.0,
+    "released": true,
+    "separated": false,
+    "clear_plane": false,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.92093,
+        "from_other_N": -0.46047,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.46047,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.46124,
+        "from_other_N": 0.0,
+        "robot_contact": false
+      }
+    },
+    "lifts": [
+      {
+        "lifted": "hanger_a",
+        "rise_mm": 44.65,
+        "other_motion_mm": 130.31,
+        "peer_motion_mm": {
+          "hanger_b": 130.31,
+          "hanger_c": 0.19
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": true,
+        "crown_below_rail_mm": 17.61,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_b",
+        "rise_mm": 62.72,
+        "other_motion_mm": 5.05,
+        "peer_motion_mm": {
+          "hanger_a": 5.05,
+          "hanger_c": 0.07
+        },
+        "touching_other_at_end": true,
+        "independent": false,
+        "off_rail": false,
+        "crown_below_rail_mm": 79.76,
+        "others_still_on_rail": false
+      },
+      {
+        "lifted": "hanger_c",
+        "rise_mm": 47.13,
+        "other_motion_mm": 0.37,
+        "peer_motion_mm": {
+          "hanger_a": 0.13,
+          "hanger_b": 0.37
+        },
+        "touching_other_at_end": false,
+        "independent": true,
+        "off_rail": true,
+        "crown_below_rail_mm": 14.89,
+        "others_still_on_rail": false
+      }
+    ],
+    "passed": true
+  },
+  "model_evaluation": "Dream-1 scored 0.0 at the 800-action limit. Replaying the recorded actions reproduced the score and final top-camera frame.",
+  "hardware_validation": "Simulation only. Physical measurements and a reset photograph are pending.",
+  "dream": {
+    "policy": "dreamlabs/dream-1-beta",
+    "seed": 0,
+    "steps": 800,
+    "action_limit": 800,
+    "task_score": 0.0,
+    "termination_reason": "action_limit",
+    "errored_trials": 0,
+    "simulated_seconds": 40.0,
+    "wall_seconds": 13.934,
+    "control_hz": 20,
+    "recording_camera": "top_cam",
+    "frames": 801,
+    "replayed_score": 0.0,
+    "released": false,
+    "separated": false,
+    "support": {
+      "hanger_a": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.46252,
+        "robot_contact": false
+      },
+      "hanger_b": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": 0.07176,
+        "robot_contact": false
+      },
+      "hanger_c": {
+        "hook_on_rail_N": 0.0,
+        "from_other_N": -0.53428,
+        "robot_contact": true
+      }
+    },
+    "inference_requests": 16
+  }
+}

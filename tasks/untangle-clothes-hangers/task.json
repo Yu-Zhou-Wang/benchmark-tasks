@@ -1,0 +1,19 @@
+{
+  "title": "Untangle three clothes hangers on a tabletop and hang them separately",
+  "category": "Societal relatability",
+  "keywords": [
+    "closet organization",
+    "tabletop manipulation",
+    "rigid entanglement",
+    "bimanual manipulation"
+  ],
+  "instruction": "Untangle the three clothes hangers on the table and hang each on the closet rail so it can be lifted off on its own.",
+  "context": "Picking a hanger from a pile can lift several when their frames are threaded together.",
+  "setup": "Three 390 mm molded polypropylene hangers rest on a flat 1,100 × 1,100 mm wooden worktop. Orange's trouser bar rests above blue's at a 65.5° crossing. Orange's open hook passes through the purple triangular opening and around the purple trouser bar. The two ends of the blue frame also pass through the orange and purple openings. An empty 824 × 25 mm steel rail runs left to right 435 mm above the tabletop between two timber uprights.",
+  "scoring": "0 while any pair remains caught. Award 0.5 for complete separation of all three. Award 1.0 when each released hanger bears its own weight by its hook on the rail and can be lifted off independently from the same arrangement. Raise 47 mm, withdraw 85 mm toward the shank and lower below the rail. Both other hangers must stay on the rail and their bar midpoints must each move at most 10 mm. The README specifies the settle time, ruler tolerances and overlapping-outline check.",
+  "run_limit": "800 robot actions at 20 Hz (40 seconds). Post-release evaluator lifts are outside this limit.",
+  "reset_notes": "Thread the two ends of blue into the orange and purple frames. Pass the orange hook through the purple opening and seat the purple trouser bar in its crook. Hold the three bar midpoints at the ruler marks in the README, with orange above blue where they cross. Release together and settle for 1.8 s. Seed 0 restores this layout.",
+  "fidelity": "The black IKEA reference specifies polypropylene and 390 mm width. The simulated frames are orange, blue and purple for visibility. The 194 mm height, 4 mm thickness, 47 g mass, friction and hook profile are estimates. The three bodies move freely under gravity and collide along their hooks, shoulders and bars. The model omits plastic flex and molding ribs. Hardware validation is pending.",
+  "scores": "Dream-1 scored 0.0 after 800 of 800 actions. The scripted demo scored 1.0 in 755 actions and each hanger passed independent removal. The largest movement of another hanger was 2.69 mm. The threaded reset, opposed straight pull and dangling near-miss each scored 0.0.",
+  "media": "M-LW52LZ"
+}
