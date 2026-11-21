@@ -1,9 +1,9 @@
 {
   "seed": 0,
-  "action_limit": 800,
+  "action_limit": 1000,
   "steps": 641,
   "simulated_seconds": 32.05,
-  "wall_seconds": 14.77,
+  "wall_seconds": 15.2,
   "checkpoints": {
     "untouched": {
       "score": 0.0,

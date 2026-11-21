@@ -2,7 +2,7 @@
 
 > Separate the whisk, wooden spoon, and spatula, then put them in the holder so I can take any one out on its own.
 
-The recorded bimanual YAM demo scored **1.0 in 641 of 800 actions** (32.05 simulated seconds). The holder is a horizontal three-slot drawer organizer. Each utensil lifts straight out. [Demo video](evidence/demo.mp4) · [Measured scores](evidence/scores.json)
+The recorded bimanual YAM demo scored **1.0 in 641 of 1,000 actions** (32.05 simulated seconds). The holder is a horizontal three-slot drawer organizer. Each utensil lifts straight out. [Demo video](evidence/demo.mp4) · [Measured scores](evidence/scores.json)
 
 ![Reset showing the crossed utensils beside the empty three-slot holder](evidence/setup.png)
 
@@ -64,13 +64,13 @@ run=$(mktemp -d "$workspace/runs/utensils-XXXXXX")
 "$workspace/scripts/run_on_gpu.sh" "$gpu" python "$task/run.py" score --states "$task/evidence/states.npz"
 ```
 
-To score a fresh run, replace the final path with `"$run/demo/states.npz"`. The recorded demo took 14.77 seconds of wall time. The fixed seed is 0, each control interval is 50 ms, and the physics timestep is 2 ms. A separate local replay of the saved actions through stock Inspect Robots with all three public cameras enabled also returned `task_score` 1.0. The demo records every 14-value action and all three scoring checkpoints. [Recorded actions](evidence/actions.npz)
+To score a fresh run, replace the final path with `"$run/demo/states.npz"`. The recorded demo took 15.20 seconds of wall time. The fixed seed is 0, each control interval is 50 ms, and the physics timestep is 2 ms. A separate local replay of the saved actions through stock Inspect Robots with all three public cameras enabled also returned `task_score` 1.0. The demo records every 14-value action and all three scoring checkpoints. [Recorded actions](evidence/actions.npz)
 
 The controller initializes its robot-only kinematic model from public YAM joint positions and checks each grasp through the observed gripper opening. It uses the fixed reset geometry for its waypoints. Contact forces, utensil poses, and the two presentation cameras feed the evaluator and recording only. The Dream policy receives the instruction, measured joints and gripper openings, and the calibrated top and two wrist RGB cameras at 320 × 176.
 
 ### Dream-1 evaluation
 
-Dream-1 is hosted and this task has no paid-run authorization. The command for one authorized 800-action evaluation uses the same embodiment and the stock Inspect Robots `task_score` scorer.
+This command runs one hosted Dream-1 evaluation with a 1,000-action limit (50 simulated seconds) using the same embodiment and the stock Inspect Robots `task_score` scorer.
 
 ```bash
 "$workspace/scripts/run_on_gpu.sh" "$gpu" python "$task/dream_run.py" --out "$run/dream"
@@ -82,4 +82,4 @@ The 145 g whisk uses four continuous loops made of 2.9 mm diameter round wire. E
 
 The task generates its utensils and holder locally. Both arms reference the installed I2RT YAM meshes, URDF and collision geometry (MIT). Station frames and camera calibration come from YAM Arena and YAMLab (YAMLab calibration MIT). The adapter also identifies the origins of the station geometry and colored meshes. [I2RT asset license](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02/yam_arena/assets/yam/LICENSE.i2rt) · [Station and asset provenance](https://github.com/kairosiann/yam-isaac-lab-arena/blob/0059d02/yam_arena/station.py) · [YAMLab calibration](https://github.com/ARISE-Initiative/yamlab/blob/ec0455d2b4ce35f21fc126418ea5e74ac567133d/yamlab/configs/robot/yam.yaml)
 
-A focused board and PR check on 2026-11-20 at 15:05 UTC found no equivalent accepted or pending task, or rejection in the preceding 48 hours. The whisk-related reviews concerned mixing thickener into a drink and changing a blender attachment. [Task board](https://tasks.robocurve.org/board) · [Drink-thickening review](https://github.com/robocurve/benchmark-tasks/pull/2444) · [Blender-attachment review](https://github.com/robocurve/benchmark-tasks/pull/2443)
+A focused board and PR check on 2026-11-21 at 03:29 UTC found no equivalent accepted or pending task, or rejection in the preceding 48 hours. The whisk-related reviews concerned mixing thickener into a drink and changing a blender attachment. [Task board](https://tasks.robocurve.org/board) · [Drink-thickening review](https://github.com/robocurve/benchmark-tasks/pull/2444) · [Blender-attachment review](https://github.com/robocurve/benchmark-tasks/pull/2443)

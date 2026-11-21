@@ -24,7 +24,7 @@ from scene import build
 from scoring import evaluate, step_score
 
 HOME_POSE = [0.0, 0.65, 1.2, -0.3, 0.0, 0.0]
-HZ, LIMIT = 20, 800
+HZ, LIMIT = 20, 1000
 INSTRUCTION = "Separate the whisk, wooden spoon, and spatula, then put them in the holder so I can take any one out on its own."
 
 
