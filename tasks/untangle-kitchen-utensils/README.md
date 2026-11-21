@@ -29,6 +29,7 @@ The following alignment points specify the fixed pose immediately before settlin
 
 | Trial | Score | Observation |
 |---|---:|---|
+| Dream-1 | **0.0** | At action 1,000 the spoon still crossed both whisk gaps and the spatula blade still occupied the right gap. |
 | Untouched | **0.0** | The wooden shaft crosses the left and right gaps. The blade enters the right gap. |
 | Spatula withdrawn and stowed | **0.5** | The spoon still crosses both gaps. |
 | Braced whisk, spoon pulled first | **0.5** | The blade resisted the wooden shaft and moved with it before the spoon cleared. The spatula stayed caught. |
@@ -69,6 +70,8 @@ To score a fresh run, replace the final path with `"$run/demo/states.npz"`. The 
 The controller initializes its robot-only kinematic model from public YAM joint positions and checks each grasp through the observed gripper opening. It uses the fixed reset geometry for its waypoints. Contact forces, utensil poses, and the two presentation cameras feed the evaluator and recording only. The Dream policy receives the instruction, measured joints and gripper openings, and the calibrated top and two wrist RGB cameras at 320 × 176.
 
 ### Dream-1 evaluation
+
+Dream-1 used all 1,000 actions in 50 simulated seconds. The evaluator reported a score of **0.0** and zero errored trials. Replaying the recorded actions reproduced the score and all three final camera images exactly. The video shows the calibrated top view above the two wrist views. [Dream-1 recording](evidence/dream-1.mp4) · [Model measurements](evidence/dream-1.json)
 
 This command runs one hosted Dream-1 evaluation with a 1,000-action limit (50 simulated seconds) using the same embodiment and the stock Inspect Robots `task_score` scorer.
 
