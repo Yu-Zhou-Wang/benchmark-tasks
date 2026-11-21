@@ -1,0 +1,193 @@
+#usda 1.0
+(
+    defaultPrim = "Part"
+    doc = """Generated from Composed Stage of root layer 
+"""
+    metersPerUnit = 1
+    upAxis = "Z"
+)
+
+def Xform "Part"
+{
+    def "Materials"
+    {
+        def Material "DeskTray" (
+            apiSchemas = ["PhysicsMaterialAPI", "PhysxMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </Part/Materials/DeskTray/Surface.outputs:surface>
+            float physics:dynamicFriction = 0.304
+            float physics:restitution = 0
+            float physics:staticFriction = 0.38
+            custom token physxMaterial:frictionCombineMode = "min"
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.7176234, 0.77385217, 0.8324022)
+                float inputs:roughness = 0.37
+                token outputs:surface
+            }
+        }
+
+        def Material "PickUpRest" (
+            apiSchemas = ["PhysicsMaterialAPI", "PhysxMaterialAPI"]
+        )
+        {
+            token outputs:surface.connect = </Part/Materials/PickUpRest/Surface.outputs:surface>
+            float physics:dynamicFriction = 0.32
+            float physics:restitution = 0
+            float physics:staticFriction = 0.4
+            custom token physxMaterial:frictionCombineMode = "min"
+
+            def Shader "Surface"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.051634666, 0.09316518, 0.1483025)
+                float inputs:roughness = 0.37
+                token outputs:surface
+            }
+        }
+    }
+
+    def Cube "Base" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/DeskTray>
+        rel material:binding:physics = </Part/Materials/DeskTray>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.43, 0.26, 0.005)
+        double3 xformOp:translate = (0.27, 0, 0.0025)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "pen_barrel_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.00975, 0.035)
+        double3 xformOp:translate = (0.134, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "pen_barrel_1" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.00975, 0.035)
+        double3 xformOp:translate = (0.2, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "pen_cap_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.016, 0.010062, 0.035)
+        double3 xformOp:translate = (0.18, -0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "marker_barrel_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.013026, 0.035)
+        double3 xformOp:translate = (0.254, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "marker_barrel_1" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.013026, 0.035)
+        double3 xformOp:translate = (0.32, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "marker_cap_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.016, 0.013338, 0.035)
+        double3 xformOp:translate = (0.3, -0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "highlighter_barrel_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.019266, 0.035)
+        double3 xformOp:translate = (0.37399999999999994, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "highlighter_barrel_1" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.008, 0.019266, 0.035)
+        double3 xformOp:translate = (0.43999999999999995, 0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+
+    def Cube "highlighter_cap_0" (
+        apiSchemas = ["MaterialBindingAPI", "PhysicsCollisionAPI", "PhysxCollisionAPI"]
+    )
+    {
+        rel material:binding = </Part/Materials/PickUpRest>
+        rel material:binding:physics = </Part/Materials/PickUpRest>
+        custom float physxCollision:contactOffset = 0.00025
+        custom float physxCollision:restOffset = 0
+        double size = 1
+        float3 xformOp:scale = (0.016, 0.012402, 0.035)
+        double3 xformOp:translate = (0.42, -0.1, 0.017500000000000016)
+        uniform token[] xformOpOrder = ["xformOp:translate", "xformOp:scale"]
+    }
+}
+

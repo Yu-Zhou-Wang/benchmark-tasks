@@ -1,0 +1,42 @@
+{
+  "source": "https://tasks.robocurve.org/board",
+  "checked_utc": "2026-11-21T14:33:16.660650+00:00",
+  "window_start_utc": "2026-11-19T14:33:16.660650+00:00",
+  "filter": "Review timestamp in the 48 hours ending at the live-board refresh. Accepted and non-final rejected rows only.",
+  "counts": {
+    "accepted": 80,
+    "revision": 209
+  },
+  "comparison_method": "Reviewed in-window titles and instructions, screened descriptions for cap, fit, seat, roll, matched parts and retention, and compared the setup and score of candidate tasks.",
+  "matches": [
+    {
+      "id": "TK-RDNT8A",
+      "title": "Tip a coin out of an uncapped inhaler's mouthpiece before putting its cap back on",
+      "status": "non-final rejected",
+      "reviewed_at": "2026-11-20T22:02:25.319Z",
+      "url": "https://tasks.robocurve.org/board?task=TK-RDNT8A",
+      "manipulation_and_scoring": "Put a loose cap back on an inhaler after clearing a lodged coin. End checks include a cap depth within 1 mm, a light pull, no coin inside, and hands-off placement in a tray.",
+      "comparison": "Closest overlap in the physical operation and score. Both seat a loose cap on a hand-sized object and test retention. Recap three writing tools uses three supplied pairs, axial friction-fit bands, a keyed rectangular profile, and a two-second unsupported cap-down proof by the barrel for every pair."
+    },
+    {
+      "id": "TK-SRAFBJ",
+      "title": "Move a speed pourer from the empty liquor bottle to the new one: hold the bottle, draw the pourer, push it home",
+      "status": "non-final rejected",
+      "reviewed_at": "2026-11-20T07:39:22.628Z",
+      "url": "https://tasks.robocurve.org/board?task=TK-SRAFBJ",
+      "manipulation_and_scoring": "Grip and pull a friction-fit pourer out of the old bottle, press it into a new bottle to within 2 mm of the lip, and test it with a 3.5 N pull while the bottles stand on the bar mat.",
+      "comparison": "Shares a coaxial friction fit, a shoulder reference, and a retention check. The insert goes inside a standing bottle and is transferred between bottles. The writing-tool caps go over free barrels, then hang by friction under their own weight."
+    },
+    {
+      "id": "TK-YYMBT5",
+      "title": "Load a full column of eight tips onto an 8-channel pipette, every tip sealed and level, without moving the tip box",
+      "status": "non-final rejected",
+      "reviewed_at": "2026-11-20T18:18:01.873Z",
+      "url": "https://tasks.robocurve.org/board?task=TK-YYMBT5",
+      "manipulation_and_scoring": "Press eight tips from a rack onto a multichannel pipette. At the end, verify seating and level, with all tips clear of the box during a two-second lift by the pipette.",
+      "comparison": "Shares fitting multiple friction-retained parts and a timed clearance check. One press loads rack-supported tips onto one instrument. The writing-tool task requires separate cap and barrel grasps for each of the three free pairs."
+    }
+  ],
+  "closest_id": "TK-RDNT8A",
+  "near_duplicate_found": false
+}

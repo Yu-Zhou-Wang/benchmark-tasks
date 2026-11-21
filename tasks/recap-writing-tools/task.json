@@ -1,0 +1,19 @@
+{
+  "title": "Recap three writing tools",
+  "category": "Societal relatability",
+  "keywords": [
+    "bimanual",
+    "friction fit",
+    "capping",
+    "alignment"
+  ],
+  "instruction": "Put the blue cap on the slim blue pen, the rose cap on the whiteboard marker with the rose band, and the yellow cap on the rectangular highlighter. Push each cap fully against its barrel shoulder. Release the cap and hold each tool by its barrel alone, cap pointed down and clear of everything else, for two continuous seconds. Leave all three caps seated.",
+  "context": "Cap shared writing tools so the next person can use them and the markers do not dry out.",
+  "setup": "One fixed layout on a tabletop. Three 120 mm plastic barrels are on the left, with their own loose hollow plastic caps on the right. Blue slim pen and cap at the near row, rose whiteboard marker and cap at the middle row, yellow rectangular highlighter and cap at the far row. The highlighter cap starts rolled a quarter turn from its barrel. Open plastic pickup rests raise all six parts for the parallel jaws. The README gives dimensions and coordinates.",
+  "scoring": "One third per matching cap. Grip the barrel and cap with opposite hands when seating. The shoulder/rim gap must be under 0.6 mm all around, centered within 0.9 mm, axes within 4 degrees, and the highlighter flats within 5 degrees. Release the cap and hold the seated tool within 12 degrees of cap-down vertical for two continuous seconds. Only one gripper may support the barrel. The cap touches only its barrel and clears the rests by at least 10 mm. Each cap must remain seated through the end.",
+  "run_limit": "1,200 actions (60 seconds at 20 Hz)",
+  "reset_notes": "Return each loose piece to its matching open rest in the disclosed fixed pose. Both grippers start open in the ready pose.",
+  "fidelity": "Passive compliant PhysX contact on four short interference bands approximates the cap squeeze. The barrel shoulder stops travel with clearance for the nib. The parts retain solely by contact. The modeled plastic shells are rigid, faceted profiles. Ink drying is outside the simulation.",
+  "scores": "Dream-1 scored 0.0 in 1,200 actions. The scripted YAM demo scored 1.0 in 1,016 actions.",
+  "media": "M-JBWYE2"
+}

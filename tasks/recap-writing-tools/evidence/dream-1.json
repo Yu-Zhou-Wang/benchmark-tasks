@@ -1,0 +1,35 @@
+{
+  "model": "Dream-1",
+  "entry_point": "Inspect Robots yam_arena",
+  "environment_revision": "470c6e0751e3",
+  "inspect_robots_version": "1.0.0",
+  "trial_count": 1,
+  "seed": 0,
+  "maximum_actions": 1200,
+  "actions": 1200,
+  "score": 0.0,
+  "termination": "action_limit",
+  "errored_trials": 0,
+  "physics_hz": 120,
+  "control_hz": 20,
+  "physical_gpu": 0,
+  "simulated_seconds": 60.0,
+  "wall_seconds": 100.901,
+  "final_tools": {
+    "pen": {
+      "seated": false,
+      "credited": false,
+      "longest_hold_seconds": 0.0
+    },
+    "marker": {
+      "seated": false,
+      "credited": false,
+      "longest_hold_seconds": 0.0
+    },
+    "highlighter": {
+      "seated": false,
+      "credited": false,
+      "longest_hold_seconds": 0.0
+    }
+  }
+}

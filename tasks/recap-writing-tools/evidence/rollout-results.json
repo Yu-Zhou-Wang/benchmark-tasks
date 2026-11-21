@@ -1,0 +1,674 @@
+{
+  "action_limit": 1200,
+  "normal": {
+    "log": "adhoc_de04d185.json",
+    "run_directory": "two-lower-grasps-NRNY",
+    "started_utc": "2026-11-21T14:52:47.235559+00:00",
+    "physical_gpu": 0,
+    "device": "cuda:0",
+    "control": "normal",
+    "score": 1.0,
+    "actions": 1016,
+    "seconds": 50.8,
+    "wall_seconds": 85.344,
+    "termination": "success",
+    "inspect_robots_version": "1.0.0",
+    "environment_revision": "470c6e0751e3",
+    "seed": 0,
+    "errored_trials": 0,
+    "physics_hz": 120,
+    "control_hz": 20,
+    "reset_poses_xyz_xyzw": {
+      "pen_barrel": [
+        0.08800003677606583,
+        0.10000037401914597,
+        0.7912505269050598,
+        0.4999788701534271,
+        0.5000224709510803,
+        0.4999781548976898,
+        0.5000203847885132
+      ],
+      "pen_cap": [
+        0.16749995946884155,
+        -0.09999965131282806,
+        0.7914501428604126,
+        0.4999874532222748,
+        0.5000114440917969,
+        0.4999885857105255,
+        0.5000123381614685
+      ],
+      "marker_barrel": [
+        0.2080000638961792,
+        0.10165034234523773,
+        0.7928659319877625,
+        0.44868209958076477,
+        0.5465212464332581,
+        0.44852396845817566,
+        0.5466490387916565
+      ],
+      "marker_cap": [
+        0.2839999794960022,
+        -0.09999937564134598,
+        0.7935501337051392,
+        0.49998190999031067,
+        0.5000187754631042,
+        0.4999813437461853,
+        0.5000179409980774
+      ],
+      "highlighter_barrel": [
+        0.3280000686645508,
+        0.10000001639127731,
+        0.7927500605583191,
+        0.5000032186508179,
+        0.49999669194221497,
+        0.5000026822090149,
+        0.49999716877937317
+      ],
+      "highlighter_cap": [
+        0.4054999351501465,
+        -0.1000002771615982,
+        0.7975501418113708,
+        8.971676834335085e-06,
+        0.7071066498756409,
+        8.171469744411297e-06,
+        0.7071069478988647
+      ]
+    },
+    "tools": {
+      "pen": {
+        "bimanual_seat": {
+          "start_tick": 1080,
+          "end_tick": 1206,
+          "start_action": 180,
+          "end_action": 201,
+          "seconds": 1.05,
+          "ranges": {
+            "gap_mm": [
+              -0.3196,
+              0.4523
+            ],
+            "rim_gap_min_mm": [
+              -0.425,
+              0.3718
+            ],
+            "rim_gap_max_mm": [
+              -0.2384,
+              0.5328
+            ],
+            "coaxial_mm": [
+              0.086,
+              0.2132
+            ],
+            "relative_tilt_deg": [
+              0.5649,
+              0.9503
+            ],
+            "roll_deg": [
+              0.0,
+              0.0
+            ],
+            "from_vertical_deg": [
+              0.4248,
+              0.8483
+            ],
+            "cap_above_rests_mm": [
+              142.6071,
+              144.052
+            ],
+            "cap_external_force_N": [
+              0.5824,
+              2.69
+            ]
+          }
+        },
+        "first_passing_hold": {
+          "start_tick": 1207,
+          "end_tick": 1447,
+          "start_action": 202,
+          "end_action": 242,
+          "seconds": 2.0,
+          "ranges": {
+            "gap_mm": [
+              -0.0224,
+              0.0174
+            ],
+            "rim_gap_min_mm": [
+              -0.0967,
+              -0.0129
+            ],
+            "rim_gap_max_mm": [
+              0.0319,
+              0.0876
+            ],
+            "coaxial_mm": [
+              0.0462,
+              0.1428
+            ],
+            "relative_tilt_deg": [
+              0.186,
+              0.6387
+            ],
+            "roll_deg": [
+              0.0,
+              0.0
+            ],
+            "from_vertical_deg": [
+              0.1808,
+              0.8884
+            ],
+            "cap_above_rests_mm": [
+              139.2498,
+              143.613
+            ],
+            "cap_external_force_N": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "final": {
+          "seated": true,
+          "gap_mm": 0.011937277927670143,
+          "rim_gap_max_mm": 0.027289511975844435,
+          "rim_gap_min_mm": -0.003414956120504244,
+          "coaxial_mm": 0.2460985246824284,
+          "relative_tilt_deg": 0.12687724657431965,
+          "roll_deg": 0.0,
+          "from_vertical_deg": 90.06410435127904,
+          "cap_above_rests_mm": -35.000683355045695,
+          "barrel_hand": null,
+          "barrel_pad_normals_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cap_pad_normals_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cap_external_force_N": 0.08917040377855301,
+          "two_grasps": false,
+          "bimanual_seat": true,
+          "barrel_only_cap_down": false,
+          "hold_seconds": 0.0,
+          "longest_hold_seconds": 4.275,
+          "credited": true
+        }
+      },
+      "marker": {
+        "bimanual_seat": {
+          "start_tick": 3485,
+          "end_tick": 3528,
+          "start_action": 581,
+          "end_action": 588,
+          "seconds": 0.3583,
+          "ranges": {
+            "gap_mm": [
+              -0.0234,
+              0.4994
+            ],
+            "rim_gap_min_mm": [
+              -0.0921,
+              0.4032
+            ],
+            "rim_gap_max_mm": [
+              0.0404,
+              0.5956
+            ],
+            "coaxial_mm": [
+              0.1171,
+              0.1565
+            ],
+            "relative_tilt_deg": [
+              0.3372,
+              0.6659
+            ],
+            "roll_deg": [
+              0.0,
+              0.0
+            ],
+            "from_vertical_deg": [
+              0.3664,
+              0.654
+            ],
+            "cap_above_rests_mm": [
+              135.4599,
+              135.5712
+            ],
+            "cap_external_force_N": [
+              0.8117,
+              2.7714
+            ]
+          }
+        },
+        "first_passing_hold": {
+          "start_tick": 3529,
+          "end_tick": 3769,
+          "start_action": 589,
+          "end_action": 629,
+          "seconds": 2.0,
+          "ranges": {
+            "gap_mm": [
+              0.019,
+              0.0365
+            ],
+            "rim_gap_min_mm": [
+              -0.0542,
+              0.0009
+            ],
+            "rim_gap_max_mm": [
+              0.0622,
+              0.0922
+            ],
+            "coaxial_mm": [
+              0.087,
+              0.1189
+            ],
+            "relative_tilt_deg": [
+              0.2139,
+              0.4843
+            ],
+            "roll_deg": [
+              0.0,
+              0.0
+            ],
+            "from_vertical_deg": [
+              0.2793,
+              0.6725
+            ],
+            "cap_above_rests_mm": [
+              134.4781,
+              136.1056
+            ],
+            "cap_external_force_N": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "final": {
+          "seated": true,
+          "gap_mm": 0.08779656542661946,
+          "rim_gap_max_mm": 0.1410874343692975,
+          "rim_gap_min_mm": 0.034505696483914244,
+          "coaxial_mm": 0.2186311093536559,
+          "relative_tilt_deg": 0.35647163684970734,
+          "roll_deg": 0.0,
+          "from_vertical_deg": 90.2511148979728,
+          "cap_above_rests_mm": -34.999999388001136,
+          "barrel_hand": null,
+          "barrel_pad_normals_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cap_pad_normals_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cap_external_force_N": 0.11913146823644638,
+          "two_grasps": false,
+          "bimanual_seat": true,
+          "barrel_only_cap_down": false,
+          "hold_seconds": 0.0,
+          "longest_hold_seconds": 4.275,
+          "credited": true
+        }
+      },
+      "highlighter": {
+        "bimanual_seat": {
+          "start_tick": 5786,
+          "end_tick": 5850,
+          "start_action": 965,
+          "end_action": 975,
+          "seconds": 0.5333,
+          "ranges": {
+            "gap_mm": [
+              0.0481,
+              0.218
+            ],
+            "rim_gap_min_mm": [
+              -0.2872,
+              -0.1614
+            ],
+            "rim_gap_max_mm": [
+              0.3612,
+              0.5975
+            ],
+            "coaxial_mm": [
+              0.2242,
+              0.2697
+            ],
+            "relative_tilt_deg": [
+              1.1573,
+              1.6369
+            ],
+            "roll_deg": [
+              1.2227,
+              1.7399
+            ],
+            "from_vertical_deg": [
+              0.9999,
+              1.4317
+            ],
+            "cap_above_rests_mm": [
+              140.2105,
+              140.5771
+            ],
+            "cap_external_force_N": [
+              0.632,
+              2.2446
+            ]
+          }
+        },
+        "first_passing_hold": {
+          "start_tick": 5851,
+          "end_tick": 6091,
+          "start_action": 976,
+          "end_action": 1016,
+          "seconds": 2.0,
+          "ranges": {
+            "gap_mm": [
+              0.1746,
+              0.2006
+            ],
+            "rim_gap_min_mm": [
+              -0.0044,
+              0.0422
+            ],
+            "rim_gap_max_mm": [
+              0.3496,
+              0.3623
+            ],
+            "coaxial_mm": [
+              0.1111,
+              0.1779
+            ],
+            "relative_tilt_deg": [
+              0.6439,
+              0.7979
+            ],
+            "roll_deg": [
+              0.6433,
+              0.8657
+            ],
+            "from_vertical_deg": [
+              0.3567,
+              0.5654
+            ],
+            "cap_above_rests_mm": [
+              139.7068,
+              141.8738
+            ],
+            "cap_external_force_N": [
+              0.0,
+              0.0
+            ]
+          }
+        },
+        "final": {
+          "seated": true,
+          "gap_mm": 0.1936367627806392,
+          "rim_gap_max_mm": 0.35391562697478035,
+          "rim_gap_min_mm": 0.033357898586498035,
+          "coaxial_mm": 0.16947907186915584,
+          "relative_tilt_deg": 0.6621660435094407,
+          "roll_deg": 0.7534020602514305,
+          "from_vertical_deg": 0.49215684121441383,
+          "cap_above_rests_mm": 141.47037703416387,
+          "barrel_hand": "left",
+          "barrel_pad_normals_N": [
+            4.401997089385986,
+            4.404343605041504,
+            0.0,
+            0.0
+          ],
+          "cap_pad_normals_N": [
+            0.0,
+            0.0,
+            0.0,
+            0.0
+          ],
+          "cap_external_force_N": 0.0,
+          "two_grasps": false,
+          "bimanual_seat": true,
+          "barrel_only_cap_down": true,
+          "hold_seconds": 2.0416666666666665,
+          "longest_hold_seconds": 2.0416666666666665,
+          "credited": true
+        }
+      }
+    }
+  },
+  "partial": {
+    "log": "adhoc_eb4e2158.json",
+    "run_directory": "partial-final-qIRu",
+    "started_utc": "2026-11-21T14:55:01.037742+00:00",
+    "physical_gpu": 1,
+    "device": "cuda:0",
+    "control": "partial",
+    "score": 0.0,
+    "actions": 277,
+    "seconds": 13.85,
+    "wall_seconds": 31.544,
+    "termination": "policy_stop",
+    "inspect_robots_version": "1.0.0",
+    "environment_revision": "470c6e0751e3",
+    "seed": 0,
+    "errored_trials": 0,
+    "physics_hz": 120,
+    "control_hz": 20,
+    "marker_unsupported_retention": {
+      "start_tick": 1207,
+      "end_tick": 1662,
+      "start_action": 202,
+      "end_action": 277,
+      "seconds": 3.7917,
+      "ranges": {
+        "gap_mm": [
+          3.4155,
+          3.4409
+        ],
+        "rim_gap_min_mm": [
+          3.3685,
+          3.3845
+        ],
+        "rim_gap_max_mm": [
+          3.4625,
+          3.504
+        ],
+        "coaxial_mm": [
+          0.1732,
+          0.185
+        ],
+        "relative_tilt_deg": [
+          0.3092,
+          0.4369
+        ],
+        "roll_deg": [
+          0.0,
+          0.0
+        ],
+        "from_vertical_deg": [
+          0.4324,
+          1.0106
+        ],
+        "cap_above_rests_mm": [
+          135.1463,
+          138.143
+        ],
+        "cap_external_force_N": [
+          0.0,
+          0.0
+        ]
+      }
+    },
+    "final": {
+      "seated": false,
+      "gap_mm": 3.440207340157288,
+      "rim_gap_max_mm": 3.498717244838337,
+      "rim_gap_min_mm": 3.381697435476351,
+      "coaxial_mm": 0.17709166816346278,
+      "relative_tilt_deg": 0.3849705673741673,
+      "roll_deg": 0.0,
+      "from_vertical_deg": 0.7119579970628211,
+      "cap_above_rests_mm": 136.6041849213042,
+      "barrel_hand": "left",
+      "barrel_pad_normals_N": [
+        3.1855905055999756,
+        3.1894991397857666,
+        0.0,
+        0.0
+      ],
+      "cap_pad_normals_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cap_external_force_N": 0.0,
+      "two_grasps": false,
+      "bimanual_seat": false,
+      "barrel_only_cap_down": true,
+      "hold_seconds": 0.0,
+      "longest_hold_seconds": 0.0,
+      "credited": false
+    }
+  },
+  "separation": {
+    "log": "adhoc_edbc612d.json",
+    "run_directory": "separation-b-2nTb",
+    "started_utc": "2026-11-21T14:52:47.231659+00:00",
+    "physical_gpu": 1,
+    "device": "cuda:0",
+    "control": "separation",
+    "score": 0.0,
+    "actions": 277,
+    "seconds": 13.85,
+    "wall_seconds": 30.999,
+    "termination": "policy_stop",
+    "inspect_robots_version": "1.0.0",
+    "environment_revision": "470c6e0751e3",
+    "seed": 0,
+    "errored_trials": 0,
+    "physics_hz": 120,
+    "control_hz": 20,
+    "last_bimanual_seat": {
+      "gap_mm": -0.0477221112059895,
+      "rim_gap_min_mm": -0.06224226810991338,
+      "rim_gap_max_mm": -0.033201954301954606,
+      "coaxial_mm": 0.16187094855739403,
+      "relative_tilt_deg": 0.09569896607656259,
+      "roll_deg": 0.0,
+      "from_vertical_deg": 0.5321899988778418,
+      "cap_above_rests_mm": 134.6855872633915,
+      "cap_external_force_N": 1.0181529521942139,
+      "barrel_only_cap_down": false,
+      "seated": true,
+      "two_grasps": true,
+      "bimanual_seat": true,
+      "hold_seconds": 0.0,
+      "credited": false,
+      "tick": 1206,
+      "action": 201,
+      "stage": "marker release cap"
+    },
+    "first_barrel_only_seated": {
+      "gap_mm": 0.08619992852009702,
+      "rim_gap_min_mm": 0.0012242866271131663,
+      "rim_gap_max_mm": 0.17117557041296955,
+      "coaxial_mm": 0.10243535961137044,
+      "relative_tilt_deg": 0.5598008836366631,
+      "roll_deg": 0.0,
+      "from_vertical_deg": 0.8225627329211406,
+      "cap_above_rests_mm": 134.47912967014318,
+      "cap_external_force_N": 0.0,
+      "barrel_only_cap_down": true,
+      "seated": true,
+      "two_grasps": false,
+      "bimanual_seat": true,
+      "hold_seconds": 0.0,
+      "credited": false,
+      "tick": 1207,
+      "action": 202,
+      "stage": "marker release cap"
+    },
+    "first_unseated": {
+      "gap_mm": 0.3230124858222173,
+      "rim_gap_min_mm": 0.02115796920719925,
+      "rim_gap_max_mm": 0.6248670024371247,
+      "coaxial_mm": 0.24640617358405448,
+      "relative_tilt_deg": 1.9844201131865482,
+      "roll_deg": 0.0,
+      "from_vertical_deg": 2.6472488718541753,
+      "cap_above_rests_mm": 133.93836088621046,
+      "cap_external_force_N": 0.0,
+      "barrel_only_cap_down": true,
+      "seated": false,
+      "two_grasps": false,
+      "bimanual_seat": false,
+      "hold_seconds": 0.0,
+      "credited": false,
+      "tick": 1208,
+      "action": 202,
+      "stage": "marker release cap"
+    },
+    "seconds_before_unseat": 0.0083,
+    "final": {
+      "seated": false,
+      "gap_mm": 187.89904979719992,
+      "rim_gap_max_mm": 196.4684816071331,
+      "rim_gap_min_mm": 179.3296179872668,
+      "coaxial_mm": 27.535011349309457,
+      "relative_tilt_deg": 89.85155199057976,
+      "roll_deg": 0.0,
+      "from_vertical_deg": 89.99999491173428,
+      "cap_above_rests_mm": -29.999988987192026,
+      "barrel_hand": "left",
+      "barrel_pad_normals_N": [
+        3.407977342605591,
+        3.4069182872772217,
+        0.0,
+        0.0
+      ],
+      "cap_pad_normals_N": [
+        0.0,
+        0.0,
+        0.0,
+        0.0
+      ],
+      "cap_external_force_N": 0.03237403556704521,
+      "two_grasps": false,
+      "bimanual_seat": false,
+      "barrel_only_cap_down": false,
+      "hold_seconds": 0.0,
+      "longest_hold_seconds": 0.0,
+      "credited": false
+    }
+  },
+  "repeat": {
+    "log": "adhoc_58cd2f66.json",
+    "run_directory": "repeat-hdaY",
+    "started_utc": "2026-11-21T14:55:01.093280+00:00",
+    "physical_gpu": 0,
+    "device": "cuda:0",
+    "control": "normal",
+    "score": 1.0,
+    "actions": 1016,
+    "seconds": 50.8,
+    "wall_seconds": 85.676,
+    "termination": "success",
+    "inspect_robots_version": "1.0.0",
+    "environment_revision": "470c6e0751e3",
+    "seed": 0,
+    "errored_trials": 0,
+    "physics_hz": 120,
+    "control_hz": 20
+  }
+}
