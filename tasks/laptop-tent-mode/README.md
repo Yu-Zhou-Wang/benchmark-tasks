@@ -52,7 +52,7 @@ for mode in normal flat held; do
         --embodiment yam_arena --policy yam_scripted --scorer task_score \
         -E "task=$task/task.py" -E control_hz=20 -E object_jitter=0 \
         -E cam_width=640 -E cam_height=360 \
-        --instruction "$instruction" --seed 0 --max-steps 750 --store-frames \
+        --instruction "$instruction" --seed 0 --max-steps 800 --store-frames \
         --no-prompt --no-rerun --no-live-log --log-dir "$out"
 done
 
@@ -63,17 +63,20 @@ python "$task/verify.py" --normal "$runs/normal" --flat "$runs/flat" \
 inspect-robots video "$runs"/normal/adhoc_*.json --out "$runs/video"
 ```
 
-The run limit is 750 actions, or 37.5 simulated seconds. The controls use the same physics, reset, and scorer. `flat` unfolds the display while the chassis rests on its feet. `held` stops with the laptop in the tent geometry while the grippers still carry load. [Task entry point](task.py), [Scripted controller](demo.py), [Trial verifier](verify.py)
+The run limit is 800 actions, or 40 simulated seconds. The controls use the same physics, reset, and scorer. `flat` unfolds the display while the chassis rests on its feet. `held` stops with the laptop in the tent geometry while the grippers still carry load. [Task entry point](task.py), [Scripted controller](demo.py), [Trial verifier](verify.py)
 
 ## Measured results
 
-All three runs used seed 0, Isaac Lab-Arena with GPU PhysX, the YAM adapter at `0059d02`, and the standard `task_score` scorer. Each trial finished with zero evaluation errors. [Measurements and source hashes](evidence/results.json)
+The three scripted runs used seed 0, Isaac Lab-Arena with GPU PhysX, the YAM adapter at `0059d02`, and the standard `task_score` scorer. They finished within the original 750-action cap with zero evaluation errors. [Measurements and source hashes](evidence/results.json)
 
 | Trial | Score | Actions | Simulated time | Evaluator wall time | Final hinge angle |
 | --- | ---: | ---: | ---: | ---: | ---: |
+| Dream-1 | 0.0 | 800 | 40.00 s | 56.47 s | 112.00° |
 | Bimanual YAM demo | 1.0 | 706 | 35.30 s | 59.78 s | 270.64° |
 | Flat control | 0.0 | 519 | 25.95 s | 42.99 s | 181.70° |
 | Held tent control | 0.0 | 684 | 34.20 s | 56.80 s | 274.40° |
+
+The Dream-1 trial used the standard `dream` policy (`dreamlabs/dream-1-beta`), one epoch at seed 0, and 320 × 176 observations at 20 Hz. It reached the 800-action cap with zero evaluation errors. The hinge stayed at 112° and the recorder measured zero robot contact force across all 4,800 physics samples. The recording shows the fixed side view above the two wrist views. [Model recording](evidence/model_run.mp4), [Dream-1 measurements](evidence/dream-1.json)
 
 The normal trial crossed 180° at action 502. At action 613, before release, the chassis and display front edges carried 5.53 N and 6.68 N. The final tent stood 158.3 mm high and held for 2.008 s without robot contact. The final edge loads were 8.01 N and 5.43 N. [Side-camera demo](evidence/demo.mp4), [Final tent frame](evidence/tent.png)
 
