@@ -1,13 +1,13 @@
 {
-  "checked_utc": "2026-11-22T10:13:29.501618+00:00",
-  "window_start_utc": "2026-11-20T10:13:29.501618+00:00",
+  "checked_utc": "2026-11-22T15:38:20.113484+00:00",
+  "window_start_utc": "2026-11-20T15:38:20.113484+00:00",
   "board": "https://tasks.robocurve.org/board",
   "method": "Signed-in paginated accepted, revision and pending views plus a direct lookup for TK-J987L9. Review window applied to reviewed_at. Screened titles and checked the setup, instructions and scoring of mechanically related entries.",
   "accepted_total": 427,
   "accepted_in_window": 90,
   "revision_total": 1403,
-  "nonfinal_rejected_in_window": 239,
-  "pending_screened": 306,
+  "nonfinal_rejected_in_window": 220,
+  "pending_screened": 358,
   "defining_motion": "Fold a laptop hinge from its open typing angle through flat, then transfer the load from both hands to the two front edges with the display facing outward.",
   "equivalent_found": false,
   "comparisons": [
@@ -17,7 +17,7 @@
       "status": "rejected",
       "reviewed_at": "2026-11-20T13:05:21.853Z",
       "final_reject": 0,
-      "in_48h_window": true,
+      "in_48h_window": false,
       "url": "https://tasks.robocurve.org/board?task=TK-J987L9",
       "comparison": "Transfers an open ThinkPad from books to a separate stand. Its scorer caps the lid motion at 25 degrees and rejects lid contact. The convertible task rotates its hinge through flat and stands the two case edges directly on the desk."
     },

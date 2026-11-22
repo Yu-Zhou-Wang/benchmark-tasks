@@ -88,8 +88,8 @@ The simulation represents both panels as rigid shells with box colliders and a s
 
 ## Live duplicate check
 
-The signed-in board refresh at 10:13:29 UTC on 22 November 2026 found 90 accepted and 239 non-final rejected tasks reviewed in the previous 48 hours. The read also screened 306 pending tasks. The motion comparison found zero equivalents. [Board check](evidence/board-check.json), [RoboCurve task board](https://tasks.robocurve.org/board)
+The signed-in board refresh at 15:38:20 UTC on 22 November 2026 found 90 accepted and 220 non-final rejected tasks reviewed in the previous 48 hours. The read also screened 358 pending tasks. The motion comparison found zero equivalents. [Board check](evidence/board-check.json), [RoboCurve task board](https://tasks.robocurve.org/board)
 
-TK-J987L9 was still in scope. Its non-final review was at 13:05:21 UTC on 20 November. It carries an open laptop from books to a separate stand, caps lid movement at 25°, and bars touching the lid. The convertible trial rotates its hinge from typing through flat and transfers the weight onto the two case rims. [TK-J987L9](https://tasks.robocurve.org/board?task=TK-J987L9)
+TK-J987L9 was reviewed at 13:05:21 UTC on 20 November, just over 50 hours before the refresh. It carries an open laptop from books to a separate stand, caps lid movement at 25°, and bars touching the lid. The convertible trial rotates its hinge from typing through flat and transfers the weight onto the two case rims. [TK-J987L9](https://tasks.robocurve.org/board?task=TK-J987L9)
 
 The accepted birthday card and tablet tasks are older mechanical analogues. The card shares the final edge-supported shape and uses a springy paper crease. The tablet unfolds a dedicated back support to stand in portrait orientation. [Birthday card task](https://tasks.robocurve.org/board?task=TK-LSCM4T), [Tablet task](https://tasks.robocurve.org/board?task=TK-Y8KTZZ)
