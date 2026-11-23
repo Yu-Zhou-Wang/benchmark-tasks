@@ -1,4 +1,5 @@
 {
+  "applies_to": "Original submission before the touching-ring and visible-scoring revision. Historical evaluation on the source_commit below.",
   "policy": "dreamlabs/dream-1-beta",
   "evaluator_status": "success",
   "task_score": 0.0,
@@ -63,5 +64,31 @@
     "all_three_camera_streams_present": true,
     "team_identifiers_seen": false,
     "observed_outcome": "No completed key-on-ring attachment is visible in the sampled views; the native final scorer returned 0.0."
+  },
+  "revision": {
+    "policy": "dreamlabs/dream-1-beta",
+    "status": "error",
+    "task_score": null,
+    "model_actions": 0,
+    "warmup_actions": 32,
+    "errored_trials": 1,
+    "no_model_video_reason": "Dream-1 errored on its first inference request, before returning any model action. PolicyError: DreamAPI refused the inference request: DA-1000 UNAUTHORIZED (disabled): 'robocurve2'",
+    "seed": 0,
+    "action_limit": 2400,
+    "control_hz": 20,
+    "physics_device": "cpu",
+    "started_utc": "2026-11-23T07:42:35.645368+00:00",
+    "wall_seconds": 20.23908042209223,
+    "evaluator_log_sha256": "25ea9cfa57817eb236bd7a6ad8eaf5a633ca34562dbaf2cadd67041e95df0dc4",
+    "runtime_sha256": {
+      "geometry.py": "eec2bcf67ce1aab14a8c9f6131ae6ebe685c5b080d455388cb1d97ae8ea1848a",
+      "task.py": "a024c93e331f83664bf63945c8ade3b349b74721204138a78d8cf88ca597be18",
+      "scenekit.py": "86cfb9e956dd61be695b8fa179cc16a08564aad93fb9bd24e13bd88bcd26def1",
+      "demo.py": "4afdbb33c86eb4a4a8c57b86d1262ed36f9af78f53e5ef99d351d96ca0a1fb4f",
+      "witness.py": "2fce7b35777a08c0f26d1e626a2761f450aaf77a4b04fc8e8d17cfeb1ef1ee9a",
+      "assets/key.usda": "d505dd6b4c4fa63a1e656be56f4a47cdd69eb2e265149ba06757d9eb61da7192",
+      "assets/ring.usda": "97b736b59e4b305dd2c338444a9eb0e1c461d68ad9526f48ad3928d1e231bb91",
+      "assets/stand.usda": "34f348740c1b87ce7945c52fcddd963c8f2ca4469388f3a0f60853700601880c"
+    }
   }
 }

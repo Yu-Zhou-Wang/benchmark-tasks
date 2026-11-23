@@ -402,8 +402,9 @@ def _patch_scene(scene) -> None:
         configure = original_config_factory(control_hz)
         def with_witness(cfg):
             cfg = configure(cfg)
-            from witness import camera_cfg
+            from witness import camera_cfg,INSPECTION
             cfg.scene.witness_cam = camera_cfg()
+            for name in INSPECTION:setattr(cfg.scene,name,camera_cfg(name))
             return cfg
         return with_witness
     scene.env_cfg_callback = config_factory

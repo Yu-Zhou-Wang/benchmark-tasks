@@ -16,10 +16,15 @@ OBJECTS=[
  UsdBody('key',usd='assets/key.usda',pos=tuple(G.KEY_START),rot_xyzw=tuple(Rotation.from_matrix(G.key_rotation(G.KEY_START_ANGLE)).as_quat()),size=(.049,.002,.018),mass=G.KEY_MASS,friction=(.8,.65),torsional_patch=.004,solver_iters=32),
  UsdBody('stand',usd='assets/stand.usda',pos=tuple(G.KEY_START),size=(.08,.06,.24),friction=(.6,.45))]
 STATE={}
-_prev=None
-_broken=False
+_passage=None
+_baseline=None
 
 HOLE_NORMALS=np.stack([np.cos((np.arange(32)+.5)*2*math.pi/32),np.sin((np.arange(32)+.5)*2*math.pi/32)],1)
+# A released rim contact can have small solver overlap. The wire and brass
+# each contribute one contact offset to the allowed final fit. The separately
+# tracked tip traversal keeps its tighter tolerance.
+RIM_CONTACT_TOLERANCE=2*G.CONTACT_OFFSET
+
 def capsule_slab_support(a,b,half,radius):
  """Exact capsule support against the 32 authored hole-wall halfspaces.
 
@@ -53,7 +58,8 @@ def crossings(segments,key_pos,key_rot):
  span between them; a tip ending within the plate is not a through crossing.
  """
  local=[(key_rot.T@(a-key_pos),key_rot.T@(b-key_pos))for a,b in segments]
- half=.001;expanded=half+G.WIRE_R;hole=G.HOLE_R*math.cos(math.pi/32)
+ half=G.KEY_THICKNESS/2;expanded=half+G.WIRE_R;hole=G.HOLE_R*math.cos(math.pi/32)
+ material=G.span_angles() if len(segments)==len(G.span_angles()) else None
  clipped={}
  def slab_piece(j):
   if j in clipped:return clipped[j]
@@ -81,8 +87,9 @@ def crossings(segments,key_pos,key_rot):
   clearance=hole-rr-G.WIRE_R/cosine
   # Diagnostic radial upper bound only; actual polygon/slab support decides.
   slab=slab_clearance(i)
-  if slab is None or slab<-.00005:continue
-  raw.append({'segment':i,'u':u,'arc_rad':float((i+u)*G.END_ANGLE/(G.N*6)),
+  if slab is None or slab < -RIM_CONTACT_TOLERANCE:continue
+  arc=(1-u)*material[i,0]+u*material[i,1] if material is not None else (i+u)*G.END_ANGLE/len(segments)
+  raw.append({'segment':i,'u':u,'arc_rad':float(arc),
    'radius_m':rr,'tube_clearance_m':float(clearance),'slab_clearance_m':float(slab),
    'sign':1 if d[1]>0 else -1,'point_local_m':p.tolist()})
  groups=[]
@@ -94,21 +101,78 @@ def crossings(segments,key_pos,key_rot):
   if len({h['sign']for h in group})==1:out.append(max(group,key=lambda h:h['slab_clearance_m']))
  return out
 
-def evaluate(hits,end_distance,speed,spin,clear,closed,integrity,key_height,splitter,ring_spin=0.):
+class TipPassage:
+ """Observable signed free-tip passage; reverse passages cancel earlier passes.
+
+ A marked end must travel through both key faces. The same end may pass twice. The swept tube must fit
+ the actual 32-sided aperture throughout that traversal. Mid-wire penetration
+ cannot create a passage. This reads geometry only for scoring/diagnostics.
+ """
+ def __init__(self):
+  self.previous=None;self.entry=[None,None];self.last_side=[None,None]
+  self.events=[0,0];self.net=[0,0];self.history=[]
+ def update(self,local_tips):
+  points=np.asarray(local_tips,float);half=G.KEY_THICKNESS/2;face=half+G.WIRE_R
+  hole=G.HOLE_R*math.cos(math.pi/32)
+  for i,p in enumerate(points):
+   side=1 if p[1]>=face else -1 if p[1]<=-face else None
+   if self.previous is None:
+    self.last_side[i]=side;continue
+   old=self.previous[i]
+   intersects=min(old[1],p[1])<=face and max(old[1],p[1])>=-face
+   fits=capsule_slab_support(old,p,half,G.WIRE_R)<=hole+.00005
+   if intersects:
+    if not fits:self.entry[i]=None;self.last_side[i]=None
+    elif self.entry[i] is None:self.entry[i]=self.last_side[i]
+   if side is not None:
+    if self.entry[i] is not None and side!=self.entry[i] and fits:
+     self.events[i]+=1;self.net[i]+=side
+     self.history.append({'tip':'green' if i==0 else 'red','passage_number':self.events[i],'exit_side':side})
+    self.entry[i]=None;self.last_side[i]=side
+  self.previous=points.copy()
+  return list(self.net)
+
+def visible_measurements(local_points,endpoints):
+ """Front silhouette caliper diameters, edge tip clearance and visible breaks."""
+ points=np.asarray(local_points)
+ diameters=np.ptp(points[:,:2],axis=0)+2*G.WIRE_R
+ # Match each free end to the material point one full turn away, then subtract
+ # two wire radii. The paired points are marked in the inspection overlays.
+ spans=G.span_angles();surface_gaps=[]
+ for tip,angle in [(points[0],2*math.pi),(points[-1],G.END_ANGLE-2*math.pi)]:
+  j=next(j for j,(a,b) in enumerate(spans) if a-1e-10<=angle<=b+1e-10)
+  a,b=spans[j];u=float(np.clip((angle-a)/(b-a),0,1));other=(1-u)*points[2*j]+u*points[2*j+1]
+  surface_gaps.append(max(0.,float(np.linalg.norm(tip-other)-2*G.WIRE_R)))
+ breaks=[max(0.,float(np.linalg.norm(a[1]-b[0])-2*G.WIRE_R)) for a,b in zip(endpoints[:-1],endpoints[1:])]
+ return {'diameters_m':diameters.tolist(),'roundness_m':float(abs(diameters[0]-diameters[1])),
+  'tip_surface_gaps_m':surface_gaps,'visible_break_m':max(breaks,default=0.)}
+
+def visible_integrity(measurement,baseline):
+ change=np.abs(np.asarray(measurement['diameters_m'])-np.asarray(baseline['diameters_m']))
+ round_change=abs(measurement['roundness_m']-baseline['roundness_m'])
+ return bool(np.isfinite(change).all() and max(change)<=G.MAX_DIAMETER_CHANGE
+  and round_change<=G.MAX_ROUNDNESS_CHANGE and max(measurement['tip_surface_gaps_m'])<=G.MAX_RESIDUAL_TIP_GAP
+  and measurement['visible_break_m']<=G.MAX_VISIBLE_BREAK)
+
+def evaluate(hits,end_distance,speed,spin,clear,closed,integrity,key_height,splitter,ring_spin=0.,passages=(0,0),inspection_ready=False):
  count=len(hits);separation=abs(hits[1]['arc_rad']-hits[0]['arc_rad']) if count==2 else 0.
  same=count==2 and hits[0]['sign']==hits[1]['sign'] and math.radians(290)<=separation<=math.radians(430)
- full=bool(same and end_distance>=.012 and speed<=.015 and spin<=.35 and clear and closed and integrity and key_height>G.TABLE_Z+.10 and splitter<.0007 and abs(ring_spin)<=.03)
- partial=(.75 if same and end_distance>=.012 else .5 if count==1 and end_distance>=.010 else .25 if count==1 else 0.) if integrity else 0.
- return {'crossings':hits,'captured_strands':count,'two_turns':same,'strand_material_separation_deg':math.degrees(separation),'free_end_clearance_m':float(end_distance),'key_speed_m_s':float(speed),'key_spin_rad_s':float(spin),'ring_spin_rad_s':float(ring_spin),'grippers_clear':bool(clear),'ring_closed':bool(closed),'integrity':bool(integrity),'complete':full,'partial_score':partial}
+ winding=int(passages[1]-passages[0])
+ qualified=bool(count in (1,2) and abs(winding)==count and all(h["sign"]==(1 if winding>0 else -1) for h in hits))
+ inspected=bool(inspection_ready and clear and closed and splitter<.0007 and abs(ring_spin)<=.03 and speed<=.015 and spin<=.35)
+ full=bool(same and qualified and inspected and end_distance>=.012 and speed<=.015 and spin<=.35 and clear and closed and integrity and key_height>G.TABLE_Z+.10 and splitter<.0007 and abs(ring_spin)<=.03)
+ partial=(.75 if same and end_distance>=.012 else .5 if count==1 and end_distance>=.010 else .25 if count==1 else 0.) if integrity and qualified and inspected else 0.
+ return {'crossings':hits,'captured_strands':count,'two_turns':same,'strand_material_separation_deg':math.degrees(separation),'free_end_clearance_m':float(end_distance),'key_speed_m_s':float(speed),'key_spin_rad_s':float(spin),'ring_spin_rad_s':float(ring_spin),'grippers_clear':bool(clear),'ring_closed':bool(closed),'integrity':bool(integrity),'complete':full,'partial_score':partial,
+  'tip_passage_net':list(passages),'passage_winding':winding,'passage_qualified':bool(qualified),'unloaded_inspection_ready':inspected}
 
 @on_reset
 def reset_monitor(env):
- global _prev,_broken
- STATE.clear();_prev=None;_broken=False
+ global _passage,_baseline
+ STATE.clear();_passage=TipPassage();_baseline=None
 
 @on_step
 def monitor(env):
- global _prev,_broken
+ global _passage,_baseline
  poses=body_link_poses(env,'ring');kp=body_link_poses(env,'key')['key'];kr=G.rotation(kp[3:]);pts=G.ring_points();segments=[];gaps=[];endpoints=[]
  rotor=poses['rotor'];rr=G.rotation(rotor[3:])
  for i in range(G.N):
@@ -123,14 +187,17 @@ def monitor(env):
  local_points=(np.array([point for span in segments for point in span])-rotor[:3])@rr
  radii=np.linalg.norm(local_points[:,:2],axis=1)
  key=env.unwrapped.scene['key'];vel=key.data.root_link_vel_w[0].detach().cpu().numpy()
- integrity=bool(-G.OPENER_RETRACT-.0015<=retract<=.001 and -.001<=slider<=.009 and np.isfinite(kp).all() and np.isfinite(q).all() and np.isfinite(dq).all() and np.isfinite(vel).all() and max(gaps)<.0007 and max(abs(radii-G.R))<.004 and max(abs(np.array(flex)))<math.radians(24))
- _broken=_broken or not integrity
- integrity=integrity and not _broken
+ finite=bool(np.isfinite(kp).all() and np.isfinite(q).all() and np.isfinite(dq).all() and np.isfinite(vel).all())
+ measurement=visible_measurements(local_points,endpoints)
+ if _baseline is None:_baseline=measurement.copy()
+ integrity=finite and visible_integrity(measurement,_baseline)
+ if _passage is None:_passage=TipPassage()
+ local_tips=[kr.T@(segments[0][0]-kp[:3]),kr.T@(segments[-1][1]-kp[:3])]
+ passages=_passage.update(local_tips)
  hits=crossings(segments,kp[:3],kr)
  end_distance=min(np.linalg.norm(kp[:3]-segments[0][0]),np.linalg.norm(kp[:3]-segments[-1][1]))
  ring_span=float(np.ptp(local_points[:,2]))
- # The relaxed centreline spans 3.13 mm; a loaded-open coil has a much greater span.
- closed=ring_span<=.0047
+ closed=max(measurement['tip_surface_gaps_m'])<=G.MAX_RESIDUAL_TIP_GAP
  speed=np.linalg.norm(vel[:3]);spin=np.linalg.norm(vel[3:])
  tcp={}
  for side in ('left','right'):
@@ -147,9 +214,11 @@ def monitor(env):
    for point,radius,out in [(key_ball,.027,hand_key),(rotor[:3],ring_radius,hand_ring)]:
     local=r.T@(point-p[:3]);delta=np.maximum(np.maximum(lo-local,local-hi),0.)
     out.append(float(np.linalg.norm(delta)-radius))
- clear=min(hand_key)>=.020 and min(hand_ring)>=.020
- STATE.update(evaluate(hits,end_distance,speed,spin,clear,closed,integrity,kp[2],slider,float(dq[ring.joint_names.index('turn')])))
- STATE.update(ring_bound_radius_m=ring_radius,hand_key_clearance_m=min(hand_key),hand_ring_clearance_m=min(hand_ring),mechanics_invalid_latched=bool(_broken),key_world_m=kp[:3].tolist(),key_quat_xyzw=kp[3:].tolist(),key_grip_world_m=(kp[:3]+kr@G.GRIP).tolist(),splitter_m=slider,splitter_retract_m=retract,
+ clear=min(hand_key)>=G.MIN_HAND_CLEARANCE and min(hand_ring)>=G.MIN_HAND_CLEARANCE
+ inspection=bool(clear and slider<.0007 and retract>-.005 and abs(float(dq[ring.joint_names.index('turn')]))<=.03 and speed<=.015 and spin<=.35)
+ STATE.update(evaluate(hits,end_distance,speed,spin,clear,closed,integrity,kp[2],slider,float(dq[ring.joint_names.index('turn')]),passages,inspection))
+ STATE.update(ring_bound_radius_m=ring_radius,hand_key_clearance_m=min(hand_key),hand_ring_clearance_m=min(hand_ring),finite_physics=finite,key_world_m=kp[:3].tolist(),key_quat_xyzw=kp[3:].tolist(),key_grip_world_m=(kp[:3]+kr@G.GRIP).tolist(),splitter_m=slider,splitter_retract_m=retract,
+  visible_measurements=measurement,visible_baseline=_baseline,tip_passage_events=list(_passage.events),tip_passage_history=list(_passage.history),marked_tip_key_local_m=[p.tolist() for p in local_tips],
   max_joint_gap_m=max(gaps),max_joint_angle_deg=float(np.degrees(max(abs(np.array(flex))))),ring_vertical_span_m=ring_span,
   turn_deg=float(np.degrees(q[ring.joint_names.index('turn')])),knob_world_m=poses['knob'][:3].tolist(),
   tip_world_m=segments[-1][1].tolist(),tcp_world_m={k:p.tolist() for k,p in tcp.items()},flex_joint_radians=flex)

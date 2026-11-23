@@ -77,7 +77,7 @@ def solid_mass_properties(st,path):
 
 def stage(name):
  st=Usd.Stage.CreateNew(str(HERE/'assets'/name));UsdGeom.SetStageUpAxis(st,'Z');UsdGeom.SetStageMetersPerUnit(st,1.);root=UsdGeom.Xform.Define(st,ROOT).GetPrim();st.SetDefaultPrim(root)
- mats={n:material(st,n,c,m) for n,c,m in [('steel',(.48,.52,.56),.7),('brass',(.72,.46,.12),.65),('blue',(.045,.20,.30),.15),('dark',(.055,.065,.075),.1),('orange',(.83,.27,.035),0)]}
+ mats={n:material(st,n,c,m) for n,c,m in [('steel',(.48,.52,.56),.7),('brass',(.72,.46,.12),.65),('blue',(.045,.20,.30),.15),('dark',(.055,.065,.075),.1),('orange',(.83,.27,.035),0),('red',(.9,.025,.015),0),('green',(.04,.75,.12),0),('white',(.9,.9,.9),0)]}
  return st,root,mats
 
 def build_ring():
@@ -86,7 +86,7 @@ def build_ring():
  body(st,ROOT+'/base',O,I,2.,(.02,.02,.02));j=UsdPhysics.FixedJoint.Define(st,ROOT+'/joints/world_fixed');j.CreateBody1Rel().SetTargets([ROOT+'/base'])
  h=G.CENTER[2]-G.TABLE_Z
  box(st,ROOT+'/base/foot',G.W.T@np.array([.130,0,-h+.008]),(.30,.20,.016),m['blue'],rot=G.W.T)
- box(st,ROOT+'/base/splitter_foot',G.W.T@np.array([.235,.168,-h+.008]),(.070,.210,.016),m['blue'],rot=G.W.T)
+ box(st,ROOT+'/base/splitter_foot',G.W.T@np.array([.235,.185,-h+.008]),(.070,.240,.016),m['blue'],rot=G.W.T)
  box(st,ROOT+'/base/upright',G.W.T@np.array([.250,0,-h/2]),(.025,.030,h-.016),m['blue'],rot=G.W.T)
  capsule(st,ROOT+'/base/bearing',(0,0,-.267),(0,0,-.233),.015,m['dark'])
  # Unpowered rotary vise and balanced hand crank. The key has no joint.
@@ -118,12 +118,16 @@ def build_ring():
    curve=G.segment_curve(i)
    if branch=='a':curve=curve[::-1]
    curve=(curve-a)@r
-   for ci in range(6):capsule(st,f'{name}/steel{ci}',curve[ci],curve[ci+1],G.WIRE_R,m['steel'])
+   for ci in range(len(curve)-1):
+    color='green' if i==0 and ci==len(curve)-2 else 'red' if i==G.N-1 and ci==len(curve)-2 else 'steel'
+    capsule(st,f'{name}/steel{ci}',curve[ci],curve[ci+1],G.WIRE_R,m[color])
    prev,pp,pr=name,a,r
- # A thin real splitter blade rests in the inter-coil gap. Pulling its orange
- # grip toward the operator raises the upper spring coil. It returns passively.
+ # A supported tapered catch enters the outside cusp behind the exposed end.
+ # There is no authored inter-turn clearance. Its 60 um leading edge widens
+ # to a 1.4 mm heel before the axial slide lifts the upper turn. All motion is
+ # contact driven; the lower shoe and permanently enabled springs are physical.
  aa=G.OPENER_ANGLE;rad=np.array([math.cos(aa),math.sin(aa),0.]);rot=G.rz(aa)
- zz=G.PITCH*((aa+2*math.pi)/(2*math.pi)-.5)+G.PITCH/2
+ zz=G.OPENER_Z
  p=rad*(G.R+G.OPENER_RETRACT)+[0,0,zz]
  lift=rot.T@G.W.T@np.array([0,0,G.OPENER_LIFT])
  body(st,ROOT+'/carriage',p,rot,.030,(1e-5,1e-5,1e-5),com=lift+np.array([G.OPENER_HANDLE-.02,0,-.010]))
@@ -131,8 +135,12 @@ def build_ring():
  box(st,ROOT+'/carriage/slide_block',lift+np.array([G.OPENER_HANDLE-.02,0,-.010]),(.025,.020,.010),m['blue'])
  body(st,ROOT+'/splitter',p,rot,.025,(1e-5,1e-5,1e-5),com=lift+np.array([G.OPENER_HANDLE/2,0,0]))
  joint(st,'splitter_slide',ROOT+'/carriage',p,rot,ROOT+'/splitter',p,rot,p,axis,35.,1.,linear=True,limits=(0,G.OPENER_STROKE))
- box(st,ROOT+'/splitter/tooth',(0,0,0),(.004,.0010,.00018),m['steel'])
- box(st,ROOT+'/splitter/tooth_neck',(.003,0,0),(.002,.001,.00018),m['steel'])
+ prism(st,ROOT+'/splitter/tooth',[(-.002,-.00003),(.003,-.0007),(.003,.0007),(-.002,.00003)],.0012,m['steel'])
+ box(st,ROOT+'/splitter/tooth_neck',(.0035,0,0),(.001,.0012,.0014),m['steel'])
+ # Fixed to the radial carriage, independent of the lifting blade.
+ box(st,ROOT+'/carriage/backing_shoe',(.0005,0,-.00258),(.005,.0016,.001),m['steel'])
+ box(st,ROOT+'/carriage/shoe_neck',(.004,0,-.004),(.002,.002,.004),m['steel'])
+ box(st,ROOT+'/carriage/shoe_arm',((G.OPENER_HANDLE+.004)/2,0,-.006),(G.OPENER_HANDLE-.004,.004,.003),m['steel'])
  if G.OPENER_LIFT>0:capsule(st,ROOT+'/splitter/riser',(.004,0,0),lift+np.array([.004,0,0]),.001,m['steel'])
  box(st,ROOT+'/splitter/arm',lift+np.array([(G.OPENER_HANDLE+.004)/2,0,0]),(G.OPENER_HANDLE-.004,.006,.003),m['steel'])
  capsule(st,ROOT+'/splitter/grip_standoff',lift+np.array([G.OPENER_HANDLE,0,0]),lift+np.array([G.OPENER_HANDLE,0,G.OPENER_GRIP_Z]),.003,m['steel'])
@@ -143,6 +151,17 @@ def build_ring():
  capsule(st,ROOT+'/base/withdrawal_rail',support-rad*(G.OPENER_RETRACT-.03)+np.array([0,0,-.002]),support+rad*.02+np.array([0,0,-.002]),.004,m['blue'])
  capsule(st,ROOT+'/carriage/slide_rod',lift+np.array([G.OPENER_HANDLE-.02,0,-.014]),lift+np.array([G.OPENER_HANDLE+.05,0,-.014]),.002,m['steel'])
  box(st,ROOT+'/base/splitter_guide',support+np.array([0,0,-.008]),(.025,.025,.012),m['blue'])
+ # Fixed photographic scales: 1 mm ticks, 5 mm major ticks, outside contact
+ # workspace. Front scale follows the ring's horizontal/vertical axes. Edge
+ # scale follows its axial direction. Scale bars are noncolliding ink/plates.
+ for name,origin,axis1,axis2,count in [
+  ('front_h',np.array([-.022,-.024,0.]),np.array([.001,0,0]),np.array([0,1,0]),44),
+  ('front_v',np.array([.024,-.022,0.]),np.array([0,.001,0]),np.array([1,0,0]),44),
+  ('edge',np.array([.026,0,-.008]),np.array([0,0,.001]),np.array([1,0,0]),16)]:
+  for tick in range(count+1):
+   p=origin+tick*axis1
+   size=np.abs(axis1)*.12+np.abs(axis2)*(.003 if tick%5==0 else .0015)+np.abs(np.cross(axis1,axis2))*.1
+   box(st,ROOT+f'/base/scale_{name}_{tick:02d}',p,size,m['dark'],collision=False)
  # A visible 1.2 g trim slug balances the clamp and the open spiral's small
  # static first moment. Its position is determined from authored mass only.
  props=solid_mass_properties(st,ROOT+'/rotor');moment=props['mass_kg']*np.array(props['com_m'])

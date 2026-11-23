@@ -75,17 +75,19 @@ def script(left,right,variant,stage):
     yield from wait(.5)
     stage['name']='lift_key'
     yield from right.move(grip+[0,0,.04],rr,2.)
-    aa=G.OPENER_ANGLE;zz=G.PITCH*((aa+2*math.pi)/(2*math.pi)-.5)+G.PITCH/2
+    aa=G.OPENER_ANGLE;zz=G.OPENER_Z
     button=G.CENTER+G.W@np.array([(G.R+G.OPENER_HANDLE+G.OPENER_RETRACT)*math.cos(aa),(G.R+G.OPENER_HANDLE+G.OPENER_RETRACT)*math.sin(aa),zz+G.OPENER_GRIP_Z])+[0,0,G.OPENER_LIFT]
-    inward=G.W@np.array([-G.OPENER_RETRACT*math.cos(aa),-G.OPENER_RETRACT*math.sin(aa),0.])
+    feed=G.OPENER_RETRACT+G.OPENER_COMMAND_BIAS
+    inward=G.W@np.array([-feed*math.cos(aa),-feed*math.sin(aa),0.])
     if variant!='no_open':
         stage['name']='open_spring_tip'
         yield from left.move(button+[-.06,0,0],HANDLE_ROT,3.)
         yield from left.move(button,HANDLE_ROT,2.)
         yield from left.move(button,HANDLE_ROT,1.,grip=0.)
-        inward=G.W@np.array([-G.OPENER_RETRACT*math.cos(aa),-G.OPENER_RETRACT*math.sin(aa),0.])
-        yield from left.move(button+inward,HANDLE_ROT,4.)
-        yield from left.move(button+inward+[-.0048,0,0],HANDLE_ROT,2.)
+        # Fixed command bias seats the compliant arm against the existing
+        # 140.5 mm physical hard stop. It does not alter slide travel or drives.
+        yield from left.move(button+inward+[-.00025,0,0],HANDLE_ROT,4.)
+        yield from left.move(button+inward+[-.0060,0,0],HANDLE_ROT,2.)
         yield from wait(.5)
     if variant=='direct':
         stage['name']='direct_after_opening'
@@ -101,9 +103,16 @@ def script(left,right,variant,stage):
         yield from right.move(right.pos,seconds=1.,grip=1.)
         yield from right.move(right.pos+[-.12,0,0],G.grasp_rotation(G.KEY_ANGLE),seconds=2.)
         yield from wait(6.);return
-    a=math.radians(-4);z=.0072
-    offset=.005 if variant=='wrong_hole'else 0.
-    def start_hole(a):return G.hole_target(a,z)+G.W@np.array([offset*math.cos(a),offset*math.sin(a),0.])
+    a=math.radians(-4)
+    axial_target=.0075
+    # The opened strand deflects slightly inward. The miss uses a hole target
+    # 5 mm farther out, with the rest of the entry motion held fixed.
+    radial_offset=.0043 if variant=='wrong_hole' else -.0007
+
+    def start_hole(angle):
+        radial=np.array([math.cos(angle),math.sin(angle),0.])
+        return G.hole_target(angle,axial_target)+G.W@(radial_offset*radial)
+
     stage['name']='approach_tip'
     yield from right.move(G.grasp_point(start_hole(a)+[-.025,0,0],a),G.grasp_rotation(a),3.)
     yield from right.move(G.grasp_point(start_hole(a),a),G.grasp_rotation(a),2.)
@@ -125,16 +134,14 @@ def script(left,right,variant,stage):
         yield from wait(6.);return
     stage['name']='advance_upper_strand'
     for a in np.linspace(G.KEY_ANGLE,math.radians(-130),140):
-        right.aim(G.grasp_point(G.hole_target(a,z),a),G.grasp_rotation(a));yield
+        right.aim(G.grasp_point(G.hole_target(a,axial_target),a),G.grasp_rotation(a));yield
     stage['name']='support_key_outward'
     from scipy.spatial.transform import Rotation
     def supported_key(angle,tilt,axial):
         kr=G.key_rotation(angle)@Rotation.from_euler('y',tilt).as_matrix()
         right.aim(G.hole_target(angle,axial)+kr@G.GRIP,np.stack([-kr[:,1],kr[:,2],-kr[:,0]],1))
     for u in np.linspace(0,1,120):
-        supported_key(math.radians(-130-50*u),math.radians(40*u),z);yield
-    if variant=='partial':
-        stage['name']='partial_supported_one_turn';yield from wait(6.);return
+        supported_key(math.radians(-130-50*u),math.radians(40*u),axial_target);yield
     stage['name']='grasp_handwheel'
     yield from left.move(np.array([left.pos[0],left.pos[1],1.0]),CRANK_ROT,2.)
     knob=G.crank_point(0.)
@@ -143,43 +150,50 @@ def script(left,right,variant,stage):
     yield from left.move(knob,CRANK_ROT,1.,grip=0.)
     # Four visible knobs permit real regrasping within the clear lower-left
     # quadrant. No rotor joint target or object state enters this controller.
-    for index,span in enumerate((90.,90.,60.)):
+    # The partial control moves the vise jaw away from the hanging path while
+    # keeping the key on the first turn.
+    spans=(45.,) if variant=='partial' else (90.,90.,60.)
+    for index,span in enumerate(spans):
         stage['name']=f'feed_spiral_quadrant_{index+1}'
         for local in np.linspace(0,span,round(span/12*HZ)):
             total=index*90+local
             left.aim(G.crank_point(math.radians(local)),CRANK_ROT)
             u=np.clip((total-182)/10,0,1)
-            supported_key(math.radians(-180),math.radians(40),z+u*(.0015-z));yield
+            supported_key(math.radians(-180),math.radians(40),(1-u)*axial_target);yield
         yield from wait(.5)
         stage['name']=f'regrasp_handwheel_{index+1}'
         left.grip=1.;yield from wait(.35)
         yield from left.move(np.array([left.pos[0],knob[1],left.pos[2]]),CRANK_ROT,1.5)
         yield from left.move(left.pos+[-.08,0,0],CRANK_ROT,1.5)
-        if index<2:
+        if index+1<len(spans):
             yield from left.move(knob+[-.08,0,0],CRANK_ROT,1.5)
             yield from left.move(knob,CRANK_ROT,1.5)
             yield from left.move(knob,CRANK_ROT,1.,grip=0.)
     stage['name']='withdraw_crank_hand'
     yield from left.return_home(2.)
     yield from wait(1.)
-    stage['name']='release_completed_key'
+    stage['name']='release_partial_one_turn' if variant=='partial' else 'release_completed_key'
     right.grip=1.;yield from wait(.35)
     yield from right.move(right.pos-.10*right.rot[:,2],seconds=2.)
     yield from right.return_home(2.)
-    stage['name']='settled_retention'
+    stage['name']='partial_unloaded_inspection' if variant=='partial' else 'settled_retention'
     yield from wait(10.)
 
 def capture_sources():
-    return {p.relative_to(HERE).as_posix():{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size}
-            for p in sorted(HERE.rglob('*')) if p.is_file() and '__pycache__' not in str(p) and p.suffix in ('.py','.usda','.json')}
+    runtime=[HERE/name for name in ('geometry.py','task.py','scenekit.py','demo.py','witness.py')]
+    runtime+=sorted((HERE/'assets').glob('*.usda'))
+    return {p.relative_to(HERE).as_posix():{'sha256':hashlib.sha256(p.read_bytes()).hexdigest(),'bytes':p.stat().st_size} for p in runtime}
 
 def run(args):
     out=Path(args.out).resolve()
     if out.exists() and any(out.iterdir()): raise ValueError('Require a fresh output directory')
     out.mkdir(parents=True,exist_ok=True); start=time.monotonic()
-    manifest={'source_before':capture_sources(),'physical_gpu':os.environ.get('ROBOCURVE_GPU'),
+    manifest={'source_before':capture_sources(),'physical_gpu':os.environ.get('ROBOCURVE_GPU'),'physics_device':args.device,
               'controller_observation_contract':'Fixed setup waypoints and robot IK only; no object-state feedback',
-              'variant':args.variant,'seed':0,'control_hz':HZ}
+              'variant':args.variant,'seed':0,'control_hz':HZ,'recording_hz':HZ/args.record_stride}
+    from zipfile import ZipFile
+    with ZipFile(out/'source_snapshot.zip','w') as archive:
+        for relative in manifest['source_before']:archive.write(HERE/relative,relative)
     (out/'manifest.json').write_text(json.dumps(manifest,indent=2))
     result={'success':False,'task_score':None,'steps':0,'variant':args.variant}; writers={}; emb=None
     try:
@@ -189,7 +203,8 @@ def run(args):
         from yam_arena.inspect_embodiment import yam_arena_embodiment
         from PIL import Image
         import imageio.v2 as imageio
-        emb=yam_arena_embodiment(task=str(HERE/'task.py'),object_jitter=0,control_hz=HZ,cam_width=args.width,cam_height=args.height)
+        emb=yam_arena_embodiment(task=str(HERE/'task.py'),object_jitter=0,control_hz=HZ,
+                                 cam_width=args.width,cam_height=args.height,device=args.device)
         obs=emb.reset(Scene(id='split-ring-key',instruction=emb.task.module.INSTRUCTION),seed=0)
         task=emb.task.module
         from witness import WitnessCamera
@@ -221,18 +236,18 @@ def run(args):
         left,right=Arm('left'),Arm('right'); stage={'name':'initial'}
         gen=script(left,right,args.variant,stage)
         for name,img in obs.images.items(): Image.fromarray(np.asarray(img)).save(out/f'setup_{name}.png')
-        Image.fromarray(witness.read()).save(out/'setup_witness_cam.png')
+        for name,img in witness.read_all().items():Image.fromarray(img).save(out/f'setup_{name}.png')
         Image.fromarray(witness.setup_key_detail()).save(out/'setup_key_detail.png')
         def record(obs):
             if args.no_record:return
-            for name,img in {**obs.images,'witness_cam':witness.read()}.items():
+            for name,img in {**obs.images,**witness.read_all()}.items():
                 if name not in writers:
-                    writers[name]=imageio.get_writer(out/f'{name}.mp4',fps=HZ,codec='libx264',macro_block_size=1,
+                    writers[name]=imageio.get_writer(out/f'{name}.mp4',fps=HZ/args.record_stride,codec='libx264',macro_block_size=1,
                                                      output_params=['-pix_fmt','yuv420p','-movflags','+faststart'])
                 writers[name].append_data(np.asarray(img))
         record(obs); ended=None; info={}
         original_observation=emb._observation
-        if args.no_record:
+        if args.no_record or args.record_stride>1:
             from inspect_robots.types import Observation
             emb._base.render_enabled=False
             manager=emb._base.observation_manager
@@ -252,7 +267,9 @@ def run(args):
                 except StopIteration:ended=step if ended is None else ended
                 action=Action(data=pack(left.action(),right.action()))
                 acts.write(json.dumps({'step':step,'left':left.action().tolist(),'right':right.action().tolist()})+'\n')
-                res=emb.step(action); info=res.info; record(res.observation)
+                res=emb.step(action); info=res.info
+                if not args.no_record and step%args.record_stride==0:
+                    record(fresh_observation() if args.record_stride>1 else res.observation)
                 metrics=dict(task.STATE)
                 if not np.isfinite(metrics.get('splitter_m',float('nan'))): raise RuntimeError('Nonfinite articulation state; failed physics probe')
                 trace.write(json.dumps({'step':step,'stage':stage['name'],'score':info.get('score'),**metrics})+'\n');trace.flush()
@@ -260,11 +277,13 @@ def run(args):
                 if step%40==0:
                     print(json.dumps({'step':step,'stage':stage['name'],'score':info.get('score'),'metrics':metrics}),flush=True)
                 if args.snapshots and step%40==0:
-                    snap=fresh_observation() if args.no_record else res.observation
-                    for name,img in {**snap.images,'witness_cam':witness.read()}.items():Image.fromarray(np.asarray(img)).save(out/f'{step:04d}_{name}.png')
-                if metrics.get('mechanics_invalid_latched'):
-                    result['mechanics_failure']=True
-                    break
+                    snap=fresh_observation() if args.no_record or args.record_stride>1 else res.observation
+                    for name,img in {**snap.images,**witness.read_all()}.items():Image.fromarray(np.asarray(img)).save(out/f'{step:04d}_{name}.png')
+                # Elastic opening and artificial flex angles never stop a trial.
+                # Controls continue through actual release; only nonfinite
+                # numerical state aborts simulation as an execution error.
+                if not metrics.get('finite_physics',True):
+                    raise RuntimeError('Nonfinite physics state')
                 if res.terminated:
                     result['success']=res.termination_reason=='success'
                     if result['success']:result['task_score']=1.
@@ -272,8 +291,8 @@ def run(args):
                 if ended is not None and step-ended>=20:break
         result['worst_ik_mm']={'left':left.worst_mm,'right':right.worst_mm}
         result['worst_ik_rotation_deg']={'left':left.worst_rot_deg,'right':right.worst_rot_deg}
-        final_obs=fresh_observation() if args.no_record else res.observation
-        for name,img in {**final_obs.images,'witness_cam':witness.read()}.items():Image.fromarray(np.asarray(img)).save(out/f'final_{name}.png')
+        final_obs=fresh_observation() if args.no_record or args.record_stride>1 else res.observation
+        for name,img in {**final_obs.images,**witness.read_all()}.items():Image.fromarray(np.asarray(img)).save(out/f'final_{name}.png')
         if args.reset_check and result['success']:
             from yam_arena.constants import READY
             ready=np.r_[np.array(READY,float),1.]
@@ -308,6 +327,9 @@ if __name__=='__main__':
     p=argparse.ArgumentParser();p.add_argument('--out',required=True);p.add_argument('--variant',choices=['full','idle','partial','wrong_hole','direct','no_open','crank_only'],default='full')
     p.add_argument('--max-steps',type=int,default=2400);p.add_argument('--no-record',action='store_true');p.add_argument('--snapshots',action='store_true')
     p.add_argument('--reset-check',action='store_true');p.add_argument('--width',type=int,default=640);p.add_argument('--height',type=int,default=352)
+    p.add_argument('--device',choices=['cpu','cuda:0'],default='cuda:0',
+                   help='PhysX device. Camera rendering still uses the selected GPU.')
+    p.add_argument('--record-stride',type=int,default=2,choices=[1,2],help='Evidence sampling only; actions remain 20 Hz and physics 1000 Hz')
     args=p.parse_args()
     result=run(args)
     expected=result['success'] if args.variant=='full' else not result['success'] and 'error' not in result

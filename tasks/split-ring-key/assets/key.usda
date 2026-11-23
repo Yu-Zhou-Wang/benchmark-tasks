@@ -78,6 +78,48 @@ def Xform "hardware"
                 token outputs:surface
             }
         }
+
+        def Material "red"
+        {
+            token outputs:surface.connect = </hardware/looks/red/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.9, 0.025, 0.015)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
+
+        def Material "green"
+        {
+            token outputs:surface.connect = </hardware/looks/green/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.04, 0.75, 0.12)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
+
+        def Material "white"
+        {
+            token outputs:surface.connect = </hardware/looks/white/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.9, 0.9, 0.9)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
     }
 
     def Xform "key" (
@@ -101,7 +143,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0035, -0.001, 0), (0.0055, -0.001, 0), (0.005394319, -0.001, 0.0010729968), (0.0034327484, -0.001, 0.00068281614), (0.0035, 0.001, 0), (0.0055, 0.001, 0), (0.005394319, 0.001, 0.0010729968), (0.0034327484, 0.001, 0.00068281614)]
             uniform token subdivisionScheme = "none"
         }
@@ -115,7 +157,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0034327484, -0.001, 0.00068281614), (0.005394319, -0.001, 0.0010729968), (0.0050813374, -0.001, 0.002104759), (0.0032335783, -0.001, 0.001339392), (0.0034327484, 0.001, 0.00068281614), (0.005394319, 0.001, 0.0010729968), (0.0050813374, 0.001, 0.002104759), (0.0032335783, 0.001, 0.001339392)]
             uniform token subdivisionScheme = "none"
         }
@@ -129,7 +171,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0032335783, -0.001, 0.001339392), (0.0050813374, -0.001, 0.002104759), (0.004573083, -0.001, 0.0030556363), (0.0029101437, -0.001, 0.0019444958), (0.0032335783, 0.001, 0.001339392), (0.0050813374, 0.001, 0.002104759), (0.004573083, 0.001, 0.0030556363), (0.0029101437, 0.001, 0.0019444958)]
             uniform token subdivisionScheme = "none"
         }
@@ -143,7 +185,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0029101437, -0.001, 0.0019444958), (0.004573083, -0.001, 0.0030556363), (0.0038890874, -0.001, 0.0038890874), (0.0024748738, -0.001, 0.0024748738), (0.0029101437, 0.001, 0.0019444958), (0.004573083, 0.001, 0.0030556363), (0.0038890874, 0.001, 0.0038890874), (0.0024748738, 0.001, 0.0024748738)]
             uniform token subdivisionScheme = "none"
         }
@@ -157,7 +199,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0024748738, -0.001, 0.0024748738), (0.0038890874, -0.001, 0.0038890874), (0.0030556363, -0.001, 0.004573083), (0.0019444958, -0.001, 0.0029101437), (0.0024748738, 0.001, 0.0024748738), (0.0038890874, 0.001, 0.0038890874), (0.0030556363, 0.001, 0.004573083), (0.0019444958, 0.001, 0.0029101437)]
             uniform token subdivisionScheme = "none"
         }
@@ -171,7 +213,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0019444958, -0.001, 0.0029101437), (0.0030556363, -0.001, 0.004573083), (0.002104759, -0.001, 0.0050813374), (0.001339392, -0.001, 0.0032335783), (0.0019444958, 0.001, 0.0029101437), (0.0030556363, 0.001, 0.004573083), (0.002104759, 0.001, 0.0050813374), (0.001339392, 0.001, 0.0032335783)]
             uniform token subdivisionScheme = "none"
         }
@@ -185,7 +227,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.001339392, -0.001, 0.0032335783), (0.002104759, -0.001, 0.0050813374), (0.0010729968, -0.001, 0.005394319), (0.00068281614, -0.001, 0.0034327484), (0.001339392, 0.001, 0.0032335783), (0.002104759, 0.001, 0.0050813374), (0.0010729968, 0.001, 0.005394319), (0.00068281614, 0.001, 0.0034327484)]
             uniform token subdivisionScheme = "none"
         }
@@ -199,7 +241,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.00068281614, -0.001, 0.0034327484), (0.0010729968, -0.001, 0.005394319), (3.3677788e-19, -0.001, 0.0055), (2.1431319e-19, -0.001, 0.0035), (0.00068281614, 0.001, 0.0034327484), (0.0010729968, 0.001, 0.005394319), (3.3677788e-19, 0.001, 0.0055), (2.1431319e-19, 0.001, 0.0035)]
             uniform token subdivisionScheme = "none"
         }
@@ -213,7 +255,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(2.1431319e-19, -0.001, 0.0035), (3.3677788e-19, -0.001, 0.0055), (-0.0010729968, -0.001, 0.005394319), (-0.00068281614, -0.001, 0.0034327484), (2.1431319e-19, 0.001, 0.0035), (3.3677788e-19, 0.001, 0.0055), (-0.0010729968, 0.001, 0.005394319), (-0.00068281614, 0.001, 0.0034327484)]
             uniform token subdivisionScheme = "none"
         }
@@ -227,7 +269,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.00068281614, -0.001, 0.0034327484), (-0.0010729968, -0.001, 0.005394319), (-0.002104759, -0.001, 0.0050813374), (-0.001339392, -0.001, 0.0032335783), (-0.00068281614, 0.001, 0.0034327484), (-0.0010729968, 0.001, 0.005394319), (-0.002104759, 0.001, 0.0050813374), (-0.001339392, 0.001, 0.0032335783)]
             uniform token subdivisionScheme = "none"
         }
@@ -241,7 +283,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.001339392, -0.001, 0.0032335783), (-0.002104759, -0.001, 0.0050813374), (-0.0030556363, -0.001, 0.004573083), (-0.0019444958, -0.001, 0.0029101437), (-0.001339392, 0.001, 0.0032335783), (-0.002104759, 0.001, 0.0050813374), (-0.0030556363, 0.001, 0.004573083), (-0.0019444958, 0.001, 0.0029101437)]
             uniform token subdivisionScheme = "none"
         }
@@ -255,7 +297,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0019444958, -0.001, 0.0029101437), (-0.0030556363, -0.001, 0.004573083), (-0.0038890874, -0.001, 0.0038890874), (-0.0024748738, -0.001, 0.0024748738), (-0.0019444958, 0.001, 0.0029101437), (-0.0030556363, 0.001, 0.004573083), (-0.0038890874, 0.001, 0.0038890874), (-0.0024748738, 0.001, 0.0024748738)]
             uniform token subdivisionScheme = "none"
         }
@@ -269,7 +311,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0024748738, -0.001, 0.0024748738), (-0.0038890874, -0.001, 0.0038890874), (-0.004573083, -0.001, 0.0030556363), (-0.0029101437, -0.001, 0.0019444958), (-0.0024748738, 0.001, 0.0024748738), (-0.0038890874, 0.001, 0.0038890874), (-0.004573083, 0.001, 0.0030556363), (-0.0029101437, 0.001, 0.0019444958)]
             uniform token subdivisionScheme = "none"
         }
@@ -283,7 +325,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0029101437, -0.001, 0.0019444958), (-0.004573083, -0.001, 0.0030556363), (-0.0050813374, -0.001, 0.002104759), (-0.0032335783, -0.001, 0.001339392), (-0.0029101437, 0.001, 0.0019444958), (-0.004573083, 0.001, 0.0030556363), (-0.0050813374, 0.001, 0.002104759), (-0.0032335783, 0.001, 0.001339392)]
             uniform token subdivisionScheme = "none"
         }
@@ -297,7 +339,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0032335783, -0.001, 0.001339392), (-0.0050813374, -0.001, 0.002104759), (-0.005394319, -0.001, 0.0010729968), (-0.0034327484, -0.001, 0.00068281614), (-0.0032335783, 0.001, 0.001339392), (-0.0050813374, 0.001, 0.002104759), (-0.005394319, 0.001, 0.0010729968), (-0.0034327484, 0.001, 0.00068281614)]
             uniform token subdivisionScheme = "none"
         }
@@ -311,7 +353,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0034327484, -0.001, 0.00068281614), (-0.005394319, -0.001, 0.0010729968), (-0.0055, -0.001, 6.7355575e-19), (-0.0035, -0.001, 4.2862638e-19), (-0.0034327484, 0.001, 0.00068281614), (-0.005394319, 0.001, 0.0010729968), (-0.0055, 0.001, 6.7355575e-19), (-0.0035, 0.001, 4.2862638e-19)]
             uniform token subdivisionScheme = "none"
         }
@@ -325,7 +367,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0035, -0.001, 4.2862638e-19), (-0.0055, -0.001, 6.7355575e-19), (-0.005394319, -0.001, -0.0010729968), (-0.0034327484, -0.001, -0.00068281614), (-0.0035, 0.001, 4.2862638e-19), (-0.0055, 0.001, 6.7355575e-19), (-0.005394319, 0.001, -0.0010729968), (-0.0034327484, 0.001, -0.00068281614)]
             uniform token subdivisionScheme = "none"
         }
@@ -339,7 +381,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0034327484, -0.001, -0.00068281614), (-0.005394319, -0.001, -0.0010729968), (-0.0050813374, -0.001, -0.002104759), (-0.0032335783, -0.001, -0.001339392), (-0.0034327484, 0.001, -0.00068281614), (-0.005394319, 0.001, -0.0010729968), (-0.0050813374, 0.001, -0.002104759), (-0.0032335783, 0.001, -0.001339392)]
             uniform token subdivisionScheme = "none"
         }
@@ -353,7 +395,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0032335783, -0.001, -0.001339392), (-0.0050813374, -0.001, -0.002104759), (-0.004573083, -0.001, -0.0030556363), (-0.0029101437, -0.001, -0.0019444958), (-0.0032335783, 0.001, -0.001339392), (-0.0050813374, 0.001, -0.002104759), (-0.004573083, 0.001, -0.0030556363), (-0.0029101437, 0.001, -0.0019444958)]
             uniform token subdivisionScheme = "none"
         }
@@ -367,7 +409,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0029101437, -0.001, -0.0019444958), (-0.004573083, -0.001, -0.0030556363), (-0.0038890874, -0.001, -0.0038890874), (-0.0024748738, -0.001, -0.0024748738), (-0.0029101437, 0.001, -0.0019444958), (-0.004573083, 0.001, -0.0030556363), (-0.0038890874, 0.001, -0.0038890874), (-0.0024748738, 0.001, -0.0024748738)]
             uniform token subdivisionScheme = "none"
         }
@@ -381,7 +423,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0024748738, -0.001, -0.0024748738), (-0.0038890874, -0.001, -0.0038890874), (-0.0030556363, -0.001, -0.004573083), (-0.0019444958, -0.001, -0.0029101437), (-0.0024748738, 0.001, -0.0024748738), (-0.0038890874, 0.001, -0.0038890874), (-0.0030556363, 0.001, -0.004573083), (-0.0019444958, 0.001, -0.0029101437)]
             uniform token subdivisionScheme = "none"
         }
@@ -395,7 +437,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.0019444958, -0.001, -0.0029101437), (-0.0030556363, -0.001, -0.004573083), (-0.002104759, -0.001, -0.0050813374), (-0.001339392, -0.001, -0.0032335783), (-0.0019444958, 0.001, -0.0029101437), (-0.0030556363, 0.001, -0.004573083), (-0.002104759, 0.001, -0.0050813374), (-0.001339392, 0.001, -0.0032335783)]
             uniform token subdivisionScheme = "none"
         }
@@ -409,7 +451,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.001339392, -0.001, -0.0032335783), (-0.002104759, -0.001, -0.0050813374), (-0.0010729968, -0.001, -0.005394319), (-0.00068281614, -0.001, -0.0034327484), (-0.001339392, 0.001, -0.0032335783), (-0.002104759, 0.001, -0.0050813374), (-0.0010729968, 0.001, -0.005394319), (-0.00068281614, 0.001, -0.0034327484)]
             uniform token subdivisionScheme = "none"
         }
@@ -423,7 +465,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-0.00068281614, -0.001, -0.0034327484), (-0.0010729968, -0.001, -0.005394319), (-1.0103336e-18, -0.001, -0.0055), (-6.4293957e-19, -0.001, -0.0035), (-0.00068281614, 0.001, -0.0034327484), (-0.0010729968, 0.001, -0.005394319), (-1.0103336e-18, 0.001, -0.0055), (-6.4293957e-19, 0.001, -0.0035)]
             uniform token subdivisionScheme = "none"
         }
@@ -437,7 +479,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(-6.4293957e-19, -0.001, -0.0035), (-1.0103336e-18, -0.001, -0.0055), (0.0010729968, -0.001, -0.005394319), (0.00068281614, -0.001, -0.0034327484), (-6.4293957e-19, 0.001, -0.0035), (-1.0103336e-18, 0.001, -0.0055), (0.0010729968, 0.001, -0.005394319), (0.00068281614, 0.001, -0.0034327484)]
             uniform token subdivisionScheme = "none"
         }
@@ -451,7 +493,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.00068281614, -0.001, -0.0034327484), (0.0010729968, -0.001, -0.005394319), (0.002104759, -0.001, -0.0050813374), (0.001339392, -0.001, -0.0032335783), (0.00068281614, 0.001, -0.0034327484), (0.0010729968, 0.001, -0.005394319), (0.002104759, 0.001, -0.0050813374), (0.001339392, 0.001, -0.0032335783)]
             uniform token subdivisionScheme = "none"
         }
@@ -465,7 +507,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.001339392, -0.001, -0.0032335783), (0.002104759, -0.001, -0.0050813374), (0.0030556363, -0.001, -0.004573083), (0.0019444958, -0.001, -0.0029101437), (0.001339392, 0.001, -0.0032335783), (0.002104759, 0.001, -0.0050813374), (0.0030556363, 0.001, -0.004573083), (0.0019444958, 0.001, -0.0029101437)]
             uniform token subdivisionScheme = "none"
         }
@@ -479,7 +521,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0019444958, -0.001, -0.0029101437), (0.0030556363, -0.001, -0.004573083), (0.0038890874, -0.001, -0.0038890874), (0.0024748738, -0.001, -0.0024748738), (0.0019444958, 0.001, -0.0029101437), (0.0030556363, 0.001, -0.004573083), (0.0038890874, 0.001, -0.0038890874), (0.0024748738, 0.001, -0.0024748738)]
             uniform token subdivisionScheme = "none"
         }
@@ -493,7 +535,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0024748738, -0.001, -0.0024748738), (0.0038890874, -0.001, -0.0038890874), (0.004573083, -0.001, -0.0030556363), (0.0029101437, -0.001, -0.0019444958), (0.0024748738, 0.001, -0.0024748738), (0.0038890874, 0.001, -0.0038890874), (0.004573083, 0.001, -0.0030556363), (0.0029101437, 0.001, -0.0019444958)]
             uniform token subdivisionScheme = "none"
         }
@@ -507,7 +549,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0029101437, -0.001, -0.0019444958), (0.004573083, -0.001, -0.0030556363), (0.0050813374, -0.001, -0.002104759), (0.0032335783, -0.001, -0.001339392), (0.0029101437, 0.001, -0.0019444958), (0.004573083, 0.001, -0.0030556363), (0.0050813374, 0.001, -0.002104759), (0.0032335783, 0.001, -0.001339392)]
             uniform token subdivisionScheme = "none"
         }
@@ -521,7 +563,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0032335783, -0.001, -0.001339392), (0.0050813374, -0.001, -0.002104759), (0.005394319, -0.001, -0.0010729968), (0.0034327484, -0.001, -0.00068281614), (0.0032335783, 0.001, -0.001339392), (0.0050813374, 0.001, -0.002104759), (0.005394319, 0.001, -0.0010729968), (0.0034327484, 0.001, -0.00068281614)]
             uniform token subdivisionScheme = "none"
         }
@@ -535,7 +577,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.0034327484, -0.001, -0.00068281614), (0.005394319, -0.001, -0.0010729968), (0.0055, -0.001, -1.3471115e-18), (0.0035, -0.001, -8.5725276e-19), (0.0034327484, 0.001, -0.00068281614), (0.005394319, 0.001, -0.0010729968), (0.0055, 0.001, -1.3471115e-18), (0.0035, 0.001, -8.5725276e-19)]
             uniform token subdivisionScheme = "none"
         }
@@ -549,7 +591,7 @@ def Xform "hardware"
             rel material:binding = </hardware/looks/brass>
             uniform token physics:approximation = "convexHull"
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             point3f[] points = [(0.004, -0.001, -0.004), (0.008, -0.001, -0.009), (0.016, -0.001, -0.008), (0.018, -0.001, -0.004), (0.018, -0.001, 0.004), (0.016, -0.001, 0.008), (0.008, -0.001, 0.009), (0.004, -0.001, 0.004), (0.004, 0.001, -0.004), (0.008, 0.001, -0.009), (0.016, 0.001, -0.008), (0.018, 0.001, -0.004), (0.018, 0.001, 0.004), (0.016, 0.001, 0.008), (0.008, 0.001, 0.009), (0.004, 0.001, 0.004)]
             uniform token subdivisionScheme = "none"
         }
@@ -560,7 +602,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.026, 0.002, 0.006)
             double3 xformOp:translate = (0.029, 0, 0.0005)
@@ -573,7 +615,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.0024, 0.002, 0.0015)
             double3 xformOp:translate = (0.019, 0, -0.0032500000000000003)
@@ -586,7 +628,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.0024, 0.002, 0.0005)
             double3 xformOp:translate = (0.0235, 0, -0.00275)
@@ -599,7 +641,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.0024, 0.002, 0.002)
             double3 xformOp:translate = (0.027999999999999997, 0, -0.0035)
@@ -612,7 +654,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.0024, 0.002, 0.001)
             double3 xformOp:translate = (0.0325, 0, -0.003)
@@ -625,7 +667,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/brass>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.0024, 0.002, 0.0018)
             double3 xformOp:translate = (0.037, 0, -0.0034000000000000002)

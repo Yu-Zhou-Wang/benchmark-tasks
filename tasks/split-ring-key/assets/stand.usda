@@ -78,6 +78,48 @@ def Xform "hardware"
                 token outputs:surface
             }
         }
+
+        def Material "red"
+        {
+            token outputs:surface.connect = </hardware/looks/red/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.9, 0.025, 0.015)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
+
+        def Material "green"
+        {
+            token outputs:surface.connect = </hardware/looks/green/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.04, 0.75, 0.12)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
+
+        def Material "white"
+        {
+            token outputs:surface.connect = </hardware/looks/white/shader.outputs:surface>
+
+            def Shader "shader"
+            {
+                uniform token info:id = "UsdPreviewSurface"
+                color3f inputs:diffuseColor = (0.9, 0.9, 0.9)
+                float inputs:metallic = 0
+                float inputs:roughness = 0.7
+                token outputs:surface
+            }
+        }
     }
 
     def Xform "stand" (
@@ -98,7 +140,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/blue>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.075, 0.06, 0.012)
             double3 xformOp:translate = (-0.015, 0, -0.21399999999999997)
@@ -111,7 +153,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/dark>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.014, 0.012, 0.208)
             double3 xformOp:translate = (-0.014, 0, -0.10999999999999999)
@@ -124,7 +166,7 @@ def Xform "hardware"
         {
             rel material:binding = </hardware/looks/blue>
             custom float physxCollision:contactOffset = 0.00008
-            custom float physxCollision:restOffset = 0.00003
+            custom float physxCollision:restOffset = 0
             double size = 1
             float3 xformOp:scale = (0.014, 0.02, 0.006)
             double3 xformOp:translate = (-0.015, 0, -0.004)
